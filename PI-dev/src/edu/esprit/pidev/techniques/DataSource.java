@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author Ahmed
  */
 public class DataSource {
-   String url = "jdbc:mysql://localhost:3306/nom_base";
+   String url = "jdbc:mysql://localhost:3306/govoyagedb";
     String login = "root";
     String password = "";
     private Connection connection;

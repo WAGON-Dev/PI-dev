@@ -12,11 +12,11 @@ import java.util.Objects;
  * @author Asus
  */
 public class Users {
-    String id_user ;
+    int id_user ;
     String nom ; 
     String email ;
     String mdp ;
-    Number numtel ;
+    int numtel ;
     String adresse ;
     String role ;
     String image;
@@ -24,7 +24,7 @@ public class Users {
     public Users() {
     }
 
-    public Users(String id_user, String nom, String email, String mdp, Number numtel, String adresse, String role, String image) {
+    public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         this.id_user = id_user;
         this.nom = nom;
         this.email = email;
@@ -35,7 +35,7 @@ public class Users {
         this.image = image;
     }
 
-    public Users(String nom, String email, String mdp, Number numtel, String adresse, String role, String image) {
+    public Users(String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         this.nom = nom;
         this.email = email;
         this.mdp = mdp;
@@ -45,11 +45,11 @@ public class Users {
         this.image = image;
     }
 
-    public String getId_user() {
+    public int getId_user() {
         return id_user;
     }
 
-    public void setId_user(String id_user) {
+    public void setId_user(int id_user) {
         this.id_user = id_user;
     }
 
@@ -77,11 +77,11 @@ public class Users {
         this.mdp = mdp;
     }
 
-    public Number getNumtel() {
+    public int getNumtel() {
         return numtel;
     }
 
-    public void setNumtel(Number numtel) {
+    public void setNumtel(int numtel) {
         this.numtel = numtel;
     }
 
