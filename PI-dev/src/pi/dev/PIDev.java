@@ -10,7 +10,8 @@ package pi.dev;
  * @author Asus
  */
 public class PIDev {
-
+String nom ;
+String prenom ;
     /**
      * @param args the command line arguments
      */
