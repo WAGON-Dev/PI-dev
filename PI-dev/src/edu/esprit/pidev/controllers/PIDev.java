@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pi.dev;
+package edu.esprit.pidev.controllers;
 
 /**
  *
@@ -12,6 +12,7 @@ package pi.dev;
 public class PIDev {
 String nom ;
 String prenom ;
+int id;
     /**
      * @param args the command line arguments
      */
