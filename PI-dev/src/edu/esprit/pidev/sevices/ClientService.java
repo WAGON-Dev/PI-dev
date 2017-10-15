@@ -95,7 +95,8 @@ Connection connection ;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return client;    }
+        return client;   
+    }
 
     @Override
     public List<Client> getAll() {

@@ -88,4 +88,10 @@ public class Client extends Users {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +super.toString()+ "prenom=" + prenom + ", cin=" + cin + ", dateNaissence=" + dateNaissence + '}';
+    }
+    
 }
