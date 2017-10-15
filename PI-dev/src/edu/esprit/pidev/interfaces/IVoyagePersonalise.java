@@ -11,6 +11,6 @@ import edu.esprit.pidev.models.VoyagePersonalise;
  *
  * @author Ahmed
  */
-public interface IVoyagePersonalise extends Iservice<VoyagePersonalise, Integer>{
+public interface IVoyagePersonalise extends Iservice<VoyagePersonalise, Integer,String>{
      
 }

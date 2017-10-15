@@ -13,6 +13,6 @@ import edu.esprit.pidev.models.Hotel;
  *
  * @author Ahmed
  */
-public interface IHotel extends Iservice<Hotel, Integer>{
+public interface IHotel extends Iservice<Hotel, Integer,String>{
     
 }
