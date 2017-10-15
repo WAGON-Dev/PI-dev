@@ -26,7 +26,7 @@ public class tests {
         HotelService hotelService = new HotelService();
         Hotel h1 = new Hotel(1, "fathi", "wshthr", "55", 6666, "france", "hotel147", "C://", 4, 15, 18);
 
-        // hotelService.add(h1);
+        //hotelService.add(h1);
         //hotelService.update(h1);
         //hotelService.remove(1);
     }
