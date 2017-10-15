@@ -19,13 +19,15 @@ public class tests {
 
     public static void main(String[] args) {
         ClientService cs = new ClientService();
-        Client c;
+        Client c,c2;
         c = new Client("wajdy", "12807857", "29/08/1995", "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "");
-        //cs.add(c);
+        c2 = new Client("ghassen", "12807857", "29/08/1995", "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
+        cs.add(c);
+        cs.add(c2);
         //cs.update(c);
         //cs.remove(12);
         
-        System.out.println(c.getId_user());
+        System.out.println(cs.findById(28));
         HotelService hotelService = new HotelService();
         Hotel h1 = new Hotel(1, "fathi", "wshthr", "99999", 6666, "france", "hotel147", "C://", 4, 15, 18);
 

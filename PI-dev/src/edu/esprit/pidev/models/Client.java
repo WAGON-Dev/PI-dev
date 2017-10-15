@@ -23,7 +23,7 @@ public class Client extends Users {
         this.dateNaissence = dateNaissence;
     }
 
-    public Client(String prenom, String cin, String dateNaissence, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Client(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image,String prenom, String cin, String dateNaissence) {
         super(id_user, nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.cin = cin;
