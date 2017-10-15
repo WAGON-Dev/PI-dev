@@ -10,5 +10,6 @@ package edu.esprit.pidev.models;
  * @author Asus
  */
 public class models {
-    
+    String nom;
+    String prenom;
 }
