@@ -11,4 +11,5 @@ package edu.esprit.pidev.models;
  */
 public class models {
     String nom;
+    String prenom;
 }
