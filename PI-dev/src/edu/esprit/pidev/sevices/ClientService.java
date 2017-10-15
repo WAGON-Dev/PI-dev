@@ -45,12 +45,37 @@ Connection connection ;
 
     @Override
     public void update(Client t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,role=?,image=? where nom = ? and prenom = ? ";
+        PreparedStatement preparedStatement = null ;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, t.getNom());
+            preparedStatement.setString(2, t.getPrenom());
+            preparedStatement.setString(3, t.getEmail());
+            preparedStatement.setString(4, t.getMdp());
+            preparedStatement.setInt(5, t.getNumtel());
+            preparedStatement.setString(6, t.getAdresse());
+            preparedStatement.setString(7, t.getCin());
+            preparedStatement.setString(8, t.getRole());
+            preparedStatement.setString(9, t.getImage());
+            preparedStatement.setString(10, t.getNom());
+            preparedStatement.setString(11, t.getPrenom());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }    }
 
     @Override
     public void remove(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "delete from users where id_user =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1,r );
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

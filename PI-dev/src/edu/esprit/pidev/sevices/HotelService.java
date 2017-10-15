@@ -30,7 +30,7 @@ public class HotelService  implements IHotel  {
 
     @Override
     public void add(Hotel h) {
-        String req = "insert into hotel (id_user,nom,email,mdp,numtel,adresse,role,image,etoile,nb_chambre,nb_chambre_reserve) values (?,?,?,?,?,?,?,?,?,?,?)";
+        String req = "insert into users (id_user,nom,email,mdp,numtel,adresse,role,image,etoile,nb_chambre,nb_chambre_reserve) values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -53,7 +53,7 @@ public class HotelService  implements IHotel  {
 
      @Override
     public void update(Hotel h) {
-        String req = "update hotel set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nb_chambre=?,nb_chambre_reserve=? where id_user = ?";
+        String req = "update users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nb_chambre=?,nb_chambre_reserve=? where id_user = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -76,7 +76,7 @@ public class HotelService  implements IHotel  {
 
     @Override
     public void remove(Integer id_user) {
-        String req = "delete from hotel where id_user =?";
+        String req = "delete from users where id_user =?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -90,7 +90,7 @@ public class HotelService  implements IHotel  {
     @Override
     public Hotel findById(Integer id_user) {
               Hotel  hotel = null;
-        String req = "select * from hotel where id_user=?";
+        String req = "select * from users where id_user=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -108,7 +108,7 @@ public class HotelService  implements IHotel  {
     @Override
     public List<Hotel> getAll() {
        List<Hotel> hotels = new ArrayList<>();
-        String req = "select * from hotel";
+        String req = "select * from users";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

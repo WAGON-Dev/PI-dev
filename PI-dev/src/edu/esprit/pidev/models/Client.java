@@ -38,7 +38,7 @@ public class Client extends Users {
     }
 
     public Client() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     public String getPrenom() {
