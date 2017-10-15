@@ -15,7 +15,7 @@ public class Users {
     int id_user ;
     String nom ; 
     String email ;
-    String mdp ;
+    String mdp ;// Mot de passe
     int numtel ;
     String adresse ;
     String role ;
