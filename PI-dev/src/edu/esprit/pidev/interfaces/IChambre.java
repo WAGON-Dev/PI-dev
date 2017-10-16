@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.esprit.pidev.models;
+package edu.esprit.pidev.interfaces;
+
+import edu.esprit.pidev.models.Chambre;
 
 /**
  *
- * @author Asus
+ * @author Ghassen
  */
-public class models {
-    String nom;
-    String prenom;
+public interface IChambre extends Iservice<Chambre, Integer, String>{
+    
 }

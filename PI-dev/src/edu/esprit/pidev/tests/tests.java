@@ -8,8 +8,10 @@ package edu.esprit.pidev.tests;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.interfaces.IserviceClient;
 import edu.esprit.pidev.models.Client;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.models.VoyagePersonalise;
+import edu.esprit.pidev.sevices.GuideService;
 import edu.esprit.pidev.sevices.HotelService;
 import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 
@@ -47,8 +49,10 @@ public class tests {
         // vps.update(vp);
         // vps.remove(1);
         //System.out.println(vps.getAll());
-    
-    
+    ////////////////////////////////////////////////////Guide///////////////////////////////////////////////////////////////////////
+        GuideService guideservice = new GuideService();
+        Guide g = new Guide("Ghassen", "1526", "1554826", 0, 0, "Jemai", "19561@orjf", "rfjf", 15482639, "tunis", "Guide", "fojnron");
+        guideservice.remove(2);
     
     }
 
