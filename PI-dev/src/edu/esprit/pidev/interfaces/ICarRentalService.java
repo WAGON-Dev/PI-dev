@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package edu.esprit.pidev.interfaces;
+
+import edu.esprit.pidev.models.Car;
 import edu.esprit.pidev.models.CarRental;
+
 /**
  *
- * @author omarfarouk
+ * @author Asus
  */
-public interface ICarRentalService extends Iservice<CarRental,Integer,String> {
+public interface ICarRentalService extends Iservice<CarRental,Integer,String>{
     
 }

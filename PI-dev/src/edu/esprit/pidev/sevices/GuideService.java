@@ -100,11 +100,6 @@ public class GuideService implements Iguide{
     }
 
     @Override
-    public void update(Guide t, String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public List<Guide> getAll() {
        List<Guide> guides = new ArrayList<>();
         String req = "select * from users where role = 'Guide'";
@@ -122,13 +117,4 @@ public class GuideService implements Iguide{
         return guides;
     }
 
-    @Override
-    public void delete(String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Guide FindByReg(String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

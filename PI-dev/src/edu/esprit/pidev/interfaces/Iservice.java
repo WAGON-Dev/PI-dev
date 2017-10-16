@@ -16,16 +16,10 @@ import java.util.List;
     void add(T t);
 
     void update(T t);
-    
-    void update(T t, Z z);// this update is for car table takes 2 parameters Car c and RegNo(registration number)
 
-    void remove(R r);
-    
-    void delete(Z z);// this is also for car table takes RegNo as a parameter     
+    void remove(R r);     
      
     T findById(R r);
-
-    T FindByReg(Z z);// find by specific RegNo
     
     List<T> getAll();
 }

@@ -16,6 +16,7 @@ import edu.esprit.pidev.interfaces.ICarService;
 import java.util.List;
 import java.util.ArrayList;
 import edu.esprit.pidev.models.Car;
+import edu.esprit.pidev.models.CarRental;
 /**
  *
  * @author omarfarouk
@@ -65,7 +66,7 @@ public class CarService implements ICarService {
 
     
     //Update method point to the car with the regNo and update the status, duration, 
-    @Override
+    
     public void update(Car c, String s) { 
         String query="UPDATE t_cars set duration=?, status=? where regNo=?" ;
         try{
@@ -102,6 +103,7 @@ public class CarService implements ICarService {
 //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
     @Override
     public Car FindByReg(String r) {
         String query="SELECT * from t_cars where regNo='"+r+"'";
@@ -167,6 +169,10 @@ public class CarService implements ICarService {
 
     @Override
     public void remove(Integer r) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void update(CarRental t, String z) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
