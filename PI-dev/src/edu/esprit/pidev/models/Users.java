@@ -24,7 +24,46 @@ public class Users {
     public Users() {
     }
 
-    public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Users(int id_user, String nom) {
+        this.id_user = id_user;
+        this.nom = nom;
+    }
+
+    public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+        this.numtel = numtel;
+        this.adresse = adresse;
+    }
+    
+          
+    public Users(String nom, String email, String mdp, int numtel, String adresse) {
+        this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+        this.numtel = numtel;
+        this.adresse = adresse;
+    }
+public Users( String role,int id_user, String nom, String email, String mdp, int numtel, String adresse) {
+        this.id_user = id_user;
+        this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+        this.numtel = numtel;
+        this.adresse = adresse;
+        this.role = role;
+    }
+public Users(String nom, String email, String mdp, int numtel, String adresse, String role) {
+        this.nom = nom;
+        this.email = email;
+        this.mdp = mdp;
+        this.numtel = numtel;
+        this.adresse = adresse;
+        this.role = role;
+    }
+public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         this.id_user = id_user;
         this.nom = nom;
         this.email = email;
