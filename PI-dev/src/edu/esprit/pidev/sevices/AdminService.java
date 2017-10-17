@@ -104,28 +104,16 @@ public class AdminService implements IAdminService{
         return admin;   
     }
 
-    @Override
-    public List<Admin> getAll() {
-        List<Admin> admins = new ArrayList<>();
-        String req = "select * from users";
-        PreparedStatement preparedStatement;
-        try {
-            preparedStatement = connection.prepareStatement(req);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                Admin admin;
-                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getString("dateNaissence"));
-                admins.add(admin);
-                
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return admins; 
-    }  
+   
+    
 
     @Override
     public void addAdminWithStatement(Admin e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Admin> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
