@@ -29,6 +29,13 @@ public class Chambre {
         this.Client_fk = Client_fk;
         this.Hotel_fk = Hotel_fk;
     }
+    
+    public Chambre(String Type, double prix, Client Client_fk, Hotel Hotel_fk) {
+        this.Type = Type;
+        this.prix = prix;
+        this.Client_fk = Client_fk;
+        this.Hotel_fk = Hotel_fk;
+    }
 
     public int getId() {
         return id;
