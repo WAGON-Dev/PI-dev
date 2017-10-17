@@ -29,7 +29,8 @@ public class GuideService implements Iguide{
     }
     
     @Override
-    public void add(Guide t) {String req = "insert into users (nom,Prenom,mdp,email,adresse,numtel,note,role) values (?,?,?,?,?,?,?,?)";
+    public void add(Guide t) {
+        String req = "insert into users (nom,Prenom,mdp,email,adresse,numtel,note,role) values (?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
