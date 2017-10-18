@@ -5,6 +5,8 @@
  */
 package edu.esprit.pidev.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
 
 /**
@@ -208,6 +210,20 @@ public class VoyagePersonalise  {
     public String toString() {
         return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + ", hotel=" + hotel + ", client=" + client + ", event1=" + event1.toString() + ", event2=" + event2.toString() + ", event3=" + event3.toString() + '}';
     }
+    public java.sql.Date convert (String date) throws ParseException{
+   
+      
+    SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+     
+    java.util.Date date1 = sdf1.parse(date);
+    
+    
+    
+    java.sql.Date sqlDate = new java.sql.Date(date1.getTime());
+   
+    
+    return sqlDate ;  
+    } 
 
    
    

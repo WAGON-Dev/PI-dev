@@ -13,8 +13,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,8 +42,15 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setString(2, vp.getNom());
             preparedStatement.setString(3, vp.getVille_depart());
             preparedStatement.setString(4, vp.getVille_arrive());
-            preparedStatement.setString(5, vp.getDate_depart());
-            preparedStatement.setString(6, vp.getDate_arrive());
+
+            try {
+                preparedStatement.setDate(5, vp.convert(vp.getDate_depart()));
+                preparedStatement.setDate(6, vp.convert(vp.getDate_depart()));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(CarService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
             preparedStatement.setInt(7, vp.getNbr_participant());
 
             preparedStatement.setInt(8, vp.getClient().getId_user());
@@ -55,8 +66,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
 
     }
 
-
-     public void add2(VoyagePersonalise vp) {
+    public void add2(VoyagePersonalise vp) {
         String req = "insert into voyagepersonalise (id_vp,nom,ville_depart,Ville_arrive,date_depart,date_arrive,nbr_participant,client_vp_fk,hotel_fk,event1_fk,event2_fk) values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
@@ -65,15 +75,19 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setString(2, vp.getNom());
             preparedStatement.setString(3, vp.getVille_depart());
             preparedStatement.setString(4, vp.getVille_arrive());
-            preparedStatement.setString(5, vp.getDate_depart());
-            preparedStatement.setString(6, vp.getDate_arrive());
+            try {
+                preparedStatement.setDate(5, vp.convert(vp.getDate_depart()));
+                preparedStatement.setDate(6, vp.convert(vp.getDate_depart()));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(CarService.class.getName()).log(Level.SEVERE, null, ex);
+            }
             preparedStatement.setInt(7, vp.getNbr_participant());
 
             preparedStatement.setInt(8, vp.getClient().getId_user());
             preparedStatement.setInt(9, vp.getHotel().getId_user());
             preparedStatement.setInt(10, vp.getEvent1().getId_evenement());
             preparedStatement.setInt(11, vp.getEvent2().getId_evenement());
-          
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -81,7 +95,8 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
 
     }
-      public void add3(VoyagePersonalise vp) {
+
+    public void add3(VoyagePersonalise vp) {
         String req = "insert into voyagepersonalise (id_vp,nom,ville_depart,Ville_arrive,date_depart,date_arrive,nbr_participant,client_vp_fk,hotel_fk,event1_fk) values (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
@@ -90,14 +105,18 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setString(2, vp.getNom());
             preparedStatement.setString(3, vp.getVille_depart());
             preparedStatement.setString(4, vp.getVille_arrive());
-            preparedStatement.setString(5, vp.getDate_depart());
-            preparedStatement.setString(6, vp.getDate_arrive());
+            try {
+                preparedStatement.setDate(5, vp.convert(vp.getDate_depart()));
+                preparedStatement.setDate(6, vp.convert(vp.getDate_depart()));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(CarService.class.getName()).log(Level.SEVERE, null, ex);
+            }
             preparedStatement.setInt(7, vp.getNbr_participant());
 
             preparedStatement.setInt(8, vp.getClient().getId_user());
             preparedStatement.setInt(9, vp.getHotel().getId_user());
             preparedStatement.setInt(10, vp.getEvent1().getId_evenement());
-     
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -105,9 +124,6 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
 
     }
-
-   
-
 
     @Override
     public void update(VoyagePersonalise vp) {
@@ -186,4 +202,5 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         return voyages;
 
     }
+
 }
