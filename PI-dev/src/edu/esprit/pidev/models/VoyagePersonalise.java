@@ -30,6 +30,45 @@ public class VoyagePersonalise  {
     public VoyagePersonalise() {
     }
 
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client) {
+        this.id_vp = id_vp;
+        this.nom = nom;
+        this.ville_depart = ville_depart;
+        this.Ville_arrive = Ville_arrive;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+        this.nbr_participant = nbr_participant;
+        this.hotel = hotel;
+        this.client = client;
+    }
+
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1) {
+        this.id_vp = id_vp;
+        this.nom = nom;
+        this.ville_depart = ville_depart;
+        this.Ville_arrive = Ville_arrive;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+        this.nbr_participant = nbr_participant;
+        this.hotel = hotel;
+        this.client = client;
+        this.event1 = event1;
+    }
+
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2) {
+        this.id_vp = id_vp;
+        this.nom = nom;
+        this.ville_depart = ville_depart;
+        this.Ville_arrive = Ville_arrive;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+        this.nbr_participant = nbr_participant;
+        this.hotel = hotel;
+        this.client = client;
+        this.event1 = event1;
+        this.event2 = event2;
+    }
+    
     public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
         this.id_vp = id_vp;
         this.nom = nom;
