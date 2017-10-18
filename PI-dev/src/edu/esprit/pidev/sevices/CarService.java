@@ -41,7 +41,7 @@ public class CarService implements ICarService {
 
     @Override
     public void add(Car c) {
-        String query =" insert into t_cars (model,regNo,duration,rate,type,status) values (?,?,?,?,?,?)";
+        String query =" insert into voiture (model,regNo,duration,rate,type,status) values (?,?,?,?,?,?)";
         
         try {
             PreparedStatement statement =connection.prepareStatement(query);
@@ -61,14 +61,14 @@ public class CarService implements ICarService {
             ex.printStackTrace();
         }    
 
-            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     
     //Update method point to the car with the regNo and update the status, duration, 
     
     public void update(Car c, String s) { 
-        String query="UPDATE t_cars set duration=?, status=? where regNo=?" ;
+        String query="UPDATE voiture set duration=?, status=? where regNo=?" ;
         try{
             PreparedStatement statement =connection.prepareStatement(query);
             statement.setInt(1,c.getDuration());
@@ -81,12 +81,11 @@ public class CarService implements ICarService {
         }
 
 
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        }
 
-    @Override
+    @Override// delete with regNO
     public void delete(String str) {
-      String query="DELETE FROM t_cars where regNo=?";
+      String query="DELETE FROM voiture where regNo=?";
       try{
           PreparedStatement statement = connection.prepareStatement(query);
           statement.setString(1,str);
@@ -106,12 +105,11 @@ public class CarService implements ICarService {
     
     @Override
     public Car FindByReg(String r) {
-        String query="SELECT * from t_cars where regNo='"+r+"'";
+        String query="SELECT * from voiture where regNo='"+r+"'";
         Car c = new Car();
         try{
             PreparedStatement statement = connection.prepareStatement(query);
               System.out.println("query set and prepared!");
-            //statement.setString(1, r);
              System.out.println("parameters are set also!");
              System.out.println(query);
             ResultSet result = statement.executeQuery(query);
@@ -132,13 +130,12 @@ public class CarService implements ICarService {
         }
         
         return c;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public List<Car> getAll() {
         List<Car> carList = new ArrayList<>();
-        String query = "SELECT * FROM t_cars";
+        String query = "SELECT * FROM voiture";
         try{
              PreparedStatement statement = connection.prepareStatement(query);
             ResultSet result = statement.executeQuery();
@@ -159,7 +156,32 @@ public class CarService implements ICarService {
 
     @Override
     public Car findById(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // find by car rental service 's id.
+    String query="SELECT * from voiture where alv_co_fk='"+r+"'";
+        Car c = new Car();
+        try{
+            PreparedStatement statement = connection.prepareStatement(query);
+             // System.out.println("query set and prepared!");
+             //System.out.println("parameters are set also!");
+             //System.out.println(query);
+            ResultSet result = statement.executeQuery(query);
+            
+            //System.out.println("we are here");
+            while(result.next()){
+                 //System.out.println("Car found oopppyy!");
+            c.setModel(result.getString(1));
+            c.setRegNo(result.getString(2));
+            c.setDuration(result.getInt(3));
+            c.setRate(result.getInt(4));
+            c.setType(result.getString(5));
+            c.setStatus(result.getBoolean(6));
+            }
+            
+        }catch(SQLException ex){
+        ex.printStackTrace();
+        }
+        
+        return c;
     }
 
     @Override
@@ -167,14 +189,23 @@ public class CarService implements ICarService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
+    @Override// remove with rental car service id.
     public void remove(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    String query="DELETE FROM voiture where alv_vo_fk=?";
+      try{
+          PreparedStatement statement = connection.prepareStatement(query);
+          statement.setInt(1,r);
+          int rowD =statement.executeUpdate();
+          if(rowD>0){
+          System.out.println("A car was deleted successfully!");
+          }
+          
+        } catch(SQLException ex){
+            ex.printStackTrace();
+      }     
     }
 
-    public void update(CarRental t, String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
    
 

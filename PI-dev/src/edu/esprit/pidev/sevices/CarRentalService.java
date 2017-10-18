@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 /**
  *
  * @author omarfarouk
@@ -52,31 +54,87 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public void update(CarRental t) {
-       String query = "UPDATE users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where id_user = ?";
+          String query = "UPDATE users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where id_user = ?";
        try{
-       PreparedStatement statment= connection.prepareStatement(query);
-       
+       PreparedStatement statement= connection.prepareStatement(query);
+       statement.setString(1, t.getNom());
+       statement.setString(2, t.getEmail());
+       statement.setString(3, t.getMdp());
+       statement.setInt(4,t.getNumtel());
+       statement.setString(5, t.getAdresse());
+       statement.setString(6, t.getRole());
+       statement.setString(7, t.getImage());
+       statement.setInt(8, t.getStars());
+       statement.setInt(9, t.getCarNbre());
+       statement.setInt(10, t.getId_user());
+       int  rowUp = statement.executeUpdate();
+       if(rowUp>0){System.out.println("row updated");}
        }catch(SQLException ex){ex.printStackTrace();}
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
     public void update(CarRental t, String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query = "UPDATE users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where nom = ?";
+       try{
+       PreparedStatement statement= connection.prepareStatement(query);
+       statement.setString(1, t.getNom());
+       statement.setString(2, t.getEmail());
+       statement.setString(3, t.getMdp());
+       statement.setInt(4,t.getNumtel());
+       statement.setString(5, t.getAdresse());
+       statement.setString(6, t.getRole());
+       statement.setString(7, t.getImage());
+       statement.setInt(8, t.getStars());
+       statement.setInt(9, t.getCarNbre());
+       statement.setString(10, z);
+       int  rowUp = statement.executeUpdate();
+       if(rowUp>0){System.out.println("row updated");}
+       }catch(SQLException ex){ex.printStackTrace();}
+            //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void remove(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query="DELETE FROM users where id=?";
+        try{
+        PreparedStatement statement=connection.prepareStatement(query);
+        statement.setInt(1, r);
+        int rowD= statement.executeUpdate();
+        if(rowD>0)System.out.println("Deletion done!");
+        
+        }catch(SQLException ex){
+        ex.printStackTrace();
+        }
+
     }
 
-    public void delete(String z) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public CarRental findById(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query= "Select * from users where id=?";
+        CarRental cr= new CarRental();
+        
+        try{
+        PreparedStatement statement= connection.prepareStatement(query);
+        ResultSet res= statement.executeQuery(query);
+        while(res.next()){
+        cr.setRole(res.getString(1));
+        cr.setId_user(res.getInt(2));
+        cr.setNom(res.getString(3));
+        cr.setEmail(res.getString(4));
+        cr.setMdp(res.getString(5));
+        cr.setNumtel(res.getInt(6));
+        cr.setAdresse(res.getString(7));
+        cr.setImage(res.getString(8));
+        cr.setStars(res.getInt(9));
+        cr.setCarNbre(res.getInt(17));
+        
+        
+        }
+        }catch(SQLException ex)
+        {   ex.printStackTrace();}
+        return cr;
     }
 
     
@@ -86,7 +144,31 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public List<CarRental> getAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<CarRental> list = new ArrayList<>();
+        String query = "select * from users where role='agencV'";
+        try{
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet res= statement.executeQuery(query);
+        while(res.next()){
+        CarRental cr= new CarRental();
+        cr.setRole(res.getString(1));
+        cr.setId_user(res.getInt(2));
+        cr.setNom(res.getString(3));
+        cr.setEmail(res.getString(4));
+        cr.setMdp(res.getString(5));
+        cr.setNumtel(res.getInt(6));
+        cr.setAdresse(res.getString(7));
+        cr.setImage(res.getString(8));
+        cr.setStars(res.getInt(9));
+        cr.setCarNbre(res.getInt(17));
+        
+        list.add(cr);
+        }
+        }catch(SQLException ex){
+        ex.printStackTrace();
+        }
+        return list;
+        //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         
     }
