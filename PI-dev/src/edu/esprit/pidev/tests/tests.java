@@ -62,7 +62,7 @@ public class tests {
         ////////////////////////////////////////////////////VOYAGEPERSONALISE///////////////////////////////////////////////////////////////////////
 
         VoyagePersonaliseService vps = new VoyagePersonaliseService();
-        VoyagePersonalise vp = new VoyagePersonalise(12, "bbbbbb", "ville_departfff", "Ville_arriveff", "17/02/1994", "20/09/1994", 7, h1, c2, e1, e1, e2);
+        VoyagePersonalise vp = new VoyagePersonalise(12, "bbbbbb", "ville_departfff", "Ville_arriveff", "17/02/2002", "20/09/1994", 7, h1, c2, e1, e1, e2);
         //vps.add(vp);
         //vps.update(vp);
         //vps.remove(12);
