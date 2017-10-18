@@ -24,12 +24,17 @@ public class EvenementService implements IEvenementService {
 
     Connection connection;
 
-    public EvenementService(Connection connection) {
+  
+    
+
+    public EvenementService() {
         connection = DataSource.getInsatance().getConnection();
     }
 
+  
+    @Override
     public void add(Evenement t) {
-        String req = "insert into evene;ent (id_evenement,activite,date_activite,emplacement) values (?,?,?,?)";
+        String req = "insert into evenement (id_evenement,activite,date_activite,emplacement) values (?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -43,22 +48,24 @@ public class EvenementService implements IEvenementService {
         }
     }
 
+    @Override
     public void update(Evenement t) {
-        String req = "update evenement set id_evenement=?,activite=?,date_activite=?,emplacement=? where id_evenement = ?";
+        String req = "update evenement set activite=?,date_activite=?,emplacement=? where id_evenement = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-             preparedStatement.setInt(1, t.getId_evenement());
-            preparedStatement.setString(2, t.getActivite());
-            preparedStatement.setString(3, t.getDate_activite());
-            preparedStatement.setString(4, t.getEmplacement());
-            preparedStatement.setInt(5, t.getId_evenement());
+            
+            preparedStatement.setString(1, t.getActivite());
+            preparedStatement.setString(2, t.getDate_activite());
+            preparedStatement.setString(3, t.getEmplacement());
+            preparedStatement.setInt(4, t.getId_evenement());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
 
+    @Override
     public void remove(Integer r) {
         String req = "delete from evenement where id_evenement =?";
         PreparedStatement preparedStatement;
@@ -71,6 +78,7 @@ public class EvenementService implements IEvenementService {
         }
     }
 
+    @Override
     public Evenement findById(Integer r) {
         Evenement  evenement = null;
         String req = "select * from evenement where id_evenement=?";
@@ -80,7 +88,7 @@ public class EvenementService implements IEvenementService {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                evenement = new Evenement(resultSet.getInt("id_evenement"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
+                evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -88,6 +96,7 @@ public class EvenementService implements IEvenementService {
         return evenement;
     }
 
+    @Override
     public List<Evenement> getAll() {
         List<Evenement> evenements = new ArrayList<>();
         String req = "select * from evenement";
@@ -96,7 +105,7 @@ public class EvenementService implements IEvenementService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Evenement evenement = new Evenement(resultSet.getInt("id_evenement"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
+                Evenement evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
                 evenements.add(evenement);
             }
         } catch (SQLException ex) {

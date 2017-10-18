@@ -22,11 +22,15 @@ public class VoyagePersonalise  {
     private int nbr_participant ;
     private Hotel hotel ;
     private Client client ;
+    private Evenement event1 ;
+    private Evenement event2 ;
+    private Evenement event3 ;
+    
 
     public VoyagePersonalise() {
     }
 
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Client client,Hotel hotel) {
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -36,15 +40,10 @@ public class VoyagePersonalise  {
         this.nbr_participant = nbr_participant;
         this.hotel = hotel;
         this.client = client;
+        this.event1 = event1;
+        this.event2 = event2;
+        this.event3 = event3;
     }
-  /*
-    public VoyagePersonalise(int i, String nomff, String ville_departfff, String ville_arriveff, String date_departf, String fdate_arrive, int i0, Client c2, Hotel h1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
-/*
-    public VoyagePersonalise(int aInt, String string, String string0, String string1, String string2, String string3, Client findById, Hotel findById0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
 
     public int getId_vp() {
         return id_vp;
@@ -118,14 +117,35 @@ public class VoyagePersonalise  {
         this.client = client;
     }
 
-    @Override
-    public String toString() {
-        return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + 
-                ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + 
-                ", \n client=" + client + "\n , hotel=" + hotel+ '}';
+    public Evenement getEvent1() {
+        return event1;
     }
 
-   
+    public void setEvent1(Evenement event1) {
+        this.event1 = event1;
+    }
+
+    public Evenement getEvent2() {
+        return event2;
+    }
+
+    public void setEvent2(Evenement event2) {
+        this.event2 = event2;
+    }
+
+    public Evenement getEvent3() {
+        return event3;
+    }
+
+    public void setEvent3(Evenement event3) {
+        this.event3 = event3;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -145,5 +165,11 @@ public class VoyagePersonalise  {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + ", hotel=" + hotel + ", client=" + client + ", event1=" + event1.toString() + ", event2=" + event2.toString() + ", event3=" + event3.toString() + '}';
+    }
+
+   
    
 }
