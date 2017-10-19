@@ -26,7 +26,7 @@ Connection connection ;
     
    @Override
     public void add(Client t) {
-        String req = "insert into users (nom,prenom,email,mdp,numTel,adresse,cin,role,image) values (?,?,?,?,?,?,?,?,?)";
+        String req = "insert into users (nom,prenom,email,mdp,numTel,adresse,cin,dateNaissence,role,image) values (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -37,8 +37,10 @@ Connection connection ;
             preparedStatement.setInt(5, t.getNumtel());
             preparedStatement.setString(6, t.getAdresse());
             preparedStatement.setString(7, t.getCin());
-            preparedStatement.setString(8, t.getRole());
-            preparedStatement.setString(9, t.getImage());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateNaissence().getTime());
+            preparedStatement.setDate(8, sqlDate);
+            preparedStatement.setString(9, t.getRole());
+            preparedStatement.setString(10, t.getImage());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -47,7 +49,7 @@ Connection connection ;
 
     @Override
     public void update(Client t) {
-        String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,role=?,image=? where nom = ? and prenom = ? ";
+        String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,dateNaissence=?,role=?,image=? where nom = ? and prenom = ? ";
         PreparedStatement preparedStatement = null ;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -58,10 +60,12 @@ Connection connection ;
             preparedStatement.setInt(5, t.getNumtel());
             preparedStatement.setString(6, t.getAdresse());
             preparedStatement.setString(7, t.getCin());
-            preparedStatement.setString(8, t.getRole());
-            preparedStatement.setString(9, t.getImage());
-            preparedStatement.setString(10, t.getNom());
-            preparedStatement.setString(11, t.getPrenom());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateNaissence().getTime());
+            preparedStatement.setDate(8, sqlDate);
+            preparedStatement.setString(9, t.getRole());
+            preparedStatement.setString(10, t.getImage());
+            preparedStatement.setString(11, t.getNom());
+            preparedStatement.setString(12, t.getPrenom());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -90,7 +94,7 @@ Connection connection ;
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getString("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -108,12 +112,12 @@ Connection connection ;
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Client client;
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getString("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
                 clients.add(client);
-                
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return clients;    }    
+        return clients;   
+    }    
 }

@@ -5,6 +5,8 @@
  */
 package edu.esprit.pidev.models;
 
+import java.util.Date;
+
 
 
 /**
@@ -14,22 +16,22 @@ package edu.esprit.pidev.models;
 public class Admin extends Users{
     private String prenom;
      private String cin;
-    private String dateNaissence;
+    private Date dateNaissence;
 
-    public Admin(String prenom, String cin, String dateNaissence) {
+    public Admin(String prenom, String cin, Date dateNaissence) {
         this.prenom = prenom;
         this.cin = cin;
         this.dateNaissence = dateNaissence;
     }
 
-    public Admin(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image,String prenom, String cin, String dateNaissence) {
+    public Admin(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image,String prenom, String cin, Date dateNaissence) {
         super(id_user, nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.cin = cin;
         this.dateNaissence = dateNaissence;
     }
 
-    public Admin(String prenom, String cin, String dateNaissence, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Admin(String prenom, String cin, Date dateNaissence, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         super(nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.cin = cin;
@@ -52,11 +54,11 @@ public class Admin extends Users{
         this.cin = cin;
     }
 
-    public String getDateNaissence() {
+    public Date getDateNaissence() {
         return dateNaissence;
     }
 
-    public void setDateNaissence(String dateNaissence) {
+    public void setDateNaissence(Date dateNaissence) {
         this.dateNaissence = dateNaissence;
     }
 

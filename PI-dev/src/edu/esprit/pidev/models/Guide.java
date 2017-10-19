@@ -5,6 +5,7 @@
  */
 package edu.esprit.pidev.models;
 
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -16,11 +17,11 @@ public class Guide extends Users{
 
     String prenom;
     String CIN;
-    String dateDeNaissance;
+    Date dateDeNaissance;
     int nbrNote;
     int Note;
 
-    public Guide(String prenom, String CIN, String dateDeNaissance, int nbrNote, int Note) {
+    public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note) {
         this.prenom = prenom;
         this.CIN = CIN;
         this.dateDeNaissance = dateDeNaissance;
@@ -28,7 +29,7 @@ public class Guide extends Users{
         this.Note = Note;
     }
 
-    public Guide(String prenom, String CIN, String dateDeNaissance, int nbrNote, int Note, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         super(id_user, nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.CIN = CIN;
@@ -37,7 +38,7 @@ public class Guide extends Users{
         this.Note = Note;
     }
 
-    public Guide(String prenom, String CIN, String dateDeNaissance, int nbrNote, int Note, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         super(nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.CIN = CIN;
@@ -58,7 +59,7 @@ public class Guide extends Users{
         return CIN;
     }
 
-    public String getDateDeNaissance() {
+    public Date getDateDeNaissance() {
         return dateDeNaissance;
     }
 
@@ -78,7 +79,7 @@ public class Guide extends Users{
         this.CIN = CIN;
     }
 
-    public void setDateDeNaissance(String dateDeNaissance) {
+    public void setDateDeNaissance(Date dateDeNaissance) {
         this.dateDeNaissance = dateDeNaissance;
     }
 

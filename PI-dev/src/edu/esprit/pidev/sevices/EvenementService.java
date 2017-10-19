@@ -40,7 +40,8 @@ public class EvenementService implements IEvenementService {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, t.getId_evenement());
             preparedStatement.setString(2, t.getActivite());
-            preparedStatement.setString(3, t.getDate_activite());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDate_activite().getTime());
+            preparedStatement.setDate(3, sqlDate);
             preparedStatement.setString(4, t.getEmplacement());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -56,7 +57,8 @@ public class EvenementService implements IEvenementService {
             preparedStatement = connection.prepareStatement(req);
             
             preparedStatement.setString(1, t.getActivite());
-            preparedStatement.setString(2, t.getDate_activite());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDate_activite().getTime());
+            preparedStatement.setDate(2, sqlDate);
             preparedStatement.setString(3, t.getEmplacement());
             preparedStatement.setInt(4, t.getId_evenement());
             preparedStatement.executeUpdate();
@@ -88,7 +90,7 @@ public class EvenementService implements IEvenementService {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
+                evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getDate(3),resultSet.getString(4));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -105,7 +107,7 @@ public class EvenementService implements IEvenementService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Evenement evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4));
+                Evenement evenement = new Evenement(resultSet.getInt(1), resultSet.getString(2),resultSet.getDate(3),resultSet.getString(4));
                 evenements.add(evenement);
             }
         } catch (SQLException ex) {

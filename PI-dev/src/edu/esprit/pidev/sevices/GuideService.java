@@ -30,7 +30,7 @@ public class GuideService implements Iguide{
     
     @Override
     public void add(Guide t) {
-        String req = "insert into users (nom,Prenom,mdp,email,adresse,numtel,note,role) values (?,?,?,?,?,?,?,?)";
+        String req = "insert into users (nom,Prenom,mdp,email,adresse,numtel,dateNaissence,note,role) values (?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -40,8 +40,10 @@ public class GuideService implements Iguide{
             preparedStatement.setString(4, t.getEmail());
             preparedStatement.setString(5, t.getAdresse());
             preparedStatement.setInt(6, t.getNumtel());
-            preparedStatement.setInt(7, t.getNote());
-            preparedStatement.setString(8,"Guide");
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
+            preparedStatement.setDate(7, sqlDate);
+            preparedStatement.setInt(8, t.getNote());
+            preparedStatement.setString(9,"Guide");
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -50,7 +52,7 @@ public class GuideService implements Iguide{
 
     @Override
     public void update(Guide t) {
-        String req = "update users set nom = ?,Prenom=?,mdp=?,email=?,adresse=?,numtel=?,note=?,role=? where id_user = ?";
+        String req = "update users set nom = ?,Prenom=?,mdp=?,email=?,adresse=?,numtel=?,dateNaissence=?,note=?,role=? where id_user = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -60,8 +62,10 @@ public class GuideService implements Iguide{
             preparedStatement.setString(4, t.getEmail());
             preparedStatement.setString(5, t.getAdresse());
             preparedStatement.setInt(6, t.getNumtel());
-            preparedStatement.setInt(7, t.getNote());
-            preparedStatement.setString(8,"Guide");
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
+            preparedStatement.setDate(7, sqlDate);
+            preparedStatement.setInt(8, t.getNote());
+            preparedStatement.setString(9,"Guide");
             preparedStatement.setInt(10, t.getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -92,7 +96,7 @@ public class GuideService implements Iguide{
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getString("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -109,7 +113,7 @@ public class GuideService implements Iguide{
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getString("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
                 guides.add(g);
             }
         } catch (SQLException ex) {

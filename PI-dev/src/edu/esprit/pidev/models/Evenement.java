@@ -5,6 +5,8 @@
  */
 package edu.esprit.pidev.models;
 
+import java.util.Date;
+
 /**
  *
  * @author Asus
@@ -12,13 +14,13 @@ package edu.esprit.pidev.models;
 public class Evenement {
     int id_evenement;
     String activite;
-    String date_activite;
+    Date date_activite;
     String emplacement;
 
     public Evenement() {
     }
 
-    public Evenement(int id_evenement, String activite, String date_activite, String emplacement) {
+    public Evenement(int id_evenement, String activite, Date date_activite, String emplacement) {
         this.id_evenement = id_evenement;
         this.activite = activite;
         this.date_activite = date_activite;
@@ -41,11 +43,11 @@ public class Evenement {
         this.activite = activite;
     }
 
-    public String getDate_activite() {
+    public Date getDate_activite() {
         return date_activite;
     }
 
-    public void setDate_activite(String date_depart) {
+    public void setDate_activite(Date date_depart) {
         this.date_activite = date_depart;
     }
 

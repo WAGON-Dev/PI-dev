@@ -32,18 +32,20 @@ import java.util.List;
  */
 public class tests {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         /////////////////////////////////////////////////////CLIENT/////////////////////////////////////////////////////////////////////////////////
         ClientService cs = new ClientService();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        Date d1 = sdf.parse("1995/08/29");
         Client c, c2;
-        c = new Client("wajdy", "12807857", "29/08/1995", "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "");
-        c2 = new Client("ghassen", "12807857", "29/08/1995", "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
+        c = new Client("wajdy", "12807857", d1, "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "");
+        c2 = new Client("ghassen", "12807857", d1, "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
         c2.setId_user(3);
-        //cs.add(c);
-        //cs.add(c2);
-        //cs.update(c);
+//        cs.add(c);
+//        cs.add(c2);
+//        cs.update(c);
         //cs.remove(12);
-        //System.out.println(cs.findById(28));
+        System.out.println(cs.findById(38));
         ////////////////////////////////////////////////////HOTEL///////////////////////////////////////////////////////////////////////////////////  
 
         HotelService hotelService = new HotelService();
@@ -54,8 +56,8 @@ public class tests {
         //hotelService.remove(1);
         //////////////////////////////////////////////////////////EVENEMENT//////////////////////////////////////////////////////////////////////////
         EvenementService evenementService = new EvenementService();
-        Evenement e1 = new Evenement(2, "match", "18/09/1994", "paris");
-        Evenement e2 = new Evenement(3, "concert", "19/09/1994", "madrid");
+        Evenement e1 = new Evenement(2, "match", d1 , "paris");
+        Evenement e2 = new Evenement(3, "concert", d1, "madrid");
         //evenementService.add(e1);
         //evenementService.add(e2);
         //System.out.println("evenement e1");
@@ -69,7 +71,7 @@ public class tests {
         //System.out.println(vps.getAll());
         ////////////////////////////////////////////////////Guide///////////////////////////////////////////////////////////////////////
         GuideService guideservice = new GuideService();
-        Guide g = new Guide("Ghassen", "1526", "1554826", 0, 0, "Jemai", "19561@orjf", "rfjf", 15482639, "tunis", "Guide", "fojnron");
+        Guide g = new Guide("Ghassen", "1526", d1, 0, 0, "Jemai", "19561@orjf", "rfjf", 15482639, "tunis", "Guide", "fojnron");
     }
 
 }
