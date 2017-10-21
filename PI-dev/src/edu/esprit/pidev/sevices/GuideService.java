@@ -20,14 +20,14 @@ import java.util.List;
  *
  * @author Ghassen
  */
-public class GuideService implements Iguide{
-    
+public class GuideService implements Iguide {
+
     Connection connection;
 
     public GuideService() {
         connection = DataSource.getInsatance().getConnection();
     }
-    
+
     @Override
     public void add(Guide t) {
         String req = "insert into users (nom,Prenom,mdp,email,adresse,numtel,dateNaissence,note,role) values (?,?,?,?,?,?,?,?,?)";
@@ -43,7 +43,7 @@ public class GuideService implements Iguide{
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9,"Guide");
+            preparedStatement.setString(9, "Guide");
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -65,7 +65,7 @@ public class GuideService implements Iguide{
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9,"Guide");
+            preparedStatement.setString(9, "Guide");
             preparedStatement.setInt(10, t.getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -96,7 +96,42 @@ public class GuideService implements Iguide{
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
+
+    public Guide findByName(String n, String p) {
+        Guide g = null;
+        String req = "select * from users where nom=? and prenom=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, n);
+            preparedStatement.setString(2, p);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
+
+    public Guide findByEmail(String e) {
+        Guide g = null;
+        String req = "select * from users where email=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, e);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -106,14 +141,14 @@ public class GuideService implements Iguide{
 
     @Override
     public List<Guide> getAll() {
-       List<Guide> guides = new ArrayList<>();
+        List<Guide> guides = new ArrayList<>();
         String req = "select * from users where role = 'Guide'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
                 guides.add(g);
             }
         } catch (SQLException ex) {
