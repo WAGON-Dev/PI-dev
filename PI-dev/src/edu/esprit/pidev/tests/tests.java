@@ -41,7 +41,7 @@ public class tests {
         c = new Client("wajdy", "12807857", d1, "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "");
         c2 = new Client("ghassen", "12807857", d1, "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
         c2.setId_user(3);
-//        cs.add(c);
+//       cs.add(c);
 //        cs.add(c2);
 //        cs.update(c);
         //cs.remove(12);
@@ -49,9 +49,9 @@ public class tests {
         ////////////////////////////////////////////////////HOTEL///////////////////////////////////////////////////////////////////////////////////  
 
         HotelService hotelService = new HotelService();
-        Hotel h1 = new Hotel(90, "mohamed", "wshthr", "00000", 6666, "france", "hotel147", "C://", 4, 15, 18);
+        Hotel h1 = new Hotel(15, "mohamed", "wshthr", "00000", 6666, "france", "hotel147", "C://", 4, 15, 18);
 
-        // hotelService.add(h1);
+  //       hotelService.add(h1);
         //hotelService.update(h1);
         //hotelService.remove(1);
         //////////////////////////////////////////////////////////EVENEMENT//////////////////////////////////////////////////////////////////////////

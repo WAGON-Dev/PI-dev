@@ -12,17 +12,20 @@ import java.util.Objects;
  *
  * @author Ahmed
  */
-public class Hotel extends Users{
-    
-    
-    
-    
-    private int etoile ;
-    private int nb_chambre ;
-    private int nb_chambre_reserve ;
-    
+public class Hotel extends Users {
 
-    public Hotel( int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image,int etoile, int nb_chambre, int nb_chambre_reserve) {
+    private int etoile;
+    private int nb_chambre;
+    private int nb_chambre_reserve;
+
+    public Hotel(String nom, String email, String mdp, int numtel, String adresse, String role, String image, int etoile, int nb_chambre, int nb_chambre_reserve) {
+        super(nom, email, mdp, numtel, adresse, role, image);
+        this.etoile = etoile;
+        this.nb_chambre = nb_chambre;
+        this.nb_chambre_reserve = nb_chambre_reserve;
+    }
+
+    public Hotel(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image, int etoile, int nb_chambre, int nb_chambre_reserve) {
         super(id_user, nom, email, mdp, numtel, adresse, role, image);
         this.etoile = etoile;
         this.nb_chambre = nb_chambre;
@@ -40,7 +43,6 @@ public class Hotel extends Users{
     public Hotel() {
     }
 
-    
     public int getEtoile() {
         return etoile;
     }
@@ -65,16 +67,7 @@ public class Hotel extends Users{
 
     @Override
     public String toString() {
-        return super.toString()+"Hotel{" + "etoile=" + etoile + ", nb_chambre=" + nb_chambre + ", nb_chambre_reserve=" + nb_chambre_reserve + '}';
+        return super.toString() + "Hotel{" + "etoile=" + etoile + ", nb_chambre=" + nb_chambre + ", nb_chambre_reserve=" + nb_chambre_reserve + '}';
     }
 
-    
-
-    
-   
-
-    
-
-    
-    
 }
