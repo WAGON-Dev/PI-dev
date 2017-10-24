@@ -30,7 +30,7 @@ public class Guide extends Users{
     }
 
     public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
-        super(id_user, nom, email, mdp, numtel, adresse, role, image);
+        super(nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;
         this.CIN = CIN;
         this.dateDeNaissance = dateDeNaissance;
