@@ -6,6 +6,7 @@
  */
 package edu.esprit.pidev.models;
 
+import edu.esprit.pidev.models.Users;
 import java.util.Objects;
 
 /**

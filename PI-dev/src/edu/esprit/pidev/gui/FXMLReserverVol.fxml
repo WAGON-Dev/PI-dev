@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLReserverVolController">
+   <children>
+      <Label layoutX="154.0" layoutY="14.0" text="Reserver votre Vol" textFill="#0026ff">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="date_depart_vol" layoutX="64.0" layoutY="87.0" />
+      <DatePicker fx:id="date_arriver_vol" layoutX="288.0" layoutY="87.0" />
+      <JFXTextField fx:id="ville_depart_vol" layoutX="88.0" layoutY="150.0" />
+      <JFXTextField fx:id="ville_arriver_vol" layoutX="299.0" layoutY="150.0" />
+      <JFXTextField fx:id="prix_min_vol" layoutX="88.0" layoutY="219.0" />
+      <JFXTextField fx:id="prix_max_vol" layoutX="308.0" layoutY="219.0" />
+      <Label layoutX="116.0" layoutY="133.0" text="Ville de depart" />
+      <Label layoutX="333.0" layoutY="133.0" text="ville d'arriver" />
+      <Label layoutX="130.0" layoutY="203.0" text="Prix min" />
+      <Label layoutX="344.0" layoutY="203.0" text="Prix max" />
+      <JFXButton fx:id="bt_chercher_vol" layoutX="182.0" layoutY="270.0" onAction="#On_chercher_vol" prefHeight="50.0" prefWidth="151.0" text="Chercher" />
+      <Label layoutX="116.0" layoutY="61.0" text="date de depart" />
+      <Label layoutX="340.0" layoutY="61.0" text="date d'arriver" />
+   </children>
+</Pane>

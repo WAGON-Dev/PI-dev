@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRechercheClientController">
+   <children>
+      <JFXButton fx:id="bt_reserver_vol" onAction="#OnReserverVol" prefHeight="175.0" prefWidth="250.0" text="Reserver un Vol" />
+      <JFXButton fx:id="bt_reserver_hotel" layoutX="250.0" onAction="#OnReserverHotel" prefHeight="175.0" prefWidth="250.0" text="Reserver un Hôtel" />
+      <JFXButton fx:id="bt_reserver_vo" layoutY="175.0" onAction="#OnReserverVOrganise" prefHeight="175.0" prefWidth="250.0" text="Reserver un voyage Organisé" />
+      <JFXButton fx:id="bt_louer_voiture" layoutX="250.0" layoutY="175.0" onAction="#OnLouerVoiture" prefHeight="175.0" prefWidth="250.0" text="Louer une voiture" />
+   </children>
+</Pane>
