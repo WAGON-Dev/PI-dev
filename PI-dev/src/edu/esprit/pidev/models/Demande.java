@@ -5,46 +5,49 @@
  */
 package edu.esprit.pidev.models;
 
+import java.util.Objects;
+
 /**
  *
  * @author Ahmed
  */
 public class Demande {
     
-    private int id_vp ;
-    private int id_guide ;
-    private  int id_client ;
+     
+    private VoyagePersonalise id_vp ;
+    private Guide id_guide ;
+    private  Client id_client ;
 
-    public Demande(int id_vp, int id_client, int id_guide) {
+    public Demande() {
+    }
+
+    public Demande(VoyagePersonalise id_vp, Guide id_guide, Client id_client) {
         this.id_vp = id_vp;
         this.id_guide = id_guide;
         this.id_client = id_client;
     }
 
-    public Demande() {
-    }
-
-    public int getId_vp() {
+    public VoyagePersonalise getId_vp() {
         return id_vp;
     }
 
-    public void setId_vp(int id_vp) {
+    public void setId_vp(VoyagePersonalise id_vp) {
         this.id_vp = id_vp;
     }
 
-    public int getId_guide() {
+    public Guide getId_guide() {
         return id_guide;
     }
 
-    public void setId_guide(int id_guide) {
+    public void setId_guide(Guide id_guide) {
         this.id_guide = id_guide;
     }
 
-    public int getId_client() {
+    public Client getId_client() {
         return id_client;
     }
 
-    public void setId_client(int id_client) {
+    public void setId_client(Client id_client) {
         this.id_client = id_client;
     }
 
@@ -55,7 +58,7 @@ public class Demande {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         return hash;
     }
 
@@ -71,13 +74,11 @@ public class Demande {
             return false;
         }
         final Demande other = (Demande) obj;
-        if (this.id_vp != other.id_vp) {
+        if (!Objects.equals(this.id_vp, other.id_vp)) {
             return false;
         }
         return true;
     }
-    
-    
-    
-    
+
+  
 }
