@@ -22,22 +22,20 @@ import javafx.scene.layout.Pane;
  *
  * @author Asus
  */
-public class FXMLReserverVolController implements Initializable {
+public class FXMLLouerVoitureController implements Initializable {
 
     @FXML
-    private DatePicker date_depart_vol;
+    private DatePicker date_debut_voiture;
     @FXML
-    private DatePicker date_arriver_vol;
+    private DatePicker date_fin_voiture;
     @FXML
-    private JFXTextField ville_depart_vol;
+    private JFXButton bt_chercher_voiture;
     @FXML
-    private JFXTextField ville_arriver_vol;
+    private JFXTextField ville_voiture;
     @FXML
-    private JFXTextField prix_min_vol;
+    private JFXTextField prix_min_voiture;
     @FXML
-    private JFXTextField prix_max_vol;
-    @FXML
-    private JFXButton bt_chercher_vol;
+    private JFXTextField prix_max_voiture;
 
     /**
      * Initializes the controller class.
@@ -48,8 +46,8 @@ public class FXMLReserverVolController implements Initializable {
     }    
 
     @FXML
-    private void On_chercher_vol(ActionEvent event)throws IOException{
-        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLResultatRechercheVol.fxml"));
+    private void OnChercherVoiture(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLResultatRechercheVoiture.fxml"));
         FXMLInterfaceClientController.RootS.getChildren().clear();
         FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }

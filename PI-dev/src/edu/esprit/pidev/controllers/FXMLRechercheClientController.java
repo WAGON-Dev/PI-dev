@@ -6,11 +6,15 @@
 package edu.esprit.pidev.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
+
 
 /**
  * FXML Controller class
@@ -37,19 +41,32 @@ public class FXMLRechercheClientController implements Initializable {
     }    
 
     @FXML
-    private void OnReserverVol(ActionEvent event) {
+    private void OnReserverVol(ActionEvent event)throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLReserverVol.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
+        
     }
 
     @FXML
-    private void OnReserverHotel(ActionEvent event) {
+    private void OnReserverHotel(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLReserverHotel.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
-    private void OnReserverVOrganise(ActionEvent event) {
+    private void OnReserverVOrganise(ActionEvent event)throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLRecherchVoyageOrganise.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
-    private void OnLouerVoiture(ActionEvent event) {
+    private void OnLouerVoiture(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLLouerVoiture.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
     
 }

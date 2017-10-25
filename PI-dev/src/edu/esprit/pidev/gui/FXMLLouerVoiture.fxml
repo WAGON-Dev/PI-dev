@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLLouerVoitureController">
+   <children>
+      <Label layoutX="155.0" layoutY="14.0" text="Louer une Voiture" textFill="#4d00ff">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="date_debut_voiture" layoutX="53.0" layoutY="84.0" promptText="de" />
+      <DatePicker fx:id="date_fin_voiture" layoutX="258.0" layoutY="84.0" promptText="à" />
+      <Label layoutX="227.0" layoutY="57.0" text="Louer" />
+      <Label layoutX="227.0" layoutY="130.0" text="Ville" />
+      <Label layoutX="126.0" layoutY="197.0" text="Prix Min" />
+      <Label layoutX="331.0" layoutY="197.0" text="Prix Max" />
+      <JFXButton fx:id="bt_chercher_voiture" layoutX="174.0" layoutY="272.0" onAction="#OnChercherVoiture" prefHeight="43.0" prefWidth="135.0" text="Chercher" />
+      <JFXTextField fx:id="ville_voiture" layoutX="174.0" layoutY="147.0" />
+      <JFXTextField fx:id="prix_min_voiture" layoutX="80.0" layoutY="214.0" />
+      <JFXTextField fx:id="prix_max_voiture" layoutX="286.0" layoutY="214.0" />
+   </children>
+</Pane>

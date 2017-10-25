@@ -6,13 +6,16 @@
 package edu.esprit.pidev.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -56,7 +59,10 @@ public class FXMLMenuBarController implements Initializable {
     }
 
     @FXML
-    private void OnRechercherMenuBar(ActionEvent event) {
+    private void OnRechercherMenuBar(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLRechercheClient.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML

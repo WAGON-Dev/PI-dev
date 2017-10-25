@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -24,20 +25,30 @@ public class FXMLInterfaceClientController implements Initializable {
 
     @FXML
     private JFXDrawer menu_bar;
+    @FXML
+    private Pane scene_pricipal;
+    @FXML
+    public static Pane RootS;
 
     /**
      * Initializes the controller class.
+     *
      * @param url
      * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-
-       try {
+        RootS = scene_pricipal;
+        try {
             VBox Vbox = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLMenuBar.fxml"));
             menu_bar.setSidePane(Vbox);
 
+        } catch (IOException ex) {
+        }
+        try {
+            Pane newLoadedPane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLRechercheClient.fxml"));
+            scene_pricipal.getChildren().add(newLoadedPane);
         } catch (IOException ex) {
         }
 
