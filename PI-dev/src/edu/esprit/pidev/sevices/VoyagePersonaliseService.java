@@ -118,7 +118,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setInt(9, vp.getHotel().getId_user());
             preparedStatement.setInt(10, vp.getEvent1().getId_evenement());
 
-//            preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

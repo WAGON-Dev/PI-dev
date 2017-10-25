@@ -14,17 +14,20 @@ import java.util.List;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 /**
  *
  * @author Asus
  */
-public class ClientService implements IserviceClient{
-Connection connection ;
+public class ClientService implements IserviceClient {
+
+    Connection connection;
+
     public ClientService() {
-       connection = DataSource.getInsatance().getConnection();
+        connection = DataSource.getInsatance().getConnection();
     }
-    
-   @Override
+
+    @Override
     public void add(Client t) {
         String req = "insert into users (nom,prenom,email,mdp,numTel,adresse,cin,dateNaissence,role,image) values (?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
@@ -50,7 +53,7 @@ Connection connection ;
     @Override
     public void update(Client t) {
         String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,dateNaissence=?,role=?,image=? where nom = ? and prenom = ? ";
-        PreparedStatement preparedStatement = null ;
+        PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, t.getNom());
@@ -69,7 +72,8 @@ Connection connection ;
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }    }
+        }
+    }
 
     @Override
     public void remove(Integer r) {
@@ -77,7 +81,7 @@ Connection connection ;
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-            preparedStatement.setInt(1,r );
+            preparedStatement.setInt(1, r);
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -86,7 +90,7 @@ Connection connection ;
 
     @Override
     public Client findById(Integer r) {
-        Client  client = null;
+        Client client = null;
         String req = "select * from users where id_user=?";
         PreparedStatement preparedStatement;
         try {
@@ -94,12 +98,12 @@ Connection connection ;
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return client;   
+        return client;
     }
 
     @Override
@@ -112,12 +116,12 @@ Connection connection ;
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Client client;
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
                 clients.add(client);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return clients;   
-    }    
+        return clients;
+    }
 }
