@@ -142,6 +142,35 @@ public class VolService implements IVolService {
         return vols;
 
     }
+//Date d1, Date d2,
+    public List<Vol> getAllcondition( double prix, String villedep, String villearr ,Date d1,Date d2) {
+        List<Vol> vols = new ArrayList<>();
+        String req = "select * from vol where  prix_vol < ? and depart = ? and arrivee = ? and date_depart between ? and ? ";
+        try {
+            ps = connection.prepareStatement(req);
+            ps.setDouble(1, prix);
+           /* ps.setDate(1, d1);
+            ps.setDate(2, d2);*/
+            ps.setString(2,villedep );
+            ps.setString(3, villearr);
+            ps.setDate(4,d2);
+            ps.setDate(5,d1);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Vol vol = new Vol(rs.getInt(1), rs.getDate(2), rs.getDate(3), rs.getDouble(4), rs.getString(5), rs.getInt(9), rs.getString(6), rs.getString(7), rs.getString(8));
+
+                vols.add(vol);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VolService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (vols == null) {
+            return null;
+        }
+        return vols;
+
+    }
 
     @Override
     public List<Vol> getByClient(Client c) {

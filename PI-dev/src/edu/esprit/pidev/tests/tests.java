@@ -36,11 +36,11 @@ public class tests {
         /////////////////////////////////////////////////////CLIENT/////////////////////////////////////////////////////////////////////////////////
         ClientService cs = new ClientService();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-        Date d1 = sdf.parse("1995/08/29");
+        Date d1 = sdf.parse("2017/12/29");
         Client c, c2;
         c = new Client("wajdy", "12807857", d1, "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "");
         c2 = new Client("ghassen", "12807857", d1, "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
-        c2.setId_user(3);
+        //c2.setId_user(3);
 //       cs.add(c);
 //        cs.add(c2);
 //        cs.update(c);
@@ -65,13 +65,22 @@ public class tests {
 
         VoyagePersonaliseService vps = new VoyagePersonaliseService();
         VoyagePersonalise vp = new VoyagePersonalise(18, "bbbbbb", "ville_departfff", "Ville_arriveff", "17/02/2002", "20/09/1994", 7, h1, c2, e1);
-        vps.add3(vp);
+        //vps.add3(vp);
         //vps.update(vp);
         //vps.remove(12);
         //System.out.println(vps.getAll());
         ////////////////////////////////////////////////////Guide///////////////////////////////////////////////////////////////////////
         GuideService guideservice = new GuideService();
         Guide g = new Guide("Ghassen", "1526", d1, 0, 0, "Jemai", "19561@orjf", "rfjf", 15482639, "tunis", "Guide", "fojnron");
+        
+        /////////////////////////////////////////////////Vol/////////////////////////////////////////
+        VolService volservise = new VolService();
+        Vol v4 = new Vol( d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
+        Vol v5 = new Vol( d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
+        Vol v6 = new Vol( d1, d1, 9600d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
+        volservise.add(v4);
+        volservise.add(v5);
+        volservise.add(v6);
     }
 
 }
