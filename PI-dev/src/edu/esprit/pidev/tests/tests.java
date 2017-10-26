@@ -5,26 +5,12 @@
  */
 package edu.esprit.pidev.tests;
 
-import edu.esprit.pidev.sevices.ClientService;
-import edu.esprit.pidev.interfaces.IserviceClient;
-import edu.esprit.pidev.models.Admin;
-import edu.esprit.pidev.models.Client;
-import edu.esprit.pidev.models.Evenement;
-import edu.esprit.pidev.models.Guide;
-import edu.esprit.pidev.models.Hotel;
-import edu.esprit.pidev.models.Vol;
-import edu.esprit.pidev.models.VoyagePersonalise;
-import edu.esprit.pidev.sevices.AdminService;
-import edu.esprit.pidev.sevices.EvenementService;
-import edu.esprit.pidev.sevices.GuideService;
-import edu.esprit.pidev.sevices.HotelService;
-import edu.esprit.pidev.sevices.VolService;
-import edu.esprit.pidev.sevices.VoyagePersonaliseService;
+import edu.esprit.pidev.models.*;
+import edu.esprit.pidev.sevices.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  *
@@ -78,9 +64,9 @@ public class tests {
         Vol v4 = new Vol( d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
         Vol v5 = new Vol( d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
         Vol v6 = new Vol( d1, d1, 9600d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
-        volservise.add(v4);
-        volservise.add(v5);
-        volservise.add(v6);
+        //volservise.add(v4);
+        //volservise.add(v5);
+        //volservise.add(v6);
     }
 
 }

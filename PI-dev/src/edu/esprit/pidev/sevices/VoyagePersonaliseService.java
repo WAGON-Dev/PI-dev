@@ -182,7 +182,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
         return voyagePersonalise;
     }
-
+    
     @Override
     public List<VoyagePersonalise> getAll() {
         List<VoyagePersonalise> voyages = new ArrayList<>();
