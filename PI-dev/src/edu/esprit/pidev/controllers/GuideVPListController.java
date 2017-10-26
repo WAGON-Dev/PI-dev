@@ -6,6 +6,7 @@
 package edu.esprit.pidev.controllers;
 
 import com.jfoenix.controls.JFXDrawer;
+import edu.esprit.pidev.models.VoyagePersonalise;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,7 +31,7 @@ public class GuideVPListController implements Initializable {
     @FXML
     private JFXDrawer menu;
     @FXML
-    private ListView<?> list_vp;
+    private ListView<VoyagePersonalise> list_vp;
     @FXML
     private Button postuler_vp_btn;
     @FXML
