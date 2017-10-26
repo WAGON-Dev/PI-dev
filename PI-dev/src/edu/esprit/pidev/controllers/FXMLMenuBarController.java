@@ -55,7 +55,10 @@ public class FXMLMenuBarController implements Initializable {
     }    
 
     @FXML
-    private void On_Compte_menu_bar(ActionEvent event) {
+    private void On_Compte_menu_bar(ActionEvent event)throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLCompteClient.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
