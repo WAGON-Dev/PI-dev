@@ -34,7 +34,7 @@ public class FXMLCrud_VPController implements Initializable {
     @FXML
     private void ajouter_vp(ActionEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("///////////////"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLAjouter_VP.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -44,7 +44,7 @@ public class FXMLCrud_VPController implements Initializable {
     @FXML
     private void modifier_vp(ActionEvent event) throws IOException {
          Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/////////////"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLModifier_VP.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -54,7 +54,7 @@ public class FXMLCrud_VPController implements Initializable {
     @FXML
     private void demande(ActionEvent event) throws IOException {
          Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/////////"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLDemande_VP.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

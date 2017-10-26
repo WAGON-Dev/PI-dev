@@ -21,7 +21,7 @@
             <TableColumn fx:id="hotel" prefWidth="75.0" text="hotel" />
         </columns>
       </TableView>
-      <JFXButton layoutX="545.0" layoutY="21.0" onAction="#afficher_vp" />
+      <JFXButton layoutX="545.0" layoutY="21.0" onAction="#afficher_vp" text="Afficher" />
       <JFXTextField fx:id="nom1" layoutX="223.0" layoutY="131.0" />
       <JFXTextField fx:id="ville_depart1" layoutX="38.0" layoutY="188.0" />
       <JFXTextField fx:id="ville_arrive1" layoutX="401.0" layoutY="201.0" />
@@ -29,7 +29,7 @@
       <JFXTextField fx:id="hotel1" layoutX="223.0" layoutY="361.0" />
       <JFXDatePicker fx:id="Date_depart" layoutX="20.0" layoutY="252.0" />
       <JFXDatePicker fx:id="date_retour1" layoutX="383.0" layoutY="259.0" />
-      <JFXButton layoutX="417.0" layoutY="348.0" onAction="#modifier" text="Button" />
-      <JFXButton layoutX="80.0" layoutY="348.0" onAction="#supprimer" />
+      <JFXButton layoutX="417.0" layoutY="348.0" onAction="#modifier" text="Modifier" />
+      <JFXButton layoutX="80.0" layoutY="348.0" onAction="#supprimer" text="Supprimer" />
    </children>
 </AnchorPane>

@@ -57,7 +57,7 @@ public class FXMLloginController implements Initializable {
                 ClientService cs1 = new ClientService();
                 cs1.existeUtilisateur(name.getText());
                 Stage stage = new Stage();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("CRUD_VP.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLCrud_VP.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
