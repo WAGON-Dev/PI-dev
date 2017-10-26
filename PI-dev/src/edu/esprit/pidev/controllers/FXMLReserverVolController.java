@@ -41,7 +41,6 @@ public class FXMLReserverVolController implements Initializable {
     @FXML
     private JFXTextField ville_arriver_vol;
     public static JFXTextField ville_vol_arriver;
-    @FXML
     private JFXTextField prix_min_vol;
     @FXML
     private JFXTextField prix_max_vol;

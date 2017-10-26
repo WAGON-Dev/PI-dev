@@ -142,15 +142,12 @@ public class VolService implements IVolService {
         return vols;
 
     }
-//Date d1, Date d2,
     public List<Vol> getAllcondition( double prix, String villedep, String villearr ,Date d1,Date d2) {
         List<Vol> vols = new ArrayList<>();
         String req = "select * from vol where  prix_vol < ? and depart = ? and arrivee = ? and date_depart between ? and ? ";
         try {
             ps = connection.prepareStatement(req);
             ps.setDouble(1, prix);
-           /* ps.setDate(1, d1);
-            ps.setDate(2, d2);*/
             ps.setString(2,villedep );
             ps.setString(3, villearr);
             ps.setDate(4,d2);
