@@ -124,5 +124,24 @@ public class VoyageOrganiseService implements IVOService{
         return voyage;
      
 }
+    public List<VoyageOrganise> getAllcondition(Date d1,Date d2,float prix) {
+        List<VoyageOrganise> voyages = new ArrayList<>();
+        String req = "select * from voyageorganise where prix < ? and dateDebutVoy < ? and datFinVoy > ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setFloat(1, prix);
+            preparedStatement.setDate(2, d1);
+            preparedStatement.setDate(3, d2);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                VoyageOrganise voyage = new VoyageOrganise(resultSet.getInt("id_voyage"), resultSet.getString("titreVoyage"),(Date)resultSet.getDate("dateDebutVoy"),(Date) resultSet.getDate("dateFinVoy"),resultSet.getString("description"),resultSet.getFloat("prix"));
+                voyages.add(voyage);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voyages;
+    }
     
 }

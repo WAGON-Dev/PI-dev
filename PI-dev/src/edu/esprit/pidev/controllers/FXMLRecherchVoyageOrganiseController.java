@@ -26,14 +26,14 @@ public class FXMLRecherchVoyageOrganiseController implements Initializable {
 
     @FXML
     private DatePicker date_debut_vo;
+    
+    public static DatePicker date_vo_debut;
     @FXML
     private DatePicker date_fin_vo;
-    @FXML
-    private JFXTextField ville_vo;
-    @FXML
-    private JFXTextField prix_min_vo;
+    public static DatePicker date_vo_fin;
     @FXML
     private JFXTextField prix_max_vo;
+    public static JFXTextField prix_vo_max;
     @FXML
     private JFXButton bt_chercher_vo;
 
@@ -43,6 +43,9 @@ public class FXMLRecherchVoyageOrganiseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        date_vo_debut=date_debut_vo;
+        date_vo_fin=date_fin_vo;
+        
     }    
 
     @FXML
