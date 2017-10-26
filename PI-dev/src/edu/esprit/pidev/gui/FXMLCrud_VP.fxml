@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.FXMLCrud_VPController">
+   <children>
+      <JFXButton layoutX="193.0" layoutY="97.0" onAction="#ajouter_vp" text="Mon Voyage" />
+      <JFXButton layoutX="193.0" layoutY="162.0" onAction="#modifier_vp" text="changer ou annuler un voyage" />
+      <JFXButton layoutX="193.0" layoutY="223.0" onAction="#demande" text="Consulter les offres des guides" />
+   </children>
+</AnchorPane>

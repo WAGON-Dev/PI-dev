@@ -5,6 +5,7 @@
  */
 package edu.esprit.pidev.models;
 
+import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Logger;
@@ -15,24 +16,64 @@ import java.util.logging.Logger;
  */
 public class VoyagePersonalise  {
     
-    private int id_vp ;
-    private String nom ;
-    private String ville_depart ;
-    private String Ville_arrive ;
-    private String date_depart ;
-    private String date_arrive ;
-    private int nbr_participant ;
-    private Hotel hotel ;
-    private Client client ;
-    private Evenement event1 ;
-    private Evenement event2 ;
-    private Evenement event3 ;
+    private int id_vp;
+    private String nom;
+    private String ville_depart;
+    private String Ville_arrive;
+    private Date date_depart;
+    private Date date_arrive;
+    private int nbr_participant;
+    private Hotel hotel;
+    private Client client;
+    private Evenement event1;
+    private Evenement event2;
+    private Evenement event3;
+    private String nom_hotel ;
+
+    public String getNom_hotel() {
+        return nom_hotel;
+    }
+
+    public void setNom_hotel(String nom_hotel) {
+        this.nom_hotel = nom_hotel;
+    }
+
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, String nom_hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
+        this.id_vp = id_vp;
+        this.nom = nom;
+        this.ville_depart = ville_depart;
+        this.Ville_arrive = Ville_arrive;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+        this.nbr_participant = nbr_participant;
+        this.client = client;
+        this.event1 = event1;
+        this.event2 = event2;
+        this.event3 = event3;
+        this.nom_hotel = nom_hotel;
+    }
+    
     
 
     public VoyagePersonalise() {
     }
 
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client) {
+    /*public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, int id_hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
+        this.id_vp = id_vp;
+        this.nom = nom;
+        this.ville_depart = ville_depart;
+        this.Ville_arrive = Ville_arrive;
+        this.date_depart = date_depart;
+        this.date_arrive = date_arrive;
+        this.nbr_participant = nbr_participant;
+        this.client = client;
+        this.event1 = event1;
+        this.event2 = event2;
+        this.event3 = event3;
+        this.id_hotel = id_hotel;
+    }*/
+
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, Hotel hotel, Client client) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -44,7 +85,7 @@ public class VoyagePersonalise  {
         this.client = client;
     }
 
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1) {
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -57,7 +98,7 @@ public class VoyagePersonalise  {
         this.event1 = event1;
     }
 
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2) {
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -70,8 +111,8 @@ public class VoyagePersonalise  {
         this.event1 = event1;
         this.event2 = event2;
     }
-    
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, String date_depart, String date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
+
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, Hotel hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -118,19 +159,19 @@ public class VoyagePersonalise  {
         this.Ville_arrive = Ville_arrive;
     }
 
-    public String getDate_depart() {
+    public Date getDate_depart() {
         return date_depart;
     }
 
-    public void setDate_depart(String date_depart) {
+    public void setDate_depart(Date date_depart) {
         this.date_depart = date_depart;
     }
 
-    public String getDate_arrive() {
+    public Date getDate_arrive() {
         return date_arrive;
     }
 
-    public void setDate_arrive(String date_arrive) {
+    public void setDate_arrive(Date date_arrive) {
         this.date_arrive = date_arrive;
     }
 
@@ -210,7 +251,7 @@ public class VoyagePersonalise  {
     public String toString() {
         return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + ", hotel=" + hotel + ", client=" + client + ", event1=" + event1.toString() + ", event2=" + event2.toString() + ", event3=" + event3.toString() + '}';
     }
-    public java.sql.Date convert (String date) throws ParseException{
+    /* public java.sql.Date convert (String date) throws ParseException{
    
       
     SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
@@ -223,7 +264,8 @@ public class VoyagePersonalise  {
    
     
     return sqlDate ;  
-    } 
+    } */
+
 
    
    

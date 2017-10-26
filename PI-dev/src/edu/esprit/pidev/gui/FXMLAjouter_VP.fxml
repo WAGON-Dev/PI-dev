@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.FXMLAjouter_VPController">
+   <children>
+      <JFXTextField fx:id="nom" layoutX="133.0" layoutY="61.0" />
+      <JFXTextField fx:id="ville_depart" layoutX="300.0" layoutY="61.0" />
+      <JFXTextField fx:id="ville_arrive" layoutX="475.0" layoutY="74.0" />
+      <JFXDatePicker fx:id="Date_depart" layoutX="306.0" layoutY="124.0" />
+      <JFXDatePicker fx:id="date_retour" layoutX="491.0" layoutY="132.0" />
+      <JFXTextField fx:id="nbr_participant" layoutX="316.0" layoutY="175.0" />
+      <JFXTextField fx:id="hotel" layoutX="316.0" layoutY="228.0" />
+      <JFXTextField fx:id="event1_fk" layoutX="491.0" layoutY="241.0" />
+      <TableView fx:id="table_event" layoutX="22.0" layoutY="188.0" prefHeight="200.0" prefWidth="273.0">
+        <columns>
+          <TableColumn fx:id="evenemet" prefWidth="75.0" text="Evenement" />
+          <TableColumn fx:id="endroit" prefWidth="86.4000244140625" text="Emplacement" />
+            <TableColumn fx:id="date_evenement" prefWidth="109.59999084472656" text="Date_Evenement" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="ajouter" layoutX="425.0" layoutY="308.0" onAction="#ajouter" text="Ajouter" />
+      <JFXButton layoutX="107.0" layoutY="148.0" onAction="#event" />
+      <JFXButton layoutX="551.0" layoutY="308.0" onAction="#mail" />
+   </children>
+</AnchorPane>
