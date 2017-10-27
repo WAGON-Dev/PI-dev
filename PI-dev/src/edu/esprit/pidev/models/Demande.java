@@ -21,6 +21,8 @@ public class Demande {
     public Demande() {
     }
 
+ 
+    
     public Demande(VoyagePersonalise id_vp, Guide id_guide, Client id_client) {
         this.id_vp = id_vp;
         this.id_guide = id_guide;

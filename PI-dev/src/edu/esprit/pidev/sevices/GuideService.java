@@ -156,5 +156,21 @@ public class GuideService implements Iguide {
         }
         return guides;
     }
+     public Guide findByName(String r) {
+        Guide g = null;
+        String req = "select * from users where nom=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, r);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
 
 }

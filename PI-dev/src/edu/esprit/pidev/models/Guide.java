@@ -20,7 +20,9 @@ public class Guide extends Users{
     Date dateDeNaissance;
     int nbrNote;
     int Note;
-
+    public Guide() {
+        
+    }
     public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note) {
         this.prenom = prenom;
         this.CIN = CIN;
@@ -47,9 +49,9 @@ public class Guide extends Users{
         this.Note = Note;
     }
 
-    public Guide(int aInt, String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
+
+    
 
     public String getPrenom() {
         return prenom;

@@ -22,11 +22,31 @@ import java.util.ArrayList;
 public class ClientService implements IserviceClient {
 
     Connection connection;
-
+  public static Client loggedUser;
     public ClientService() {
         connection = DataSource.getInsatance().getConnection();
     }
+     public boolean existeUtilisateur(String username) {
 
+        PreparedStatement preparedStatement;
+        String req = "select * from users WHERE nom=?";
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                loggedUser = new Client();
+                loggedUser.setId_user(resultSet.getInt("id_user"));
+                loggedUser.setNom(resultSet.getString("nom"));
+                loggedUser.setMdp(resultSet.getString("mdp"));
+                loggedUser.setEmail(resultSet.getString("email"));
+                return true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
     @Override
     public void add(Client t) {
         String req = "insert into users (nom,prenom,email,mdp,numTel,adresse,cin,dateNaissence,role,image) values (?,?,?,?,?,?,?,?,?,?)";

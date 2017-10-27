@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLModifier_VPController">
+   <children>
+      <TableView fx:id="table_vp" layoutX="14.0" layoutY="14.0" onMouseClicked="#click" prefHeight="103.0" prefWidth="530.0">
+        <columns>
+            <TableColumn fx:id="id" prefWidth="75.0" text="id" visible="false" />
+          <TableColumn fx:id="nom" prefWidth="75.0" text="Nom voyage" />
+          <TableColumn fx:id="ville_depart" prefWidth="75.0" text="ville depart" />
+            <TableColumn fx:id="ville_arrive" prefWidth="75.0" text="ville arrive" />
+            <TableColumn fx:id="date_depart" prefWidth="75.0" text="date depart" />
+            <TableColumn fx:id="date_retour" prefWidth="75.0" text="date retour" />
+            <TableColumn fx:id="nbr_participant" prefWidth="75.0" text="nbr participant" />
+            <TableColumn fx:id="hotel" prefWidth="75.0" text="hotel" />
+        </columns>
+      </TableView>
+      <JFXButton layoutX="545.0" layoutY="21.0" onAction="#afficher_vp" text="Afficher" />
+      <JFXTextField fx:id="nom1" layoutX="223.0" layoutY="131.0" />
+      <JFXTextField fx:id="ville_depart1" layoutX="38.0" layoutY="188.0" />
+      <JFXTextField fx:id="ville_arrive1" layoutX="401.0" layoutY="201.0" />
+      <JFXTextField fx:id="nbr_participant1" layoutX="223.0" layoutY="316.0" />
+      <JFXTextField fx:id="hotel1" layoutX="223.0" layoutY="361.0" />
+      <JFXDatePicker fx:id="Date_depart" layoutX="20.0" layoutY="252.0" />
+      <JFXDatePicker fx:id="date_retour1" layoutX="383.0" layoutY="259.0" />
+      <JFXButton layoutX="417.0" layoutY="348.0" onAction="#modifier" text="Modifier" />
+      <JFXButton layoutX="80.0" layoutY="348.0" onAction="#supprimer" text="Supprimer" />
+   </children>
+</AnchorPane>
