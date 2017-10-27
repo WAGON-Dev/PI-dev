@@ -7,6 +7,7 @@ package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.VoyageOrganise;
 import edu.esprit.pidev.sevices.VoyageOrganiseService;
+import edu.esprit.pidev.utils.MoviePlayer;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -15,6 +16,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -47,6 +50,13 @@ public class FXMLResultatRecherchVOController implements Initializable {
         ObservableList<VoyageOrganise> names = FXCollections.observableArrayList(vs.getAllcondition(da1, da2, prix));
         listeVO.setItems(names);
         listeVO.setCellFactory(studentListView -> new FXMLRowListeVOController());
+    }
+
+    @FXML
+    private void OnVisualiserVoyageOrganiser(MouseEvent event)throws Exception {
+        Stage primaryStage = new Stage();
+        MoviePlayer mp = new MoviePlayer();
+        mp.start(primaryStage);
     }
 
 }
