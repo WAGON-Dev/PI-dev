@@ -80,11 +80,6 @@ public class MoviePlayer extends Application {
             public void handle(MouseEvent event) {
                 player.seek(Duration.seconds(slider.getValue()));
             }
-        
-        
-        
         });
-    
-
     }
 }
