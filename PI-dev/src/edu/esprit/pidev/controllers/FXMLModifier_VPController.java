@@ -22,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -67,14 +68,19 @@ public class FXMLModifier_VPController implements Initializable {
     private JFXDatePicker date_retour1;
 
     private ObservableList<VoyagePersonalise> Liste_VP = FXCollections.observableArrayList();
+    private ObservableList<VoyagePersonalise> Liste_C = FXCollections.observableArrayList();
     @FXML
-    private TableColumn<?, ?> id;
+    private TableColumn<VoyagePersonalise, Integer> id;
+    @FXML
+    private ComboBox<String> combobox;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        combobox.setItems(vps.displayall());
         // TODO
     }
 
@@ -160,5 +166,18 @@ public class FXMLModifier_VPController implements Initializable {
             vps.remove(selectedVP.getId_vp());
         }
 
+    }
+
+    @FXML
+    private void filtre(ActionEvent event) {
+        String i;
+          i = combobox.getValue();
+
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        //VoyagePersonalise vp =new VoyagePersonalise();
+        
+        Liste_C = FXCollections.observableArrayList(vps.findByNameC(i));
+        table_vp.setItems(Liste_C);
+        
     }
 }

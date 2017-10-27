@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -26,16 +28,12 @@ import java.util.logging.Logger;
  */
 public class VoyagePersonaliseService implements IVoyagePersonalise {
 
-   
     Connection connection;
     public static Client loggedUser;
 
     public VoyagePersonaliseService() {
         connection = DataSource.getInsatance().getConnection();
     }
-
-    
-  
 
     public void add0(VoyagePersonalise vp) {
         String req = "insert into voyagepersonalise (nom,ville_depart,Ville_arrive,date_depart,date_arrive,nbr_participant,hotel_fk,client_vp_fk) values (?,?,?,?,?,?,?,?)";
@@ -59,7 +57,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
 
     }
 
-   /* public void add2(VoyagePersonalise vp) {
+    /* public void add2(VoyagePersonalise vp) {
         String req = "insert into voyagepersonalise (nom,ville_depart,Ville_arrive,date_depart,date_arrive,nbr_participant,hotel_fk,event1_fk,event2_fk) values (?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
@@ -80,7 +78,6 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
 
     }*/
-
     public void add3(VoyagePersonalise vp) {
         String req = "insert into voyagepersonalise (nom,ville_depart,Ville_arrive,date_depart,date_arrive,nbr_participant,hotel_fk,client_vp_fk,event1_fk) values (?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
@@ -93,7 +90,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setDate(5, vp.getDate_arrive());
             preparedStatement.setInt(6, vp.getNbr_participant());
             preparedStatement.setInt(7, vp.getHotel().getId_user());
-            preparedStatement.setInt(8, ClientService.loggedUser.getId_user());          
+            preparedStatement.setInt(8, ClientService.loggedUser.getId_user());
             preparedStatement.setInt(9, vp.getEvent1().getId_evenement());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -115,7 +112,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setDate(4, vp.getDate_depart());
             preparedStatement.setDate(5, vp.getDate_arrive());
             preparedStatement.setInt(6, vp.getNbr_participant());
-           // preparedStatement.setInt(7, vp.getClient().getId_user());
+            // preparedStatement.setInt(7, vp.getClient().getId_user());
             preparedStatement.setInt(7, vp.getHotel().getId_user());
             //preparedStatement.setInt(9, vp.getEvent1().getId_evenement());
             //preparedStatement.setInt(10, vp.getEvent2().getId_evenement());
@@ -179,7 +176,8 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         return voyages;
 
     }
-      public List<VoyagePersonalise> getAll2(Client c) {
+
+    public List<VoyagePersonalise> getAll2(Client c) {
         List<VoyagePersonalise> voyages = new ArrayList<>();
         String req = "select * from voyagepersonalise where client_vp_fk = ?";
         PreparedStatement preparedStatement;
@@ -208,6 +206,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
     public void add2(VoyagePersonalise vp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     public VoyagePersonalise findByName(String nom) {
         VoyagePersonalise voyagePersonalise = null;
         String req = "select * from voyagepersonalise where nom =?";
@@ -225,6 +224,43 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             ex.printStackTrace();
         }
         return voyagePersonalise;
+    }
+    public ObservableList<VoyagePersonalise> findByNameC(String nom) {
+        ObservableList<VoyagePersonalise> liste_vp = FXCollections.observableArrayList();
+        VoyagePersonalise voyagePersonalise = null;
+        String req = "select * from voyagepersonalise where nom =?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, nom);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                
+                voyagePersonalise  = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(9)), new ClientService().findById(resultSet.getInt(8)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                liste_vp.add(voyagePersonalise);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return liste_vp;
+    }
+
+    public ObservableList<String> displayall() {
+        ObservableList<String> liste_vp = FXCollections.observableArrayList();
+        String req = "select nom from voyagepersonalise";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                VoyagePersonalise d = new VoyagePersonalise(resultSet.getString("nom"));
+                liste_vp.add(d.getNom());
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return liste_vp;
+
     }
 
 }
