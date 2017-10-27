@@ -11,6 +11,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import edu.esprit.pidev.interfaces.IDemandeService;
 import edu.esprit.pidev.models.Demande;
 import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.VoyagePersonalise;
@@ -65,11 +66,11 @@ public class FXMLDemande_VPController implements Initializable {
     @FXML
     private TableColumn<Demande, String> id_guide;
     @FXML
-    private JFXButton afficher;
-    @FXML
     private JFXTextField passw;
 
     private ObservableList<Demande> Liste_VP = FXCollections.observableArrayList();
+    @FXML
+    private JFXButton afficher;
 
     /**
      * Initializes the controller class.
@@ -79,20 +80,21 @@ public class FXMLDemande_VPController implements Initializable {
         // TODO
     }
 
-    @FXML
+      @FXML
     private void go(MouseEvent event) {
+
     }
 
     @FXML
     private void afficher(ActionEvent event) {
         DemandeService ds = new DemandeService();
-        Demande d = new Demande();
+        
+        
+        //System.out.println(ds.getAll());
+       Liste_VP = FXCollections.observableArrayList(ds.getAll());
+        
 
-        //ClientService cs = new ClientService();
-        //vp1.setClient(ClientService.loggedUser);
-        Liste_VP = FXCollections.observableArrayList(ds.getAll());
-
-        //id_guide.setCellValueFactory(new PropertyValueFactory<>("id_guide_fk"));
+        
         id_vp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Demande, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Demande, String> param) {
@@ -198,7 +200,7 @@ public class FXMLDemande_VPController implements Initializable {
             message.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(username));//u will send to
             message.setSubject("Subject");
-            message.setText("PFA");
+            message.setText("aaaaaaaaaaaaaa");
             MimeBodyPart messageBodyPart = new MimeBodyPart();
             Multipart multipart = new MimeMultipart();
 

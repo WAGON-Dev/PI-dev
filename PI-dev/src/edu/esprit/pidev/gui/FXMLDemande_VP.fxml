@@ -6,10 +6,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
    <children>
-      <TableView fx:id="table_demande" layoutX="79.0" layoutY="14.0" onMouseClicked="#go" prefHeight="200.0" prefWidth="200.0">
+      <TableView fx:id="table_demande" layoutX="79.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="id_vp" prefWidth="75.0" text="voyage personalise" />
           <TableColumn fx:id="id_guide" prefWidth="75.0" text="guide" />
