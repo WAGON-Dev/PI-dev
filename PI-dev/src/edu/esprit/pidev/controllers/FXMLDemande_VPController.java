@@ -34,6 +34,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -80,7 +81,7 @@ public class FXMLDemande_VPController implements Initializable {
         // TODO
     }
 
-      @FXML
+    @FXML
     private void go(MouseEvent event) {
 
     }
@@ -88,13 +89,10 @@ public class FXMLDemande_VPController implements Initializable {
     @FXML
     private void afficher(ActionEvent event) {
         DemandeService ds = new DemandeService();
-        
-        
-        //System.out.println(ds.getAll());
-       Liste_VP = FXCollections.observableArrayList(ds.getAll());
-        
 
-        
+        //System.out.println(ds.getAll());
+        Liste_VP = FXCollections.observableArrayList(ds.getAll());
+
         id_vp.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Demande, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Demande, String> param) {
@@ -205,8 +203,8 @@ public class FXMLDemande_VPController implements Initializable {
             Multipart multipart = new MimeMultipart();
 
             //attached 1 --------------------------------------------
-            String file = "Z:\\PI-dev\\PI-dev_1\\Jemai.pdf";
-            String fileName = "reponse";
+            String file = g.getNom() + ".pdf";
+            String fileName = "resultat";
             messageBodyPart = new MimeBodyPart();
             DataSource source = new FileDataSource(file);
             messageBodyPart.setDataHandler(new DataHandler(source));
@@ -223,7 +221,7 @@ public class FXMLDemande_VPController implements Initializable {
             e.printStackTrace();
         }
 
-        /*  Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         //alert.initOwner(adresse.getScene().getWindow());
 
         alert.setTitle("Confirmation");
@@ -231,8 +229,8 @@ public class FXMLDemande_VPController implements Initializable {
         alert.setContentText("Email Envoyer Avec Succées ");
         alert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                    }
-                }
-                );*/
+            }
+        }
+        );
     }
 }
