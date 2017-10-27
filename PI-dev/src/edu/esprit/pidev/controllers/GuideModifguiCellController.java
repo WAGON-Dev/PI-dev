@@ -56,7 +56,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
     private Button bt_anuller_row;
 
     private FXMLLoader mLLoader;
-    
+
     @FXML
     private AnchorPane cell;
     @FXML
@@ -73,7 +73,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
 
         } else {
             if (mLLoader == null) {
-                mLLoader = new FXMLLoader(getClass().getResource("../controllers/GuideModifguiCell.fxml"));
+                mLLoader = new FXMLLoader(getClass().getResource("../gui/GuideModifguiCell.fxml"));
                 mLLoader.setController(this);
 
                 try {
@@ -94,7 +94,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             Client c = cs.findById(student.getClient().getId_user());
             nom_client_row.setText(c.getNom());
             prenom_client_row.setText(c.getPrenom());
-
+            state.setText("");
             setText(null);
             setGraphic(cell);
         }

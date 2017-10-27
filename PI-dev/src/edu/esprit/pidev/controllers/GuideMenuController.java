@@ -5,25 +5,22 @@
  */
 package edu.esprit.pidev.controllers;
 
-import java.io.File;
+import edu.esprit.pidev.models.Guide;
+import edu.esprit.pidev.sevices.GuideService;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import edu.esprit.pidev.controllers.GuideguiController;
-import edu.esprit.pidev.models.Guide;
-import edu.esprit.pidev.sevices.GuideService;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.image.Image;
 
 /**
  * FXML Controller class

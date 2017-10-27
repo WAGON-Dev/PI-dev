@@ -7,9 +7,12 @@ package edu.esprit.pidev.controllers;
 
 import com.jfoenix.controls.JFXDrawer;
 import edu.esprit.pidev.models.VoyagePersonalise;
+import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,12 +40,18 @@ public class GuideVPListController implements Initializable {
     @FXML
     private Button annuler_vp_btn;
 
+     private ObservableList<VoyagePersonalise> vplist;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        GuideguiController gui = new GuideguiController();
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        vplist = FXCollections.observableArrayList(vps.getAllbyAdresse("Tunis"));
+        list_vp.setItems(vplist);
+        list_vp.setCellFactory(studentListView -> new GuideModifguiCellController());
         try {
             BorderPane menupane = FXMLLoader.load(getClass().getResource("../gui/GuideMenu.fxml"));
             menu.setSidePane(menupane);
