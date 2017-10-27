@@ -19,6 +19,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -37,6 +39,8 @@ public class GuideMailSendingFXMLController implements Initializable {
     private Button envoi_mail_btn;
     @FXML
     private Button renit_btn;
+    @FXML
+    private AnchorPane panne;
 
     public String getTo() {
         return to;
@@ -65,6 +69,8 @@ public class GuideMailSendingFXMLController implements Initializable {
         }
         GuideguiController guiController = lloader.getController();
         SendMail.send(to, sujet_m.getText(), message_m.getText(), guiController.guidelog.getEmail(),"nannou kh 16febnk");
+        Stage stage = (Stage) panne.getScene().getWindow();
+        stage.close();
     }
 
     @FXML
