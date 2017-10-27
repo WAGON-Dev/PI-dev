@@ -6,8 +6,11 @@
 package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.Client;
+import edu.esprit.pidev.models.Demande;
 import edu.esprit.pidev.models.VoyagePersonalise;
 import edu.esprit.pidev.sevices.ClientService;
+import edu.esprit.pidev.sevices.DemandeService;
+import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -69,13 +72,13 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
     @FXML
     private Label state;
 
-   
     private Client cls;
 
     public Client getCls() {
         return cls;
     }
-     public void setCls(Client cls) {
+
+    public void setCls(Client cls) {
         this.cls = cls;
     }
 
@@ -149,10 +152,43 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
 
     @FXML
     private void OnPostulerRow(MouseEvent event) {
+        FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
+        try {
+            Parent rroot = lloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GuideguiController guiController = lloader.getController();
+
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        VoyagePersonalise vp = vps.findByName(titre_VP_row.getText());
+        Demande dem = new Demande();
+        dem.setId_vp(vp);
+        dem.setId_client(vp.getClient());
+        dem.setId_guide(guiController.guidelog);
+        DemandeService ds = new DemandeService();
+        ds.add(dem);
+        state.setText("Demande reçu");
     }
 
     @FXML
     private void OnAnullerRow(MouseEvent event) {
+        FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
+        try {
+            Parent rroot = lloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GuideguiController guiController = lloader.getController();
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        VoyagePersonalise vp = vps.findByName(titre_VP_row.getText());
+        Demande dem = new Demande();
+        dem.setId_vp(vp);
+        dem.setId_client(vp.getClient());
+        dem.setId_guide(guiController.guidelog);
+        DemandeService ds = new DemandeService();
+        ds.remove(dem.getId_vp().getId_vp());
+        state.setText("Annulation de la demande");
     }
 
 }

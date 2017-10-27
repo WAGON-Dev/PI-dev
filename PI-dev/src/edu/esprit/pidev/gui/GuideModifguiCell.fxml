@@ -7,8 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" fx:id="cell" prefHeight="196.0" prefWidth="700.0" style="-fx-background-color: #ccccff;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9">
+<AnchorPane id="AnchorPane" fx:id="cell" prefHeight="196.0" prefWidth="700.0" style="-fx-background-color: #ccccff;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="image_row" fitHeight="105.0" fitWidth="119.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -35,6 +34,6 @@
       <Button fx:id="bt_anuller_row" layoutX="553.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#OnAnullerRow" style="-fx-background-color: #4d79ff;" text="Annuler" textFill="WHITE" />
       <Separator layoutX="-6.0" layoutY="190.0" prefHeight="5.0" prefWidth="706.0" style="-fx-background-color: #4d79ff;" />
       <Label fx:id="nom_client_row" layoutX="565.0" layoutY="31.0" text="Label" />
-      <Label fx:id="state" layoutX="636.0" layoutY="158.0" text="Label" />
+      <Label fx:id="state" layoutX="551.0" layoutY="132.0" style="-fx-background-color: pink;" text="label" />
    </children>
 </AnchorPane>

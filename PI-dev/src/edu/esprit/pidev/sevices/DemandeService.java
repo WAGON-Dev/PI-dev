@@ -32,13 +32,13 @@ public class DemandeService implements IDemandeService {
     @Override
     
     public void add(Demande t) {
- String req = "insert into users (id_vp_fk,id_client_fk,id_guide_fk) values (?,?,?)";
+ String req = "insert into demande (id_vp_fk,id_client_fk,id_guide_fk) values (?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, t.getId_vp().getId_vp());
             preparedStatement.setInt(2, t.getId_client().getId_user());
-            preparedStatement.setInt(3, t.getId_guide().getId_user());
+            preparedStatement.setString(3, t.getId_guide().getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -52,7 +52,7 @@ public class DemandeService implements IDemandeService {
 
     @Override
     public void remove(Integer id) {
-        String req = "delete from users where id_vp_fk =?";
+        String req = "delete from demande where id_vp_fk =?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
