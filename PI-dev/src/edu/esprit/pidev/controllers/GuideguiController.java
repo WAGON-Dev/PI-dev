@@ -52,7 +52,7 @@ public class GuideguiController implements Initializable {
     private Label first_note_label;
     @FXML
     private ImageView imagev;
-    
+
     public Guide guidelog;
 
     /**
@@ -61,13 +61,11 @@ public class GuideguiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODOfinal
-        
-        
 
-        GuideService gs = new GuideService() ;
+        GuideService gs = new GuideService();
         Guide g = gs.findByEmail("jemaighass@gmail.com");
         guidelog = g;
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/"+g.getImage());
+        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imagev.setImage(img);
         first_adresse_label.setText(g.getAdresse());
@@ -101,5 +99,5 @@ public class GuideguiController implements Initializable {
     public Guide getGuidelog() {
         return guidelog;
     }
-    
+
 }
