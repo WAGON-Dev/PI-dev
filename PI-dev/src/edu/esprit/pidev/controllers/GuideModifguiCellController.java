@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -25,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -67,6 +69,16 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
     @FXML
     private Label state;
 
+   
+    private Client cls;
+
+    public Client getCls() {
+        return cls;
+    }
+     public void setCls(Client cls) {
+        this.cls = cls;
+    }
+
     @Override
     protected void updateItem(VoyagePersonalise student, boolean empty) {
         super.updateItem(student, empty);
@@ -97,6 +109,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             date_fin_row.setText(String.valueOf(student.getDate_arrive()));
             ClientService cs = new ClientService();
             Client c = cs.findById(student.getClient().getId_user());
+            setCls(c);
             nom_client_row.setText(c.getNom());
             prenom_client_row.setText(c.getPrenom());
             state.setText("");
@@ -110,14 +123,28 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
 
     @FXML
     private void OnEnvoyerMail(MouseEvent event) {
+        Parent mroot = new Parent() {
+        };
         FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
-
         try {
             Parent rroot = lloader.load();
         } catch (IOException ex) {
             Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
         }
         GuideguiController guiController = lloader.getController();
+        FXMLLoader mloader = new FXMLLoader(getClass().getResource("../gui/GuideMailSendingFXML.fxml"));
+        try {
+            mroot = mloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GuideMailSendingFXMLController mailController = mloader.getController();
+        Scene scene = new Scene(mroot);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.show();
+        String to = cls.getEmail();
+        mailController.setTo(to);
     }
 
     @FXML
