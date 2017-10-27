@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="120.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="image_row_VO" fitHeight="98.0" fitWidth="115.0" layoutX="14.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="prix_row_vo" layoutX="177.0" layoutY="52.0" text="Label" />
+      <Label fx:id="destination_row_vo" layoutX="255.0" layoutY="52.0" text="Label" />
+      <Button fx:id="bt_reserver_row_vo" layoutX="338.0" layoutY="48.0" mnemonicParsing="false" text="Réserver" />
+   </children>
+</AnchorPane>

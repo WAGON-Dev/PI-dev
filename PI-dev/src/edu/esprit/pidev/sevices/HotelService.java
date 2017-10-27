@@ -27,7 +27,22 @@ public class HotelService  implements IHotel  {
     public HotelService() {
         connection = DataSource.getInsatance().getConnection();
     }
-
+     public Hotel findByName(String Name) {
+              Hotel  hotel = null;
+        String req = "select * from users where nom=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, Name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getInt(10),resultSet.getInt(10));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hotel;
+    }
     @Override
     public void add(Hotel h) {
         String req = "insert into users (id_user,nom,email,mdp,numtel,adresse,role,image,etoile,nb_chambre,nb_chambre_reserve) values (?,?,?,?,?,?,?,?,?,?,?)";
