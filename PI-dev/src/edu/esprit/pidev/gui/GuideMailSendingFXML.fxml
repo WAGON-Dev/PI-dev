@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.GuideMailSendingFXMLController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #666699;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.GuideMailSendingFXMLController">
+   <children>
+      <TextArea fx:id="sujet_m" layoutX="106.0" layoutY="107.0" prefHeight="38.0" prefWidth="292.0" />
+      <TextArea fx:id="message_m" layoutX="106.0" layoutY="158.0" prefHeight="264.0" prefWidth="585.0" />
+      <Label layoutX="106.0" layoutY="37.0" style="-fx-text-fill: #e7bfbf;" text="Ecrivez votre Sujet du Mail et le message à envoyer :" textFill="#e7bfbf">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="118.0" style="-fx-text-fill: #e7bfbf;" text="Sujet : " />
+      <Label layoutX="34.0" layoutY="158.0" style="-fx-text-fill: #e7bfbf;" text="Message : " />
+   </children>
 </AnchorPane>

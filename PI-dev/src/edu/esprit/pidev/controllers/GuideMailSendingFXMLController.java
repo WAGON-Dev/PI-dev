@@ -7,7 +7,9 @@ package edu.esprit.pidev.controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 
 /**
  * FXML Controller class
@@ -16,12 +18,17 @@ import javafx.fxml.Initializable;
  */
 public class GuideMailSendingFXMLController implements Initializable {
 
+    @FXML
+    private TextArea sujet_m;
+    @FXML
+    private TextArea message_m;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     
 }
