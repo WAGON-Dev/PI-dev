@@ -105,6 +105,22 @@ public class ClientService implements IserviceClient {
         }
         return client;
     }
+    public Client findByemail(String  r) {
+        Client client = null;
+        String req = "select * from users where email=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, r);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return client;
+    }
 
     @Override
     public List<Client> getAll() {
