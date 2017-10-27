@@ -8,15 +8,20 @@ package edu.esprit.pidev.controllers;
 import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.models.VoyagePersonalise;
 import edu.esprit.pidev.sevices.ClientService;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -95,6 +100,9 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             nom_client_row.setText(c.getNom());
             prenom_client_row.setText(c.getPrenom());
             state.setText("");
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
+            Image img = new Image(file.toURI().toString());
+            image_row_client.setImage(img);
             setText(null);
             setGraphic(cell);
         }
@@ -102,6 +110,14 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
 
     @FXML
     private void OnEnvoyerMail(MouseEvent event) {
+        FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
+
+        try {
+            Parent rroot = lloader.load();
+        } catch (IOException ex) {
+            Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        GuideguiController guiController = lloader.getController();
     }
 
     @FXML
