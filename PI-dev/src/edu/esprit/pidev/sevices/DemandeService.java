@@ -32,7 +32,7 @@ public class DemandeService implements IDemandeService {
     @Override
     
     public void add(Demande t) {
- String req = "insert into users (id_vp_fk,Prenom,mdp,email,adresse,numtel,dateNaissence,note,role) values (?,?,?,?,?,?,?,?,?)";
+ String req = "insert into users (id_vp_fk,id_client_fk,id_guide_fk) values (?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
