@@ -32,7 +32,17 @@ public class DemandeService implements IDemandeService {
     @Override
     
     public void add(Demande t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ String req = "insert into users (id_vp_fk,Prenom,mdp,email,adresse,numtel,dateNaissence,note,role) values (?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, t.getId_vp().getId_vp());
+            preparedStatement.setInt(2, t.getId_client().getId_user());
+            preparedStatement.setInt(3, t.getId_guide().getId_user());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }    
     }
 
     @Override
