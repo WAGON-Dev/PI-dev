@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" fx:id="panne" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #666699;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.GuideMailSendingFXMLController">
+   <children>
+      <TextArea fx:id="sujet_m" layoutX="11.0" layoutY="107.0" prefHeight="38.0" prefWidth="680.0" promptText="Sujet" />
+      <TextArea fx:id="message_m" layoutX="11.0" layoutY="158.0" prefHeight="188.0" prefWidth="680.0" promptText="Message à Envoyer" />
+      <Label layoutX="106.0" layoutY="37.0" style="-fx-text-fill: #e7bfbf;" text="Ecrivez votre Sujet du Mail et le message à envoyer :" textFill="#e7bfbf">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="envoi_mail_btn" layoutX="106.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#onEnvoyerClicked" style="-fx-background-color: #e7bfbf;" text="Envoyer" />
+      <Button fx:id="renit_btn" layoutX="515.0" layoutY="385.0" mnemonicParsing="false" onMouseClicked="#OnInitClicked" style="-fx-background-color: #e7bfbf;" text="Rénitialiser" />
+   </children>
+</AnchorPane>

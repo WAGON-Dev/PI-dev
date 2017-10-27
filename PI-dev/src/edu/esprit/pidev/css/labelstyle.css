@@ -1,0 +1,9 @@
+.custom_label{
+    -fx-text-fill: #4db8ff;
+    -fx-underline: true;
+}
+.label{
+    
+    -fx-text-fill:black;
+    -fx-underline: false;
+}

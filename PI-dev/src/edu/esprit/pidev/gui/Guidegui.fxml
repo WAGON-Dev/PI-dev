@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="guidegui_first" prefHeight="558.0" prefWidth="865.0" style="-fx-background-color: #E9F3F9;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.GuideguiController">
+    <stylesheets>
+        <URL value="@/edu/esprit/pidev/css/guidegui.css" />
+    </stylesheets>
+   <children>
+      <Label fx:id="first_nom_label" layoutX="419.0" layoutY="266.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_prenom_label" layoutX="419.0" layoutY="296.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_cin_label" layoutX="419.0" layoutY="326.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_email_label" layoutX="419.0" layoutY="356.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_numtel_label" layoutX="419.0" layoutY="386.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_ddn_label" layoutX="419.0" layoutY="416.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_adresse_label" layoutX="419.0" layoutY="446.0" text="Label" textAlignment="CENTER" />
+      <Label fx:id="first_note_label" layoutX="419.0" layoutY="476.0" text="Label" textAlignment="CENTER" />
+      <JFXDrawer fx:id="menu" defaultDrawerSize="249.0" layoutX="-12.0" layoutY="105.0" onMouseEntered="#mousein" onMouseExited="#mouseout" prefHeight="452.0" prefWidth="250.0" />
+      <ImageView fx:id="imagev" fitHeight="150.0" fitWidth="200.0" layoutX="359.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/profile-pictures.png" />
+         </image></ImageView>
+   </children>
+</AnchorPane>

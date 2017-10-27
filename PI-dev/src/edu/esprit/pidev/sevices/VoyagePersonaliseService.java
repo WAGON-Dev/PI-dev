@@ -156,7 +156,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
         return voyagePersonalise;
     }
-
+    
     @Override
     public List<VoyagePersonalise> getAll() {
         List<VoyagePersonalise> voyages = new ArrayList<>();
@@ -176,6 +176,26 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         return voyages;
 
     }
+    
+    public List<VoyagePersonalise> getAllbyAdresse(String add) {
+        List<VoyagePersonalise> voyages = new ArrayList<>();
+        String req = "select * from voyagepersonalise where ville_depart = ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, add);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                VoyagePersonalise voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+
+                voyages.add(voyagePersonalise);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voyages;
+    }
+      
 
     public List<VoyagePersonalise> getAll2(Client c) {
         List<VoyagePersonalise> voyages = new ArrayList<>();
@@ -186,7 +206,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setInt(1, c.getId_user());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                VoyagePersonalise voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(9)), new ClientService().findById(resultSet.getInt(8)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                VoyagePersonalise voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
 
                 voyages.add(voyagePersonalise);
             }
@@ -217,7 +237,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 
-                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(9)), new ClientService().findById(resultSet.getInt(8)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
 
             }
         } catch (SQLException ex) {
@@ -225,6 +245,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         }
         return voyagePersonalise;
     }
+
     public ObservableList<VoyagePersonalise> findByNameC(String nom) {
         ObservableList<VoyagePersonalise> liste_vp = FXCollections.observableArrayList();
         VoyagePersonalise voyagePersonalise = null;
@@ -262,5 +283,6 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
         return liste_vp;
 
     }
+
 
 }

@@ -72,6 +72,27 @@ public class GuideService implements Iguide {
             ex.printStackTrace();
         }
     }
+    
+    public void update2(Guide t) {
+        String req = "update users set nom = ?,Prenom=?,mdp=?,adresse=?,numtel=?,dateNaissence=?,note=?,role=? where email = ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, t.getNom());
+            preparedStatement.setString(2, t.getPrenom());
+            preparedStatement.setString(3, t.getMdp());
+            preparedStatement.setString(4, t.getAdresse());
+            preparedStatement.setInt(5, t.getNumtel());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
+            preparedStatement.setDate(6, sqlDate);
+            preparedStatement.setInt(7, t.getNote());
+            preparedStatement.setString(8, "Guide");
+            preparedStatement.setString(9, t.getEmail());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void remove(Integer r) {
@@ -131,7 +152,7 @@ public class GuideService implements Iguide {
             preparedStatement.setString(1, e);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt(2), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

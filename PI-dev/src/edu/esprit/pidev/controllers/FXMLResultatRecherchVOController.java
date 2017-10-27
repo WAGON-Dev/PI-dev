@@ -5,8 +5,9 @@
  */
 package edu.esprit.pidev.controllers;
 
-import edu.esprit.pidev.models.Vol;
 import edu.esprit.pidev.models.VoyageOrganise;
+import edu.esprit.pidev.sevices.VoyageOrganiseService;
+import edu.esprit.pidev.utils.MoviePlayer;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -14,8 +15,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -24,34 +26,37 @@ import javafx.scene.control.TableView;
  */
 public class FXMLResultatRecherchVOController implements Initializable {
 
-    @FXML
-    private TableView<VoyageOrganise> table_vo;
-    @FXML
-    private TableColumn<VoyageOrganise, String> TitreVO;
-    @FXML
-    private TableColumn<VoyageOrganise, String> date_debut;
-    @FXML
-    private TableColumn<VoyageOrganise, String> date_fin;
-    @FXML
-    private TableColumn<VoyageOrganise, Integer> prix_vo;
-    @FXML
-    private TableColumn<VoyageOrganise, String> description_vo;
-
-    
     float prix = Integer.parseInt(FXMLRecherchVoyageOrganiseController.prix_vo_max.getText());
     LocalDate ld = FXMLRecherchVoyageOrganiseController.date_vo_debut.getValue();
     java.sql.Date da1 = java.sql.Date.valueOf(ld);
     LocalDate ld2 =FXMLRecherchVoyageOrganiseController.date_vo_fin.getValue();
-    
-    
+    java.sql.Date da2 = java.sql.Date.valueOf(ld2);
+    @FXML
+    private ListView<VoyageOrganise> listeVO;
+
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        /*VoyageOrganise
-        final ObservableList<VoyageOrganise> names = FXCollections.observableArrayList(vs.getAllcondition(prix, villedep, villearr,da1,da2));*/
-    }    
-    
+        VoyageOrganiseService vs = new VoyageOrganiseService();
+        VoyageOrganise vo = new VoyageOrganise();
+
+        System.out.println(vs.getAllcondition(da1, da2, prix));
+        System.err.println("aaaaa");
+        ObservableList<VoyageOrganise> names = FXCollections.observableArrayList(vs.getAllcondition(da1, da2, prix));
+        listeVO.setItems(names);
+        listeVO.setCellFactory(studentListView -> new FXMLRowListeVOController());
+    }
+
+    @FXML
+    private void OnVisualiserVoyageOrganiser(MouseEvent event)throws Exception {
+        Stage primaryStage = new Stage();
+        MoviePlayer mp = new MoviePlayer();
+        mp.start(primaryStage);
+    }
+
 }

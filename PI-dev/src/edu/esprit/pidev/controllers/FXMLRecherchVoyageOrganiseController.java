@@ -45,7 +45,7 @@ public class FXMLRecherchVoyageOrganiseController implements Initializable {
         // TODO
         date_vo_debut=date_debut_vo;
         date_vo_fin=date_fin_vo;
-        
+        prix_vo_max=prix_max_vo;
     }    
 
     @FXML
