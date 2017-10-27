@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -28,5 +29,6 @@
       <Label layoutX="46.0" layoutY="193.0" text="Num Tel" />
       <Label layoutX="272.0" layoutY="193.0" text="Adresse" />
       <JFXButton fx:id="bt_modifier_conecter" layoutX="346.0" layoutY="252.0" onAction="#OnModifierConecter" prefHeight="63.0" prefWidth="113.0" text="Modifier" />
+      <ImageView fx:id="image_comte_client_modif" fitHeight="83.0" fitWidth="127.0" layoutX="101.0" layoutY="242.0" onMouseClicked="#OnModifImageClient" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
