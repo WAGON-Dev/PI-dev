@@ -6,6 +6,7 @@
 package edu.esprit.pidev.sevices;
 
 import edu.esprit.pidev.interfaces.IHotel;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.techniques.DataSource;
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class HotelService  implements IHotel  {
             preparedStatement.setString(1, Name);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getInt(10),resultSet.getInt(10));
+              hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -103,6 +104,7 @@ public class HotelService  implements IHotel  {
     }
 
     @Override
+    
     public Hotel findById(Integer id_user) {
               Hotel  hotel = null;
         String req = "select * from users where id_user=?";
@@ -112,7 +114,7 @@ public class HotelService  implements IHotel  {
             preparedStatement.setInt(1, id_user);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getInt(10),resultSet.getInt(10));
+                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -129,7 +131,7 @@ public class HotelService  implements IHotel  {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Hotel hotel = new Hotel(resultSet.getInt("id_user"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getInt(10),resultSet.getInt(10));
+                Hotel hotel = new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
                 hotels.add(hotel);
             }
         } catch (SQLException ex) {
@@ -137,4 +139,53 @@ public class HotelService  implements IHotel  {
         }
         return hotels;
     }
+    public Hotel findByName_note(String Name) {
+              Hotel  hotel = null;
+        String req = "select * from users where nom=? ";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, Name);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
+                
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hotel;
+    }
+      public void update_noote(Hotel h) {
+        String req = "update users set note=? where id_user = ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            
+            preparedStatement.setInt(1, h.getNote());
+            preparedStatement.setInt(2, h.getId_user());
+            
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+     public List<String> getAll_name(String role) {
+       List<String> hotels = new ArrayList<>();
+        String req = "select * from users where role= ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, role);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Hotel hotel = new Hotel(resultSet.getString(3));
+                hotels.add(hotel.getNom());
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hotels;
+    }
+      
 }

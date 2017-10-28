@@ -95,7 +95,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Demande demande = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt(1)), new GuideService().findById(resultSet.getInt(3)), new ClientService().findById(resultSet.getInt(2)));
+                Demande demande = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt(1)), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt(2)));
                 demandes.add(demande);
             }
         } catch (SQLException ex) {

@@ -148,7 +148,7 @@ public class FXMLModifier_VPController implements Initializable {
             vp.setVille_arrive(ville_arrive1.getText());
             vp.setNbr_participant(Integer.parseInt(nbr_participant1.getText()));
             HotelService hs = new HotelService();
-            vp.setHotel(hs.findById(Integer.parseInt(hotel1.getText())));
+            vp.setHotel(hs.findByName(hotel1.getText()));
             LocalDate ld1 = Date_depart.getValue();
             vp.setDate_depart(Date.valueOf(ld1));
             LocalDate ld = date_retour1.getValue();

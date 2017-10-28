@@ -7,6 +7,7 @@ package edu.esprit.pidev.sevices;
 
 import edu.esprit.pidev.interfaces.Iguide;
 import edu.esprit.pidev.models.Guide;
+import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -142,6 +143,23 @@ public class GuideService implements Iguide {
         }
         return g;
     }
+      public Guide findByName(String n) {
+        Guide g = null;
+        String req = "select * from users where nom=? and role='Guide'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, n);
+           
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
 
     public Guide findByEmail(String e) {
         Guide g = null;
@@ -177,21 +195,36 @@ public class GuideService implements Iguide {
         }
         return guides;
     }
-     public Guide findByName(String r) {
-        Guide g = null;
-        String req = "select * from users where nom=?";
+  
+     public List<String> getAllname(String role) {
+        List<String> guides = new ArrayList<>();
+        String req = "select * from users where role = ? ";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-            preparedStatement.setString(1, r);
+              preparedStatement.setString(1, role);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                Guide g = new Guide(resultSet.getString("nom"));
+                guides.add(g.getNom());
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        return g;
+        return guides;
     }
-
+      public void update_noote(Guide g) {
+        String req = "update users set note=? where id_user = ? ";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            
+            preparedStatement.setInt(1, g.getNote());
+            preparedStatement.setInt(2, g.getId_user());
+            
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
