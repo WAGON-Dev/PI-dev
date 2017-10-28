@@ -193,5 +193,21 @@ public class GuideService implements Iguide {
         }
         return g;
     }
-
+     public List<String> getAllname(String role) {
+        List<String> guides = new ArrayList<>();
+        String req = "select * from users where role = ? ";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+              preparedStatement.setString(1, role);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Guide g = new Guide(resultSet.getString("nom"));
+                guides.add(g.getNom());
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return guides;
+    }
 }

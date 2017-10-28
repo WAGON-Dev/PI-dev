@@ -31,6 +31,10 @@ public class Guide extends Users{
         this.Note = Note;
     }
 
+    public Guide(String nom) {
+        super(nom);
+    }
+    
     public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
         super(nom, email, mdp, numtel, adresse, role, image);
         this.prenom = prenom;

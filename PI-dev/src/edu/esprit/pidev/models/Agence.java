@@ -15,6 +15,10 @@ public class Agence extends Users {
         
     }
 
+    public Agence(String nom) {
+        super(nom);
+    }
+
     public Agence(int id_user, String nom) {
         super(id_user, nom);
     }

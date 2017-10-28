@@ -29,6 +29,10 @@ public class Users {
         this.nom = nom;
     }
 
+    public Users(String nom) {
+        this.nom = nom;
+    }
+
     public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse) {
         this.id_user = id_user;
         this.nom = nom;

@@ -18,6 +18,20 @@ public class Hotel extends Users {
     private int etoile;
     private int nb_chambre;
     private int nb_chambre_reserve;
+    private int note ;
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+
+    public Hotel(String nom) {
+        super(nom);
+    }
+    
 
     public Hotel(String nom, String email, String mdp, int numtel, String adresse, String role, String image, int etoile, int nb_chambre, int nb_chambre_reserve) {
         super(nom, email, mdp, numtel, adresse, role, image);
