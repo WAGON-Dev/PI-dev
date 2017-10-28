@@ -40,6 +40,14 @@ public class Hotel extends Users {
         this.nb_chambre_reserve = nb_chambre_reserve;
     }
 
+    public Hotel(int etoile, int nb_chambre, int nb_chambre_reserve, int note, int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+        super(id_user, nom, email, mdp, numtel, adresse, role, image);
+        this.etoile = etoile;
+        this.nb_chambre = nb_chambre;
+        this.nb_chambre_reserve = nb_chambre_reserve;
+        this.note = note;
+    }
+    
     public Hotel(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image, int etoile, int nb_chambre, int nb_chambre_reserve) {
         super(id_user, nom, email, mdp, numtel, adresse, role, image);
         this.etoile = etoile;
