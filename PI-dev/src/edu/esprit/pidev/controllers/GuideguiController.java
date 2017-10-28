@@ -22,6 +22,8 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.util.Duration;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -60,8 +62,6 @@ public class GuideguiController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODOfinal
-
         GuideService gs = new GuideService();
         Guide g = gs.findByEmail("jemaighass@gmail.com");
         guidelog = g;

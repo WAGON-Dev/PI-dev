@@ -24,6 +24,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Duration;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -70,6 +72,11 @@ public class GuideVPListController implements Initializable {
         } catch (IOException ex) {
 
         }
+
+        TrayNotification tray = new TrayNotification();
+        tray.setTitle("La liste des Offres des Voyages\nPersonnalisés");
+        tray.setMessage("Vous pouvez postuler dans ces offres ou envoyer\nun email aux clients");
+        tray.showAndDismiss(Duration.seconds(5));
     }
 
     @FXML

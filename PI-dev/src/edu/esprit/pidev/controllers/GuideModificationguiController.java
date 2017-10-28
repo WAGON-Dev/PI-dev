@@ -29,6 +29,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -130,23 +132,41 @@ public class GuideModificationguiController implements Initializable {
     @FXML
     private void confirm_mod_clicked(MouseEvent event) throws IOException {
         if (adresse_modif == null || cin_modif == null || date_modif == null || email_modif == null || nom_modif == null || pwd_modif == null || prenom_modif == null || pwdverif_modif == null) {
-            System.out.println("completer tous les champs !!");
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle("Completer tous les champs !");
+            tray.showAndDismiss(Duration.seconds(3));
+
         } else {
-            if ((pwd_modif.getText().equals(pwdverif_modif.getText()))) {
-                FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
-
-                Parent rroot = lloader.load();
-
-                GuideguiController guiController = lloader.getController();
-
-                guiController.guidelog.setNom(nom_modif.getText());
-                guiController.guidelog.setPrenom(prenom_modif.getText());
-                guiController.guidelog.setAdresse(adresse_modif.getText());
-
-                GuideService gs = new GuideService();
-                gs.update2(guiController.guidelog);
+            String em = email_modif.getText();
+            if (!(em.indexOf("@") >= 0)) {
+                TrayNotification tray = new TrayNotification();
+                tray.setTitle("Email invalide !");
+                tray.showAndDismiss(Duration.seconds(3));
             } else {
-                System.out.println("les mdps ne sont pas identiques !!");
+                if (pwd_modif.getText().equals(pwdverif_modif.getText())) {
+                    FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
+
+                    Parent rroot = lloader.load();
+
+                    GuideguiController guiController = lloader.getController();
+
+                    guiController.guidelog.setNom(nom_modif.getText());
+                    guiController.guidelog.setPrenom(prenom_modif.getText());
+                    guiController.guidelog.setAdresse(adresse_modif.getText());
+
+                    GuideService gs = new GuideService();
+                    gs.update2(guiController.guidelog);
+                    TrayNotification tray = new TrayNotification();
+                    tray.setTitle("Modification effectuée");
+                    tray.setMessage("Vos informations sont modifiés !");
+                    tray.showAndDismiss(Duration.seconds(3));
+
+                } else {
+                    TrayNotification tray = new TrayNotification();
+                    tray.setTitle("Verification non effectuée !");
+                    tray.setMessage("Verifier votre mot de passe.");
+                    tray.showAndDismiss(Duration.seconds(3));
+                }
             }
         }
     }
