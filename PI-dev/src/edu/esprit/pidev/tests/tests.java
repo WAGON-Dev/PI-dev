@@ -96,7 +96,8 @@ public class tests {
         VoyageOrganiseService vo = new VoyageOrganiseService();
 //        CarRentalService crr = new CarRentalService();
 //        CarRental carl = new CarRental(0, 14, 117, "Agence Locator_Sousse", "Google@gmail.com", "hiyohi", 12549365, "Sousse", "Agence de Location", "C:/");
-//        crr.add(carl);
+//        CarService cser = new CarService();
+//        System.out.println(cser.FindByRate(50, 40));
     }
 
 }

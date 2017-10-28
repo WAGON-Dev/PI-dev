@@ -133,14 +133,14 @@ public class CarService implements ICarService {
     }
     
      public  List<Car> FindByRate(int max, int min) {
-        String query="SELECT * from voiture where rate>"+min+" and rate<"+max+""  ;
+        String query="SELECT * from voiture where rate>="+min+" and rate<="+max+""  ;
         Car c = new Car();
          List<Car> carList = new ArrayList<>();
         try{
             PreparedStatement statement = connection.prepareStatement(query);
             ResultSet result = statement.executeQuery(query);
             while(result.next()){
-            c = new Car(result.getString(1),result.getString(2),result.getInt(3),result.getInt(4),result.getString(5),result.getBoolean(6));
+            c = new Car(result.getString(1),result.getString(2),result.getInt(3),result.getInt(4),result.getString(5),result.getBoolean(6),new CarRentalService().findById(result.getInt(8)),new ClientService().findById(result.getInt(7)));
             carList.add(c);
             }
             

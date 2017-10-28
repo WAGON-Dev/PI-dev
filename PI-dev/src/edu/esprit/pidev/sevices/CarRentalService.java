@@ -112,7 +112,7 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public CarRental findById(Integer r) {
-        String query= "Select * from users where id=?";
+        String query= "Select * from users where id_user="+r+"";
         CarRental cr= new CarRental();
         
         try{

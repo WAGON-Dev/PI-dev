@@ -19,8 +19,8 @@ public class Car {
     private int rate;// depending on the car type 
     private String type;//three type of cars exist Small, meduim and large(VAN)
     private boolean status;// status of the car is it rented or not??
-    private int CarRentalID;// car Rental's Id
-    private int UserId;//the renter's Id
+    private CarRental CarRentalID;// car Rental's Id
+    private Client UserId;//the renter's Id
 
     
     
@@ -39,19 +39,30 @@ public class Car {
         //this.UserId = UserId;
     }
 
-    public int getCarRentalID() {// this is forign key! For Car rental CRUD
+    public CarRental getCarRentalID() {
         return CarRentalID;
     }
 
-    public void setCarRentalID(int CarRentalID) {
-        this.CarRentalID = CarRentalID;
-    }
-
-    public int getUserId() {// this is also a foreign key! For car table CRUD
+    public Client getUserId() {
         return UserId;
     }
 
-    public void setUserId(int UserId) {
+    public void setCarRentalID(CarRental CarRentalID) {
+        this.CarRentalID = CarRentalID;
+    }
+
+    public void setUserId(Client UserId) {
+        this.UserId = UserId;
+    }
+
+    public Car(String model, String regNo, int duration, int rate, String type, boolean status, CarRental CarRentalID, Client UserId) {
+        this.model = model;
+        this.regNo = regNo;
+        this.duration = duration;
+        this.rate = rate;
+        this.type = type;
+        this.status = status;
+        this.CarRentalID = CarRentalID;
         this.UserId = UserId;
     }
 
@@ -59,6 +70,10 @@ public class Car {
     public String toString() {
         return "Car{" + "model=" + model + ", regNo=" + regNo + ", duration=" + duration + ", rate=" + rate + ", type=" + type + ", status=" + status + ", CarRentalID=" + CarRentalID + ", UserId=" + UserId + '}';
     }
+
+    
+
+    
 
     @Override
     public int hashCode() {
@@ -69,8 +84,6 @@ public class Car {
         hash = 43 * hash + this.rate;
         hash = 43 * hash + Objects.hashCode(this.type);
         hash = 43 * hash + (this.status ? 1 : 0);
-        hash = 43 * hash + this.CarRentalID;
-        hash = 43 * hash + this.UserId;
         return hash;
     }
     
@@ -132,11 +145,7 @@ public class Car {
     public boolean equals(Object obj) {
         return super.equals(obj); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    
-    
-    
-    
+
     
 }
 
