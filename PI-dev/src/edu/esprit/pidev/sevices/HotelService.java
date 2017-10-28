@@ -37,7 +37,7 @@ public class HotelService  implements IHotel  {
             preparedStatement.setString(1, Name);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(5),resultSet.getString(6),resultSet.getString(7),resultSet.getString(8),resultSet.getInt(9),resultSet.getInt(10),resultSet.getInt(10));
+              hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
