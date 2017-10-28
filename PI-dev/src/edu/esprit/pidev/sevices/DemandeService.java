@@ -8,6 +8,7 @@ package edu.esprit.pidev.sevices;
 import edu.esprit.pidev.interfaces.IDemandeService;
 
 import edu.esprit.pidev.models.Demande;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.techniques.DataSource;
 
 import java.sql.Connection;
@@ -66,6 +67,23 @@ public class DemandeService implements IDemandeService {
     @Override
     public Demande findById(Integer r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+     public Demande findGuideEmail(String r) {
+        Demande d = null;
+        String req = "select * from demande where id_guide_fk=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, r);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")),new ClientService().findById(resultSet.getInt("id_client_fk")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return d;
     }
 
     @Override
