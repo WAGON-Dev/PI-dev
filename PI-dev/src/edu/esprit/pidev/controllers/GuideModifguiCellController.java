@@ -13,13 +13,12 @@ import edu.esprit.pidev.sevices.DemandeService;
 import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,6 +29,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -115,7 +115,26 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             setCls(c);
             nom_client_row.setText(c.getNom());
             prenom_client_row.setText(c.getPrenom());
-            state.setText("");
+
+            FXMLLoader lloader = new FXMLLoader(getClass().getResource("../gui/Guidegui.fxml"));
+            try {
+                Parent rroot = lloader.load();
+            } catch (IOException ex) {
+                Logger.getLogger(GuideVPListController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            GuideguiController guiController = lloader.getController();
+
+            Demande dem = new Demande();
+            dem.setId_vp(student);
+            dem.setId_client(student.getClient());
+            dem.setId_guide(guiController.guidelog);
+            DemandeService ds = new DemandeService();
+            if (dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
+                state.setText("Demande déjà envoyé");
+            } else {
+                state.setText("");
+            }
+
             File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
             Image img = new Image(file.toURI().toString());
             image_row_client.setImage(img);
@@ -167,8 +186,12 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_client(vp.getClient());
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
-        ds.add(dem);
-        state.setText("Demande reçu");
+        if (!dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
+            ds.add(dem);
+            state.setText("Demande reçu");
+        } else {
+            state.setText("Demande déjà envoyé");
+        }
     }
 
     @FXML
@@ -187,8 +210,22 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_client(vp.getClient());
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
-        ds.remove(dem.getId_vp().getId_vp());
-        state.setText("Annulation de la demande");
+        
+        if (dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
+            ds.add(dem);
+            ds.remove(dem.getId_vp().getId_vp());
+        state.setText("Demande Annulé");
+        Timeline t = new Timeline(new KeyFrame(
+                Duration.millis(1200),
+                ae -> state.setText("")));
+        t.play();
+        }else{
+            state.setText("Vous n'avez pas postulé dans cette offre !!");
+            Timeline t1 = new Timeline(new KeyFrame(
+                Duration.millis(3000),
+                ae -> state.setText("")));
+        t1.play();
+        }
     }
 
 }

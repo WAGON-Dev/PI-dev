@@ -34,6 +34,6 @@
       <Button fx:id="bt_anuller_row" layoutX="553.0" layoutY="154.0" mnemonicParsing="false" onMouseClicked="#OnAnullerRow" style="-fx-background-color: #4d79ff;" text="Annuler" textFill="WHITE" />
       <Separator layoutX="-6.0" layoutY="190.0" prefHeight="5.0" prefWidth="706.0" style="-fx-background-color: #4d79ff;" />
       <Label fx:id="nom_client_row" layoutX="565.0" layoutY="31.0" text="Label" />
-      <Label fx:id="state" layoutX="551.0" layoutY="132.0" style="-fx-background-color: pink;" text="label" />
+      <Label fx:id="state" layoutX="448.0" layoutY="127.0" style="-fx-background-color: pink;" text="label" />
    </children>
 </AnchorPane>
