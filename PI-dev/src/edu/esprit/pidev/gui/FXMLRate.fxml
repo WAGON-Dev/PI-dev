@@ -4,11 +4,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.controlsfx.control.Rating?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="edu.esprit.pidev.controllers.FXMLRateController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRateController">
    <children>
       <Rating fx:id="rating" layoutX="410.0" layoutY="70.0" />
-      <JFXComboBox fx:id="comboboxchoice" layoutX="38.0" layoutY="86.0" onAction="#filtrechoice" />
-      <JFXComboBox fx:id="comboboxselction" layoutX="197.0" layoutY="99.0" onAction="#filtreselection" />
+      <JFXComboBox fx:id="comboboxchoice" layoutX="24.0" layoutY="73.0" onAction="#filtrechoice" prefHeight="26.0" prefWidth="158.0" promptText="choose your rating" />
+      <JFXComboBox fx:id="comboboxselction" layoutX="213.0" layoutY="73.0" onAction="#filtreselection" prefHeight="26.0" prefWidth="158.0" promptText="choose your favourite " />
    </children>
 </AnchorPane>
