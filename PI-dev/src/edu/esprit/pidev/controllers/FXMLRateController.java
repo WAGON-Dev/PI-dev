@@ -6,6 +6,7 @@
 package edu.esprit.pidev.controllers;
 
 import com.jfoenix.controls.JFXComboBox;
+import edu.esprit.pidev.models.Agence;
 import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.sevices.AgenceService;
@@ -99,6 +100,14 @@ public class FXMLRateController implements Initializable {
                     g.setNote(newValue.intValue());
                     System.out.println(g.getId_user());
                     gs.update_noote(g);
+                }else {
+                     AgenceService as = new AgenceService();
+                    Agence  g = new Agence();
+                    g = as.findByName(i);
+                    //System.out.println(g);
+                    g.setNote(newValue.intValue());
+                    System.out.println(g.getId_user());
+                    as.update_noote(g);
                 }
             }
         

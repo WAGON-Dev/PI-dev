@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import edu.esprit.pidev.interfaces.IAgenceService;
 import edu.esprit.pidev.models.Agence;
+import edu.esprit.pidev.models.Guide;
 
 import edu.esprit.pidev.techniques.DataSource;
 
@@ -138,4 +139,36 @@ public class AgenceService implements IAgenceService {
         }
         return agences;
     }
+       public Agence findByName(String n) {
+        Agence g = null;
+        String req = "select * from users where nom=? and role='agence'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, n);
+           
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Agence( resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"),resultSet.getString("mdp"),  resultSet.getInt("numTel"), resultSet.getString("adresse"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
+        public void update_noote(Agence g) {
+        String req = "update users set note=? where id_user = ? ";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            
+            preparedStatement.setInt(1, g.getNote());
+            preparedStatement.setInt(2, g.getId_user());
+            
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+      
 }

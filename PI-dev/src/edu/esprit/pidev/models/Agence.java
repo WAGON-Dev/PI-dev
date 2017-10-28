@@ -10,11 +10,25 @@ import java.util.Objects;
 
 public class Agence extends Users {
      int nbr_voyage_organise ;
+     int note ;
 
     public Agence() {
         
     }
 
+    public Agence(int note, int id_user, String nom, String email, String mdp, int numtel, String adresse) {
+        super(id_user, nom, email, mdp, numtel, adresse);
+        this.note = note;
+    }
+
+    public int getNote() {
+        return note;
+    }
+
+    public void setNote(int note) {
+        this.note = note;
+    }
+    
     public Agence(String nom) {
         super(nom);
     }
