@@ -79,8 +79,16 @@ public class Demande {
         if (!Objects.equals(this.id_vp, other.id_vp)) {
             return false;
         }
+        if (!Objects.equals(this.id_guide, other.id_guide)) {
+            return false;
+        }
+        if (!Objects.equals(this.id_client, other.id_client)) {
+            return false;
+        }
         return true;
     }
+
+    
 
   
 }

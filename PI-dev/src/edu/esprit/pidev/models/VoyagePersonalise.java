@@ -33,6 +33,10 @@ public class VoyagePersonalise  {
         return nom_hotel;
     }
 
+    public VoyagePersonalise(String nom) {
+        this.nom = nom;
+    }
+
     public void setNom_hotel(String nom_hotel) {
         this.nom_hotel = nom_hotel;
     }
