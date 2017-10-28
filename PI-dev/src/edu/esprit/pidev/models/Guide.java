@@ -42,6 +42,7 @@ public class Guide extends Users{
         this.dateDeNaissance = dateDeNaissance;
         this.nbrNote = nbrNote;
         this.Note = Note;
+        this.id_user=id_user;
     }
 
     public Guide(String prenom, String CIN, Date dateDeNaissance, int nbrNote, int Note, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
