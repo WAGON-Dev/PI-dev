@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox fx:id="Vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="130.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLMenuBarController">
+<VBox fx:id="Vbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="130.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLMenuBarController">
    <children>
       <ImageView fx:id="image_menu_bar" fitHeight="100.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="nom_p_menu_bar" prefHeight="25.0" prefWidth="130.0" text="NomP" />
@@ -16,6 +16,7 @@
       <JFXButton fx:id="compte_menubar" onAction="#On_Compte_menu_bar" prefHeight="50.0" prefWidth="130.0" text="Mon Compte" />
       <JFXButton fx:id="rechercher_menu_bar" onAction="#OnRechercherMenuBar" prefHeight="50.0" prefWidth="130.0" text="Rechercher" />
       <JFXButton fx:id="VP_menu_bar" onAction="#OnVPMenuBar" prefHeight="50.0" prefWidth="130.0" text="Creer Votre Voyage" />
+      <JFXButton fx:id="bt_reservation" onAction="#OnMesReservation" prefHeight="50.0" prefWidth="130.0" text="Mes Reservation" />
       <JFXButton fx:id="forum_menu_bar" onAction="#OnForumMenuBar" prefHeight="50.0" prefWidth="130.0" text="Forum" />
       <JFXButton fx:id="rate_menu_bar" onAction="#OnRateMenuBar" prefHeight="50.0" prefWidth="130.0" text="Rate" />
       <JFXButton fx:id="exit_menu_bar" onAction="#OnExitMenuBar" prefHeight="50.0" prefWidth="130.0" text="Exit" />

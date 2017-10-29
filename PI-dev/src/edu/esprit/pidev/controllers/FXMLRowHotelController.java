@@ -7,8 +7,11 @@ package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.Chambre;
 import edu.esprit.pidev.models.Hotel;
+import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.sevices.ChambreService;
+import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.HotelService;
+import edu.esprit.pidev.sevices.ReservationService;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -51,6 +54,8 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     private Button bt_contacter_mail_hotel;
     
     private FXMLLoader mLLoader;
+    
+    public Chambre ch_res;
 
     /**
      * Initializes the controller class.
@@ -76,6 +81,7 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
                 }
             }
            // System.out.println(student.getHotel_fk().getNom());
+           ch_res=student;
             nom_hotel.setText(String.valueOf(student.getClient_fk().getNom()));
             adresse_hotel.setText(student.getClient_fk().getAdresse());
             File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
@@ -97,6 +103,9 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
 
     @FXML
     private void OnReserverHotel(MouseEvent event) {
+        ReservationService ress = new ReservationService();
+        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId(), ch_res.getPrix());
+        ress.addChambre(r);
     }
 
     @FXML
