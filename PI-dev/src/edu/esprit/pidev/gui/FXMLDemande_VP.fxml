@@ -9,15 +9,15 @@
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
    
     <children>
-      <TableView fx:id="table_demande" layoutX="110.0" layoutY="14.0" prefHeight="200.0" prefWidth="406.0">
+      <TableView fx:id="table_demande" layoutX="186.0" layoutY="17.0" prefHeight="116.0" prefWidth="314.0">
         <columns>
           <TableColumn fx:id="id_vp" prefWidth="124.00003051757812" text="voyage personalise" />
           <TableColumn fx:id="id_guide" prefWidth="117.59999084472656" text="guide" />
         </columns>
       </TableView>
-      <JFXButton fx:id="afficher" layoutX="516.0" layoutY="14.0" onAction="#afficher" text="Afficher" />
-      <JFXButton layoutX="516.0" layoutY="75.0" onAction="#pdf" styleClass="buttonLoginGoogle" stylesheets="@../css/css_email.css" text="Confirmer et Imprimer le contrat" />
-      <JFXTextField fx:id="passw" layoutX="501.0" layoutY="285.0" prefHeight="26.0" prefWidth="149.0" />
-      <JFXButton fx:id="email" layoutX="501.0" layoutY="341.0" onAction="#envoyer" styleClass="email" stylesheets="@../css/css_email.css" text="Envoyer Facture via Mail" />
+      <JFXButton fx:id="afficher" layoutX="573.0" layoutY="17.0" onAction="#afficher" text="Afficher" />
+      <JFXButton layoutX="249.0" layoutY="162.0" onAction="#pdf" styleClass="buttonLoginGoogle" stylesheets="@../css/css_email.css" text="Confirmer et Imprimer le contrat" />
+      <JFXTextField fx:id="passw" layoutX="546.0" layoutY="237.0" prefHeight="26.0" prefWidth="149.0" />
+      <JFXButton fx:id="email" layoutX="548.0" layoutY="291.0" onAction="#envoyer" styleClass="email" stylesheets="@../css/css_email.css" text="Envoyer Facture via Mail" />
    </children>
 </AnchorPane>
