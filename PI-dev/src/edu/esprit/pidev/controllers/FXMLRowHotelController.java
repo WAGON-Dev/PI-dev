@@ -61,7 +61,7 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
         ChambreService cs = new ChambreService();
         Hotel hotel = new Hotel();
         HotelService hs = new HotelService();
-
+        cs.getAll().toString();
         if (empty || student == null) {
             setText(null);
             setGraphic(null);
@@ -75,17 +75,19 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
                     e.printStackTrace();
                 }
             }
-            nom_hotel.setText(String.valueOf(student.getHotel_fk().getNom()));
-            adresse_hotel.setText(student.getHotel_fk().getAdresse());
+           // System.out.println(student.getHotel_fk().getNom());
+            nom_hotel.setText(String.valueOf(student.getClient_fk().getNom()));
+            adresse_hotel.setText(student.getClient_fk().getAdresse());
             File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
             Image img = new Image(file.toURI().toString());
             hotal_image.setImage(img);
             File file1 = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/person.png");
             Image img1 = new Image(file1.toURI().toString());
             chambre_image.setImage(img1);
-            rater.setRating(student.getHotel_fk().getEtoile());
+            rater.setRating(4);
             type_chambre.setText(student.getType());
             prix_chambre.setText(String.valueOf(student.getPrix()));
+            System.out.println(student.getHotel_fk().getEtoile());
             setText(null);
             setGraphic(pane);
 
