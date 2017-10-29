@@ -35,17 +35,18 @@ public class CarService implements ICarService {
     // CRUD methods for car and car Rental services
     @Override
     public void add(Car c) {
-        String query = " insert into voiture (model,regNo,duration,rate,type,status) values (?,?,?,?,?,?)";
+        String query = "insert into voiture (model,regNo,duration,rate,type,status,client_vo_fk,alv_vo_fk) values (?,?,?,?,?,?,?,?)";
 
         try {
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, c.getModel());
-            statement.setString(2, c.getRegNo());
+            statement.setString(2, c.getModel());
+            statement.setString(1, c.getRegNo());
             statement.setInt(3, c.getDuration());
             statement.setInt(4, c.getRate());
             statement.setString(5, c.getType());
             statement.setBoolean(6, c.isStatus());
-
+            statement.setInt(7, c.getCarRentalID().getId_user());
+            statement.setInt(8, c.getUserId().getId_user());
             int rowinserted = statement.executeUpdate();
             if (rowinserted > 0) {
                 System.out.println("Row added !!!");
@@ -122,7 +123,7 @@ public class CarService implements ICarService {
     }
 
     public List<Car> FindByRateAndAdress(int min, int max, String add) {
-        String query = "select * from voiture where (rate >= " + min + " and rate <= " + max + ")";
+        String query = "select * from voiture where rate >= " + min + " and rate <= " + max ;
         Car c = new Car();
         List<Car> carList = new ArrayList<>();
         try {
@@ -160,7 +161,6 @@ public class CarService implements ICarService {
         }
 
         return carList;
-//throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -194,8 +194,25 @@ public class CarService implements ICarService {
     }
 
     @Override
-    public void update(Car t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Car c) {
+String query = " update voiture set model=?,duration=?,rate=?,type=?,status=?,client_vo_fk=? where regNo=? and alv_vo_fk=?";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, c.getModel());
+            statement.setString(7, c.getRegNo());
+            statement.setInt(2, c.getDuration());
+            statement.setInt(3, c.getRate());
+            statement.setInt(4, Integer.parseInt(c.getType()));
+            statement.setBoolean(5, c.isStatus());
+            statement.setInt(8, c.getCarRentalID().getId_user());
+            statement.setInt(6, c.getUserId().getId_user());
+            int rowinserted = statement.executeUpdate();
+            if (rowinserted > 0) {
+                System.out.println("Row updated !!!");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override// remove with rental car service id.

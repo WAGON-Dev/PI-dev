@@ -94,10 +94,13 @@ public class tests {
         //volservise.add(v6);
         //////////////////////////////////////////////VoyageOrganisé/////////////////////////
         VoyageOrganiseService vo = new VoyageOrganiseService();
-//        CarRentalService crr = new CarRentalService();
+        CarRentalService crr = new CarRentalService();
 //        CarRental carl = new CarRental(0, 14, 117, "Agence Locator_Sousse", "Google@gmail.com", "hiyohi", 12549365, "Sousse", "Agence de Location", "C:/");
 //        CarService cser = new CarService();
 //        System.out.println(cser.FindByRate(50, 40));
+//            CarService crs = new CarService();
+//            Car car = new Car("Golf","1548299",0,30,"2", true , crr.findById(130) , cs.findById(91));
+//            crs.update(car);
     }
 
 }

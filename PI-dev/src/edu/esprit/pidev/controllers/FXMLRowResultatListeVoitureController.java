@@ -10,6 +10,7 @@ import edu.esprit.pidev.models.Car;
 import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.models.Demande;
 import edu.esprit.pidev.models.VoyagePersonalise;
+import edu.esprit.pidev.sevices.CarService;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.DemandeService;
 import java.io.File;
@@ -64,7 +65,7 @@ public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
     private AnchorPane cell;
     
     private FXMLLoader mLLoader;
-
+    public static Car voiture;
     /**
      * Initializes the controller class.
      */
@@ -88,7 +89,7 @@ public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
                 }
 
             }
-
+            voiture = student;
             reg_num_label.setText(student.getModel());
             prix_label.setText(String.valueOf(student.getRate()));
             modele_label.setText(student.getRegNo());
@@ -98,21 +99,31 @@ public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
             File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + student.getCarRentalID().getImage());
             Image img = new Image(file.toURI().toString());
             agl_photo.setImage(img);
-            state.setText("");
+                state.setText("");
             setText(null);
             setGraphic(cell);
         }
     }
     @FXML
     private void mail_sending_label_clicked(MouseEvent event) {
+    
     }
 
     @FXML
     private void reserver_btn_clicked(MouseEvent event) {
+        ClientService cser = new ClientService();
+        voiture.setUserId(cser.findById(91));
+        CarService cs = new CarService();
+        cs.update(voiture);
+        state.setText("Vous avez resrvé cette voiture");
     }
 
     @FXML
     private void annuler_btn_clicked(MouseEvent event) {
+        voiture.setUserId(null);
+        CarService cs = new CarService();
+        cs.update(voiture);
+        state.setText("reservation annulée");
     }
     
 }
