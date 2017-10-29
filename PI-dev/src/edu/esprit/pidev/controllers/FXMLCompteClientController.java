@@ -12,9 +12,12 @@ import edu.esprit.pidev.sevices.ClientService;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -44,6 +47,12 @@ public class FXMLCompteClientController implements Initializable {
     @FXML
     private ImageView image_comte_client_modif;
 
+    Pattern pattern;
+    Matcher matcher;
+    String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    @FXML
+    private Label ereur;
+
     /**
      * Initializes the controller class.
      */
@@ -52,7 +61,7 @@ public class FXMLCompteClientController implements Initializable {
         // TODO
         ClientService cs = new ClientService();
         Client c = new Client();
-        c=cs.findByemail("wajdy.bouslama@esprit.tn");
+        c = cs.findByemail("wajdy.bouslama@esprit.tn");
         nom_conecter.setText(c.getNom());
         prenom_conecter.setText(c.getPrenom());
         mail_conecter.setText(c.getEmail());
@@ -62,21 +71,45 @@ public class FXMLCompteClientController implements Initializable {
         File file = new File(c.getImage());
         Image img = new Image(file.toURI().toString());
         image_comte_client_modif.setImage(img);
-        
-    }    
+
+    }
 
     @FXML
     private void OnModifierConecter(ActionEvent event) {
         Client c = new Client();
         ClientService cs = new ClientService();
-        c.setNom(nom_conecter.getText());
-        c.setPrenom(prenom_conecter.getText());
-        c.setAdresse(adresse_conecter.getText());
-        c.setMdp(mdp_conecter.getText());
-        c.setEmail("wajdy.bouslama@esprit.tn");
-        c.setRole(num_tel_conecter.getText());
+        if (nom_conecter.getText() == null) {
+            c.setNom(nom_conecter.getText());
+            ereur.setText("Veuiller remplir le nom ");
+            return;
+        }
+        if (prenom_conecter.getText() == null) {
+            c.setPrenom(prenom_conecter.getText());
+            ereur.setText("Veuiller remplir le prenom ");
+            return;
+        }
+        if (adresse_conecter.getText() == null) {
+            c.setAdresse(adresse_conecter.getText());
+            ereur.setText("Veuiller remplir l'adresse ");
+            return;
+        }
+        if (mdp_conecter.getText() == null) {
+            c.setMdp(mdp_conecter.getText());
+            ereur.setText("Veuiller remplir le mot de passe ");
+            return;
+        }
+        if (adresse_conecter.getText()==null) {
+            c.setEmail("wajdy.bouslama@esprit.tn");
+            ereur.setText("Veuiller remplir votre adresse mail ");
+            return;
+        }
+        if (num_tel_conecter.getText() == null) {
+            c.setRole(num_tel_conecter.getText());
+            ereur.setText("Veuiller remplir le numero de telephone ");
+            return;
+        }
         cs.update(c);
-        
+
     }
 
     @FXML
@@ -99,5 +132,5 @@ public class FXMLCompteClientController implements Initializable {
             System.out.println("file invalid ");
         }
     }
-    
+
 }

@@ -9,16 +9,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLResultatRechercheVolController">
    <children>
-      <TableView fx:id="table_res_vol" layoutX="25.0" layoutY="50.0" prefHeight="220.0" prefWidth="450.0">
-        <columns>
-          <TableColumn fx:id="columnvdepart" prefWidth="75.0" text="ville depart" />
-          <TableColumn fx:id="columnvarriver" prefWidth="75.0" text="ville arriver" />
-            <TableColumn fx:id="columnprix" prefWidth="75.0" text="prix" />
-            <TableColumn fx:id="columdatearriver" prefWidth="75.0" text="date arriver" />
-            <TableColumn fx:id="columdatedepart" prefWidth="75.0" text="date depart" />
-            <TableColumn fx:id="columncompagnie" prefWidth="75.0" text="compagnie" />
-        </columns>
-      </TableView>
-      <JFXButton fx:id="Refresh_table_vol" layoutX="217.0" layoutY="295.0" onAction="#OnRefreshVol" text="Refresh" />
+      <ListView fx:id="liste_vol" layoutX="19.0" layoutY="20.0" prefHeight="301.0" prefWidth="455.0" />
    </children>
 </Pane>

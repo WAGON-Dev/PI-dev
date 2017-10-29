@@ -10,6 +10,7 @@ import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.techniques.DataSource;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -187,5 +188,5 @@ public class HotelService  implements IHotel  {
         }
         return hotels;
     }
-      
+     
 }

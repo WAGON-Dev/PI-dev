@@ -13,15 +13,20 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
 import edu.esprit.pidev.sevices.VolService;
-import java.sql.SQLData;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import javafx.event.ActionEvent;
-import javafx.scene.control.cell.PropertyValueFactory;
-
+/*
+import edu.esprit.pidev.models.Chambre;
+import edu.esprit.pidev.sevices.ChambreService;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ListView;*/
 /**
  * FXML Controller class
  *
@@ -29,23 +34,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class FXMLResultatRechercheVolController implements Initializable {
 
-    @FXML
-    private TableView<Vol> table_res_vol;
-
-    @FXML
-    private TableColumn<Vol, String> columnvdepart;
-    @FXML
-    private TableColumn<Vol, String> columnvarriver;
-    @FXML
-    private TableColumn<Vol, Integer> columnprix;
-    @FXML
-    private TableColumn<Vol, String> columdatearriver;
-    @FXML
-    private TableColumn<Vol, String> columdatedepart;
-    @FXML
-    private TableColumn<Vol, String> columncompagnie;
-    @FXML
-    private JFXButton Refresh_table_vol;
+    
     double prix = Double.parseDouble(FXMLReserverVolController.prix_vol_max.getText());
     String villedep = FXMLReserverVolController.ville_vol_depart.getText();
     String villearr = FXMLReserverVolController.ville_vol_arriver.getText();
@@ -53,6 +42,8 @@ public class FXMLResultatRechercheVolController implements Initializable {
     java.sql.Date da1 = java.sql.Date.valueOf(ld);
     LocalDate ld2 =FXMLReserverVolController.date_vol_depart.getValue() ;
         java.sql.Date da2 = java.sql.Date.valueOf(ld2);
+    @FXML
+    private ListView<Vol> liste_vol;
     /**
      * Initializes the controller class.
      */
@@ -64,27 +55,15 @@ public class FXMLResultatRechercheVolController implements Initializable {
 
        
         
-        final ObservableList<Vol> names = FXCollections.observableArrayList(vs.getAllcondition(prix, villedep, villearr,da1,da2));
-        columnvdepart.setCellValueFactory(new PropertyValueFactory<>("depart"));
-        columnvarriver.setCellValueFactory(new PropertyValueFactory<>("arrivee"));
-        columnprix.setCellValueFactory(new PropertyValueFactory<>("prix_vol"));
-        columdatearriver.setCellValueFactory(new PropertyValueFactory<>("date_arrivee"));
-        columdatedepart.setCellValueFactory(new PropertyValueFactory<>("date_depart"));
-        columncompagnie.setCellValueFactory(new PropertyValueFactory<>("nom_compagnie"));
+      
 
-        /* ObservableList<Vol> names2 =null;
+        ObservableList<Vol> names = FXCollections.observableArrayList(vs.getAllcondition(prix, villedep, villearr,da1,da2));
+        liste_vol.setItems(names);
+        liste_vol.setCellFactory(studentListView -> new FXMLRowVolController());
+
         
-        final Date d =vol1.getDate_depart();
-        //names2 = names.stream().filter(vol-> vol.getDate_arrivee().before(d)).collect(Collectors.toList());
-         */
-        table_res_vol.setItems(names);
 
     }
 
-    @FXML
-    private void OnRefreshVol(ActionEvent event) {
-        table_res_vol.getColumns().get(0).setVisible(false);
-        table_res_vol.getColumns().get(0).setVisible(true);
-    }
 
 }
