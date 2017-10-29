@@ -265,7 +265,6 @@ public class FXMLDemande_VPController implements Initializable {
         Guide g = new Guide();
         String nom = table_demande.getSelectionModel().getSelectedItem().getId_guide().getNom();
         g = gs.findByName(nom);
-        
         this.nom.setText(g.getNom());
         this.prenom.setText(g.getPrenom());
         this.cin.setText(g.getCIN());

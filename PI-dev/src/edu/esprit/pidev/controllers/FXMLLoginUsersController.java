@@ -67,6 +67,7 @@ public class FXMLLoginUsersController implements Initializable {
         ClientService cs=new ClientService();
         GuideService g=new GuideService();
         HotelService h=new HotelService();
+        ////////////////////////////Admin////////////////////////////////////////////////////
         if(a.findByNomPwd(userName.getText(), password.getText())!=null){
            
                    Stage primaryStage=new Stage();
@@ -79,13 +80,17 @@ public class FXMLLoginUsersController implements Initializable {
                      
 	 System.out.println("done1 !!");
         }
-    
+       ////////////////////////////Client//////////////////////////////////////////////////// 
        else if(ag.findByNomPwd(userName.getText(), password.getText())!=null){
-                         System.out.print("done2!!");
+               ClientService cs1 = new ClientService();
+               cs1.existeUtilisateur(userName.getText());
+              
+           System.out.print("done2!!");
 
             /*****LOading the interface****/
             
         }
+       ////////////////////////////Guide//////////////////////////////////////////////////// 
      else  if(car.findByNomPwd(userName.getText(), password.getText())!=null){
              System.out.print("done3!!");
             /*****LOading the interface****/
