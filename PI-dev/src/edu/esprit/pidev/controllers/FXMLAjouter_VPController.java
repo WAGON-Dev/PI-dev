@@ -8,17 +8,23 @@ package edu.esprit.pidev.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.models.Evenement;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
 import edu.esprit.pidev.models.VoyagePersonalise;
 import edu.esprit.pidev.sevices.ClientService;
+import edu.esprit.pidev.sevices.EmailSenderService;
 import edu.esprit.pidev.sevices.EvenementService;
+import edu.esprit.pidev.sevices.GuideService;
 import edu.esprit.pidev.sevices.HotelService;
 import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -29,6 +35,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -64,11 +72,11 @@ public class FXMLAjouter_VPController implements Initializable {
     @FXML
     private TableColumn<Evenement, String> endroit;
     @FXML
-    private TableColumn<Evenement,Date> date_evenement;
+    private TableColumn<Evenement, Date> date_evenement;
     @FXML
     private JFXButton ajouter;
-    
-     private ObservableList<Evenement> Liste_Event = FXCollections.observableArrayList();
+
+    private ObservableList<Evenement> Liste_Event = FXCollections.observableArrayList();
 
     /**
      * Initializes the controller class.
@@ -76,7 +84,7 @@ public class FXMLAjouter_VPController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @FXML
     private void ajouter(ActionEvent event) {
@@ -130,12 +138,31 @@ public class FXMLAjouter_VPController implements Initializable {
 
     @FXML
     private void mail(ActionEvent event) throws IOException {
-         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("email.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+      /*  EmailSenderService emailS = new EmailSenderService();
+        GuideService gs = new GuideService();
+        
+        List<String> emails = new ArrayList <> ();
+        
+        
+        Guide g= new Guide() ;
+        
+        String[] to = {emails.toString()};
+        c = ClientService.loggedUser;
+        String adresse = ClientService.loggedUser.getEmail();
+        String subject = "offre d'emplois pour guide";
+        String message = "aaaa";
+        if (emailS.sendMail(adresse, "1", message, subject, to)) {
+        }
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        //alert.initOwner(adresse.getScene().getWindow());
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Email Envoyer Avec Succées ");
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+
+            }
+        });*/
     }
-    
+
 }

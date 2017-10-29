@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="achorPane" prefHeight="606.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLScreenAdmin2Controller">
+   <children>
+      <Pane layoutX="14.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #00ced1;">
+         <children>
+            <Label layoutX="4.0" layoutY="8.0" prefHeight="28.0" prefWidth="146.0" text=" Our Clients Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="clientNbre" layoutX="56.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="182.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #00b9bc;">
+         <children>
+            <Label layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="146.0" text=" Our Guides Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="guideNbre" layoutX="57.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="354.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #00a4a7;">
+         <children>
+            <Label layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="146.0" text=" Our CRAs Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="ALVnbre" layoutX="57.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="529.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #007b7d;">
+         <children>
+            <Label layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="146.0" text=" Our VAs Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="AVnbre" layoutX="57.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="702.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #006768;">
+         <children>
+            <Label layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="146.0" text=" Our Hotels Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="HotelNbre" layoutX="57.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="873.0" layoutY="26.0" prefHeight="133.0" prefWidth="146.0" style="-fx-background-color: #006768;">
+         <children>
+            <Label layoutX="5.0" layoutY="14.0" prefHeight="28.0" prefWidth="146.0" text=" Our Admin Nbre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="AdminNbre" layoutX="57.0" layoutY="81.0" prefHeight="38.0" prefWidth="43.0" text="Label" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <VBox layoutX="14.0" layoutY="203.0" prefHeight="278.0" prefWidth="313.0" style="-fx-background-color: #32d7da;" styleClass="card-unpadded">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="320.0" spacing="20.0" style="-fx-background-color: #32d7da;">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../utils/appoint.png" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="20.0" prefWidth="233.0" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-font-size: 17px;" text="Appointment Statistics" />
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <VBox prefHeight="62.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="191.0" style="-fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold;" text="All Appointments">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <JFXProgressBar progress="1.0" />
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 15pt; -fx-text-fill: white;" text="123" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="58.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="181.0" style="-fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold;" text="Expired Appointments">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <JFXProgressBar progress="0.43" />
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 15pt; -fx-text-fill: white;" text="39" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="65.0" prefWidth="320.0">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="185.0" style="-fx-text-fill: white; -fx-font-size: 13px; -fx-font-weight: bold;" text="Pending Appointments">
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="37.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <JFXProgressBar progress="0.37" />
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 15pt; -fx-text-fill: white;" text="45" />
+                     </children>
+                     <padding>
+                        <Insets left="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <BarChart fx:id="usersChart" layoutX="438.0" layoutY="189.0" prefHeight="392.0" prefWidth="500.0" title="Most Interactive Users">
+        <xAxis>
+          <CategoryAxis label="Name" prefHeight="40.0" prefWidth="437.0" side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" prefHeight="359.0" prefWidth="33.0" side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </children>
+</AnchorPane>

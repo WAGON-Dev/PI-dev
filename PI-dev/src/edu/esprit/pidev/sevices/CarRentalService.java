@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author omarfarouk
@@ -192,5 +194,67 @@ public class CarRentalService implements ICarRentalService{
         return list;
         //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    
+     public CarRental findByNomPwd(String nom,String pwd) {
+        CarRental car = null;
+        String req = "select * from users where nom=? and mdp=? and role='agence de location de voiture'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1,nom);
+            preparedStatement.setString(2,pwd);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                //              int stars,                           int carNbre,                      int id_user,               String nom,                 String email, String mdp, int numtel, String adresse, String role, String image
+      car=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return car;
+     
+    }
+    public List<CarRental> getByRole() {
+List<CarRental> list = new ArrayList<>();
+        String query = "select * from users where role='agence de location de voiture'";
+        try{
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet res= statement.executeQuery(query);
+        while(res.next()){
+        CarRental cr= new CarRental();
+        cr.setRole(res.getString(1));
+        cr.setId_user(res.getInt(2));
+        cr.setNom(res.getString(3));
+        cr.setEmail(res.getString(4));
+        cr.setMdp(res.getString(5));
+        cr.setNumtel(res.getInt(6));
+        cr.setAdresse(res.getString(7));
+        cr.setImage(res.getString(8));
+        cr.setStars(res.getInt(9));
+        cr.setCarNbre(res.getInt(17));
+        
+        list.add(cr);
+            }
+        }catch(SQLException ex){
+        ex.printStackTrace();
+       }
+        return list;   
+    }
+    
+     public int nbrALV() {
+             int i=0;
+            String req = "SELECT COUNT(*) AS total FROM users where role='agence de location de voiture'";
+            PreparedStatement preparedStatement;
+          try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            i=resultSet.getInt("total");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+return i;
+}
         
     }

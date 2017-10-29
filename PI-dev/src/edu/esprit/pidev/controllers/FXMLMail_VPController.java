@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXTextField;
 import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.EmailSenderService;
+import edu.esprit.pidev.sevices.GuideService;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -41,7 +42,9 @@ public class FXMLMail_VPController implements Initializable {
     @FXML
     private void envoyer(ActionEvent event) {
          EmailSenderService emailS = new EmailSenderService();
-        String[] to = {"ahmed.benamribettaieb@esprit.tn"};
+        GuideService gs = new GuideService() ;
+        
+         String[] to = {""};
         Client c = new Client();
         c = ClientService.loggedUser;
         String adresse = ClientService.loggedUser.getEmail();

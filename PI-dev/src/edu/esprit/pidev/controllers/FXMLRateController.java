@@ -100,9 +100,9 @@ public class FXMLRateController implements Initializable {
                     g.setNote(newValue.intValue());
                     System.out.println(g.getId_user());
                     gs.update_noote(g);
-                }else {
-                     AgenceService as = new AgenceService();
-                    Agence  g = new Agence();
+                } else {
+                    AgenceService as = new AgenceService();
+                    Agence g = new Agence();
                     g = as.findByName(i);
                     //System.out.println(g);
                     g.setNote(newValue.intValue());
@@ -110,10 +110,8 @@ public class FXMLRateController implements Initializable {
                     as.update_noote(g);
                 }
             }
-        
+
+        });
     }
 
-);
-    }
-    
 }
