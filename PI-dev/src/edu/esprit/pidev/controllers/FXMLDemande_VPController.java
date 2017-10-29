@@ -169,7 +169,9 @@ public class FXMLDemande_VPController implements Initializable {
         } catch (DocumentException ex) {
             Logger.getLogger(FXMLDemande_VPController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
+        
         System.out.println("pdf avec success");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("information");
