@@ -5,7 +5,10 @@
  */
 package edu.esprit.pidev.controllers;
 
+import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.models.VoyageOrganise;
+import edu.esprit.pidev.sevices.ClientService;
+import edu.esprit.pidev.sevices.ReservationService;
 import edu.esprit.pidev.utils.MoviePlayer;
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author Asus
  */
-public class FXMLRowListeVOController extends ListCell<VoyageOrganise>{
+public class FXMLRowListeVOController extends ListCell<VoyageOrganise> {
 
     @FXML
     private AnchorPane pane;
@@ -40,18 +43,17 @@ public class FXMLRowListeVOController extends ListCell<VoyageOrganise>{
 
     private FXMLLoader mLLoader;
     
+    public VoyageOrganise ch_res;
+
     /**
      * Initializes the controller class.
      */
     @Override
     protected void updateItem(VoyageOrganise student, boolean empty) {
         super.updateItem(student, empty);
-
         if (empty || student == null) {
-
             setText(null);
             setGraphic(null);
-
         } else {
             if (mLLoader == null) {
                 mLLoader = new FXMLLoader(getClass().getClassLoader().getResource("edu/esprit/pidev/gui/FXMLRowListeVO.fxml"));
@@ -64,7 +66,7 @@ public class FXMLRowListeVOController extends ListCell<VoyageOrganise>{
                 }
 
             }
-
+            ch_res=student;
             prix_row_vo.setText(String.valueOf(student.getDateDebutVoy()));
             destination_row_vo.setText(student.getDescription());
             File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
@@ -72,14 +74,20 @@ public class FXMLRowListeVOController extends ListCell<VoyageOrganise>{
             image_row_VO.setImage(img);
             setText(null);
             setGraphic(pane);
-            
+
         }
 
-    }    
+    }
 
     @FXML
-    private void OnDescription(MouseEvent event)throws Exception {
-        
+    private void OnDescription(MouseEvent event) throws Exception {
+        ReservationService ress = new ReservationService();
+        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId_voyage(), ch_res.getPrix());
+        Reservation r1 = ress.findByIdCond(r.getId_reservation(), "wajdy.bouslama@esprit.tn");
+        if(r1.equals(r)){
+            
+        }else
+        ress.addVO(r);
     }
-    
+
 }

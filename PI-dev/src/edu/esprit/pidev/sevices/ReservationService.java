@@ -126,6 +126,25 @@ public class ReservationService implements IReservation {
     public Reservation findById(Integer r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public Reservation findByIdCond(Integer r , String s) {
+         Reservation g= null ;
+        String req = "select * from reservation where id_reservation=? and id_client=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, r);
+            preparedStatement.setString(2, s);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Reservation(new ClientService().findByemail(resultSet.getString("id_client")), resultSet.getString("type_reservation"), resultSet.getInt("id_reservation"), resultSet.getDouble("prix"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
+
 
     @Override
     public List<Reservation> getAll() {

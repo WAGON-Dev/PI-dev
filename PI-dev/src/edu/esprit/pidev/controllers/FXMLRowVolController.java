@@ -7,9 +7,12 @@ package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.Chambre;
 import edu.esprit.pidev.models.Hotel;
+import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.models.Vol;
 import edu.esprit.pidev.sevices.ChambreService;
+import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.HotelService;
+import edu.esprit.pidev.sevices.ReservationService;
 import edu.esprit.pidev.sevices.VolService;
 import java.io.File;
 import java.io.IOException;
@@ -52,6 +55,8 @@ public class FXMLRowVolController extends ListCell<Vol> {
     private Button bt_contacter_vol;
     
     private FXMLLoader mLLoader;
+    
+    public Vol vv;
 
     /**
      * Initializes the controller class.
@@ -75,6 +80,7 @@ public class FXMLRowVolController extends ListCell<Vol> {
                     e.printStackTrace();
                 }
             }
+            vv=student;
             nom_compagnie.setText(student.getNom_Compagnie());
             ville_depart.setText(student.getDepart());
             ville_arriver.setText(student.getArrivee());
@@ -92,7 +98,13 @@ public class FXMLRowVolController extends ListCell<Vol> {
 
     @FXML
     private void OnReserverVol(MouseEvent event) {
-    
+            ReservationService ress = new ReservationService();
+        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", vv.getNumTicket(), vv.getPrix_vol());
+        Reservation r1 = ress.findByIdCond(r.getId_reservation(), "wajdy.bouslama@esprit.tn");
+        if(r1.equals(r)){
+            
+        }else
+        ress.addVol(r);
     }
 
     @FXML

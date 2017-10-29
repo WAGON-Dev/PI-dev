@@ -105,7 +105,11 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     private void OnReserverHotel(MouseEvent event) {
         ReservationService ress = new ReservationService();
         Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId(), ch_res.getPrix());
-        ress.addChambre(r);
+        Reservation r1 = ress.findByIdCond(r.getId_reservation(),"wajdy.bouslama@esprit.tn");
+        if(r1.equals(r)){
+            
+        }else
+            ress.addChambre(r);
     }
 
     @FXML
