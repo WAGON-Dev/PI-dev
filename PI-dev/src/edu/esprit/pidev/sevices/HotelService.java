@@ -16,6 +16,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -188,5 +190,54 @@ public class HotelService  implements IHotel  {
         }
         return hotels;
     }
-     
+       public List<Hotel> getByRole() {
+ List<Hotel> hotels = new ArrayList<>();
+        String req = "select * from users where role='hotel'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                                           //         int id_user,              String nom,             String email,                String mdp,                int numtel,              String adresse, String role,                            String image,                        int etoile, int nb_chambre, int nb_chambre_reserve
+                Hotel hotel = new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("role"),resultSet.getString("image"),resultSet.getInt("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"));
+                hotels.add(hotel);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hotels;    }
+       
+       
+        public Hotel findByNomPwd(String nom,String pwd) {
+              Hotel  hotel = null;
+        String req = "select * from users where nom=? and mdp=? and role='hotel'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, nom);
+             preparedStatement.setString(2, pwd);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                hotel = new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("role"),resultSet.getString("image"),resultSet.getInt("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return hotel;
+    }
+      public int nbrHotel() {
+             int i=0;
+            String req = "SELECT COUNT(*) AS total FROM users where role='hotel'";
+            PreparedStatement preparedStatement;
+          try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            i=resultSet.getInt("total");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+return i;
+}
 }
