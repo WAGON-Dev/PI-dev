@@ -28,6 +28,17 @@ public class VoyagePersonalise  {
     private Evenement event2;
     private Evenement event3;
     private String nom_hotel ;
+    private Guide  guide ;
+
+    
+    
+    public Guide getGuide() {
+        return guide;
+    }
+
+    public void setGuide(Guide guide) {
+        this.guide = guide;
+    }
 
     public String getNom_hotel() {
         return nom_hotel;
@@ -249,10 +260,7 @@ public class VoyagePersonalise  {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + ", hotel=" + hotel + ", client=" + client + ", event1=" + event1.toString() + ", event2=" + event2.toString() + ", event3=" + event3.toString() + "}";
-    }
+    
     /* public java.sql.Date convert (String date) throws ParseException{
    
       
@@ -267,6 +275,11 @@ public class VoyagePersonalise  {
     
     return sqlDate ;  
     } */
+
+    @Override
+    public String toString() {
+        return "VoyagePersonalise{" + "id_vp=" + id_vp + ", nom=" + nom + ", ville_depart=" + ville_depart + ", Ville_arrive=" + Ville_arrive + ", date_depart=" + date_depart + ", date_arrive=" + date_arrive + ", nbr_participant=" + nbr_participant + ", hotel=" + hotel + ", client=" + client + ", event1=" + event1 + ", event2=" + event2 + ", event3=" + event3 + ", nom_hotel=" + nom_hotel + ", guide=" + guide + '}';
+    }
 
 
    

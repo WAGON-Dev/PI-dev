@@ -236,13 +236,26 @@ public class FXMLDemande_VPController implements Initializable {
             Transport.send(message);
             System.out.println("Done");
 
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+       
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         //alert.initOwner(adresse.getScene().getWindow());
-
+        DemandeService ds = new DemandeService();
+        Demande d =table_demande.getSelectionModel().getSelectedItem();
+        
+        
+        
+        
+        //d.getId_guide().getId_user();
+        VoyagePersonalise vp = new VoyagePersonalise() ;
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        vp =vps.findById(d.getId_vp().getId_vp());
+        //System.out.println(d.getId_vp().getId_vp());
+        vp.setGuide(d.getId_guide());
+        vps.update(vp);
+        
+        
+        //ds.remove(d.getId_vp().getId_vp());
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
         alert.setContentText("Email Envoyer Avec Succées ");
@@ -251,6 +264,9 @@ public class FXMLDemande_VPController implements Initializable {
             }
         }
         );
+         } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
  
     public static  String convert (java.util.Date d){
