@@ -131,8 +131,8 @@ public class CarService implements ICarService {
             while (result.next()) {
                 c = new Car(result.getString(1), result.getString(2), result.getInt(3), result.getInt(4), result.getString(5), result.getBoolean(6), new CarRentalService().findById(result.getInt(8)), new ClientService().findById(result.getInt(7)));
                 CarRentalService crs = new CarRentalService();
-                CarRental cr = crs.findByAdresse(add);
-                if (cr.getId_user() == c.getCarRentalID().getId_user()) {
+                CarRental cr = crs.findById(c.getCarRentalID().getId_user());
+                if (cr.getAdresse().equals(add)){
                     carList.add(c);
                 }
             }

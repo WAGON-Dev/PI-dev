@@ -34,7 +34,7 @@ public class FXMLResultatRechercheVoitureController implements Initializable {
         CarService cs = new CarService();
         ObservableList<Car> names = FXCollections.observableArrayList(cs.FindByRateAndAdress(Integer.parseInt(FXMLLouerVoitureController.prix_min.getText()), Integer.parseInt(FXMLLouerVoitureController.prix_max.getText()),FXMLLouerVoitureController.ville.getText()));
         list_voiture.setItems(names);
-//        list_voiture.setCellFactory(studentListView -> new FXMLRowListeVOController());
+        list_voiture.setCellFactory(studentListView -> new FXMLRowResultatListeVoitureController());
     }
 
 }

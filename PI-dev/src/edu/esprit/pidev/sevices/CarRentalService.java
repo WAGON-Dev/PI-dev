@@ -127,7 +127,7 @@ public class CarRentalService implements ICarRentalService{
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
-        cr.setStars(res.getInt(9));
+        cr.setStars(res.getInt("note"));
         cr.setCarNbre(res.getInt(17));
         
         
@@ -138,9 +138,8 @@ public class CarRentalService implements ICarRentalService{
     }
 
     public CarRental findByAdresse(String add) {
-        String query= "Select * from users where adresse="+add+"";
+        String query= "Select * from users where adresse='"+add+"'";
         CarRental cr= new CarRental();
-        
         try{
         PreparedStatement statement= connection.prepareStatement(query);
         ResultSet res= statement.executeQuery(query);
@@ -155,8 +154,6 @@ public class CarRentalService implements ICarRentalService{
         cr.setImage(res.getString(8));
         cr.setStars(res.getInt(9));
         cr.setCarNbre(res.getInt(17));
-        
-        
         }
         }catch(SQLException ex)
         {   ex.printStackTrace();}
