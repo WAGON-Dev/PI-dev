@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLModifier_VPController">
    <children>
-      <ComboBox fx:id="combobox" layoutX="582.0" layoutY="51.0" onAction="#filtre" prefWidth="150.0" styleClass="combobox" stylesheets="@../css/css_email.css" />
+      <ComboBox fx:id="combobox" layoutX="578.0" layoutY="74.0" onAction="#filtre" prefWidth="150.0" styleClass="combobox" stylesheets="@../css/css_email.css" />
       <TableView fx:id="table_vp" layoutY="14.0" onMouseClicked="#click" prefHeight="120.0" prefWidth="558.0" styleClass="tableview" stylesheets="@../css/css_email.css">
         <columns>
             <TableColumn fx:id="id" prefWidth="75.0" text="id" visible="false" />
@@ -29,7 +29,14 @@
             <TableColumn fx:id="hotel" prefWidth="54.4000244140625" text="hotel" />
         </columns>
       </TableView>
-      <JFXButton layoutX="578.0" layoutY="14.0" onAction="#afficher_vp" prefHeight="26.0" prefWidth="150.0" text="Afficher vos voyages" />
+      <JFXButton layoutX="570.0" layoutY="14.0" onAction="#afficher_vp" prefHeight="47.0" prefWidth="166.0" styleClass="buttonafficher" stylesheets="@../css/css_email.css" text="Afficher mes voyages">
+         <graphic>
+            <ImageView fitHeight="37.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../utils/stock-vector-details-list-view-display-icon-button-vector-illustration-simple-flat-metro-design-style-esp-218078227.jpg" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
       <JFXButton layoutX="582.0" layoutY="435.0" onAction="#modifier" prefHeight="28.0" prefWidth="142.0" styleClass="buttonmodifier" stylesheets="@../css/css_email.css" text="Modifier">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
