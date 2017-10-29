@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLModifier_VPController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" styleClass="rootmodifier_vp" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLModifier_VPController">
    <children>
       <ComboBox fx:id="combobox" layoutX="578.0" layoutY="74.0" onAction="#filtre" prefWidth="150.0" styleClass="combobox" stylesheets="@../css/css_email.css" />
       <TableView fx:id="table_vp" layoutY="14.0" onMouseClicked="#click" prefHeight="120.0" prefWidth="558.0" styleClass="tableview" stylesheets="@../css/css_email.css">
