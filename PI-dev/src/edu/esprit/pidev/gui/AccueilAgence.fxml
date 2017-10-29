@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="Fond0" layoutX="1400.0" layoutY="800.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.AccueilAgenceController">
+   <children>
+      <ImageView fitHeight="892.0" fitWidth="1583.0" layoutX="-1400.0" layoutY="-808.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="317.5625" AnchorPane.leftAnchor="-1400.0" AnchorPane.rightAnchor="417.0" AnchorPane.topAnchor="-808.0">
+         <image>
+            <Image url="@travel.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bbbdbf" height="448.0" layoutX="-1391.0" layoutY="-616.0" opacity="0.37" stroke="#08131e" strokeType="INSIDE" width="1345.0" />
+      <JFXButton fx:id="GestVoy" buttonType="RAISED" layoutX="-1380.0" layoutY="-524.0" onAction="#GestVoyBut" prefHeight="294.0" prefWidth="412.0" style="-fx-background-color: #d61861;" text="Gestion des Voyages" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="37.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="statistiques" layoutX="-452.0" layoutY="-524.0" onAction="#Statistiquesbut" prefHeight="294.0" prefWidth="386.0" style="-fx-background-color: #35b6c4;" text="Statistiques" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="36.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="ClientInterf" buttonType="RAISED" layoutX="-926.0" layoutY="-524.0" onAction="#ClientInterfac" prefHeight="294.0" prefWidth="441.0" style="-fx-background-color: #221e6b;" text="Afficher Mes Clients" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="34.0" />
+         </font></JFXButton>
+   </children>
+</AnchorPane>
