@@ -5,11 +5,15 @@
  */
 package edu.esprit.pidev.controllers;
 
+import edu.esprit.pidev.models.Chambre;
+import edu.esprit.pidev.sevices.ChambreService;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableView;
+import javafx.scene.control.ListView;
 
 /**
  * FXML Controller class
@@ -19,14 +23,18 @@ import javafx.scene.control.TableView;
 public class FXMLResultatRechercheHotelController implements Initializable {
 
     @FXML
-    private TableView<?> table_resultat_hotel;
+    private ListView<Chambre > liste_hotel;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ChambreService vs = new ChambreService();
+        Chambre vo = new Chambre();
+        ObservableList<Chambre> names = FXCollections.observableArrayList(vs.getAll());
+        liste_hotel.setItems(names);
+        liste_hotel.setCellFactory(studentListView -> new FXMLRowHotelController());
     }    
     
 }
