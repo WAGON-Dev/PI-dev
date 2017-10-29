@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.controlsfx.control.Rating?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRateController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #EEE8AA;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRateController">
    <children>
-      <Rating fx:id="rating" layoutX="410.0" layoutY="70.0" />
-      <JFXComboBox fx:id="comboboxchoice" layoutX="24.0" layoutY="73.0" onAction="#filtrechoice" prefHeight="26.0" prefWidth="158.0" promptText="choose your rating" />
-      <JFXComboBox fx:id="comboboxselction" layoutX="213.0" layoutY="73.0" onAction="#filtreselection" prefHeight="26.0" prefWidth="158.0" promptText="choose your favourite " />
+      <ImageView fitHeight="462.0" fitWidth="750.0" layoutX="-137.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../utils/ratingbackground.jpg" />
+         </image>
+      </ImageView>
+      <Rating fx:id="rating" layoutX="517.0" layoutY="441.0" prefHeight="34.0" prefWidth="196.0" />
+      <JFXComboBox fx:id="comboboxchoice" layoutX="21.0" layoutY="436.0" onAction="#filtrechoice" prefHeight="42.0" prefWidth="207.0" promptText="choose your rating" styleClass="combobox" stylesheets="@../css/css_email.css" />
+      <JFXComboBox fx:id="comboboxselction" layoutX="251.0" layoutY="437.0" onAction="#filtreselection" prefHeight="42.0" prefWidth="233.0" promptText="choose your favourite " styleClass="combobox" stylesheets="@../css/css_email.css" />
    </children>
 </AnchorPane>
