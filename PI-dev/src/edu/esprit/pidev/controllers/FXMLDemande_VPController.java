@@ -22,6 +22,9 @@ import edu.esprit.pidev.sevices.VoyagePersonaliseService;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.net.URL;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -35,6 +38,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +56,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import org.apache.poi.ss.usermodel.ExcelStyleDateFormatter;
 
 /**
  * FXML Controller class
@@ -74,6 +79,20 @@ public class FXMLDemande_VPController implements Initializable {
     private JFXButton afficher;
     @FXML
     private JFXButton email;
+    @FXML
+    private Label nom;
+    @FXML
+    private Label prenom;
+    @FXML
+    private Label cin;
+    @FXML
+    private Label dateN;
+    @FXML
+    private Label numtel;
+    @FXML
+    private Label note;
+    @FXML
+    private Label emaillabel;
      
     /**
      * Initializes the controller class.
@@ -230,5 +249,30 @@ public class FXMLDemande_VPController implements Initializable {
             }
         }
         );
+    }
+ 
+    public static  String convert (java.util.Date d){
+        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String t = df.format(d);
+        return t ;
+        
+    }
+    @FXML
+    private void label_table(MouseEvent event) {
+        GuideService gs = new GuideService();
+        Guide g = new Guide();
+        String nom = table_demande.getSelectionModel().getSelectedItem().getId_guide().getNom();
+        g = gs.findByName(nom);
+        
+        this.nom.setText(g.getNom());
+        this.prenom.setText(g.getPrenom());
+        this.cin.setText(g.getCIN());
+        this.dateN.setText(convert(g.getDateDeNaissance()));
+        this.emaillabel.setText(g.getEmail());
+        this.numtel.setText(Integer.toString(g.getNumtel()));
+        this.note.setText(Integer.toString(g.getNote()));
+        
+        
+        
     }
 }

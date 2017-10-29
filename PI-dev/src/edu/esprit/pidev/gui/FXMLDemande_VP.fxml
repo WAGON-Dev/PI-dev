@@ -2,18 +2,23 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
    
     <children>
-      <TableView fx:id="table_demande" layoutX="56.0" layoutY="44.0" prefHeight="116.0" prefWidth="242.0" styleClass="tableview" stylesheets="@../css/css_email.css">
+      <TableView fx:id="table_demande" layoutX="56.0" layoutY="44.0" onMouseClicked="#label_table" prefHeight="116.0" prefWidth="242.0" styleClass="tableview" stylesheets="@../css/css_email.css">
         <columns>
           <TableColumn fx:id="id_vp" prefWidth="124.00003051757812" text="voyage personalise" />
           <TableColumn fx:id="id_guide" prefWidth="117.59999084472656" text="guide" />
@@ -21,6 +26,9 @@
          <effect>
             <Bloom />
          </effect>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </TableView>
       <JFXButton fx:id="afficher" layoutX="318.0" layoutY="31.0" onAction="#afficher" prefHeight="50.0" prefWidth="216.0" text="Afficher liste demande">
          <graphic>
@@ -32,7 +40,10 @@
          </graphic>
          <font>
             <Font size="14.0" />
-         </font></JFXButton>
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor></JFXButton>
       <JFXButton layoutX="33.0" layoutY="238.0" onAction="#pdf" styleClass="buttonLoginGoogle" stylesheets="@../css/css_email.css" text="Confirmer et Imprimer le contrat">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
@@ -44,11 +55,7 @@
          <font>
             <Font size="14.0" />
          </font></JFXButton>
-      <JFXTextField fx:id="passw" layoutX="102.0" layoutY="323.0" prefHeight="26.0" prefWidth="149.0" styleClass="textfield" stylesheets="@../css/css_email.css">
-         <font>
-            <Font size="14.0" />
-         </font></JFXTextField>
-      <JFXButton fx:id="email" layoutX="79.0" layoutY="381.0" onAction="#envoyer" styleClass="email" stylesheets="@../css/css_email.css" text="Envoyer Facture via Mail">
+      <JFXButton fx:id="email" layoutX="79.0" layoutY="381.0" onAction="#envoyer" stylesheets="@../css/css_email.css" text="Envoyer Facture via Mail">
          <graphic>
             <ImageView fitHeight="48.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,5 +63,89 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
+      <GridPane layoutX="375.0" layoutY="160.0" prefHeight="275.0" prefWidth="357.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.19998779296876" minWidth="10.0" prefWidth="163.2" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="172.8" minWidth="10.0" prefWidth="172.8" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="nom">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="prenom" GridPane.rowIndex="1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="CIN" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="142.0" text="dateDeNaissance" GridPane.rowIndex="3">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="email" GridPane.rowIndex="4">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="numtel" GridPane.rowIndex="5">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label text="Note" GridPane.rowIndex="6">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="nom" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="prenom" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="cin" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="dateN" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="emaillabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="numtel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label fx:id="note" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <Label layoutX="398.0" layoutY="117.0" text="Coordonnées du guide" textAlignment="CENTER" textFill="#f50000" textOverrun="CENTER_ELLIPSIS">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </Label>
+      <GridPane layoutX="40.0" layoutY="331.0" prefHeight="30.0" prefWidth="250.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.199951171875" minWidth="10.0" prefWidth="87.99996337890624" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="170.60003662109375" minWidth="10.0" prefWidth="162.40003662109376" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXTextField fx:id="passw" prefHeight="26.0" prefWidth="149.0" styleClass="textfield" stylesheets="@../css/css_email.css" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label prefHeight="18.0" prefWidth="110.0" text="Password Email" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
