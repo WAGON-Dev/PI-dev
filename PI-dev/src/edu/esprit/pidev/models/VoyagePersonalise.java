@@ -41,7 +41,7 @@ public class VoyagePersonalise  {
         this.nom_hotel = nom_hotel;
     }
 
-    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, String nom_hotel, Client client, Evenement event1, Evenement event2, Evenement event3) {
+    public VoyagePersonalise(int id_vp, String nom, String ville_depart, String Ville_arrive, Date date_depart, Date date_arrive, int nbr_participant, String nom_hotel, Client client, Evenement event1) {
         this.id_vp = id_vp;
         this.nom = nom;
         this.ville_depart = ville_depart;
@@ -51,8 +51,7 @@ public class VoyagePersonalise  {
         this.nbr_participant = nbr_participant;
         this.client = client;
         this.event1 = event1;
-        this.event2 = event2;
-        this.event3 = event3;
+       
         this.nom_hotel = nom_hotel;
     }
     

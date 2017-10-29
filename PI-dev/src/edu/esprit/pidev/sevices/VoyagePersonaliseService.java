@@ -148,7 +148,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 
-                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(9)), new ClientService().findById(resultSet.getInt(8)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(9)), new ClientService().findById(resultSet.getInt(8)), new EvenementService().findById(resultSet.getInt(10)));
 
             }
         } catch (SQLException ex) {
@@ -206,7 +206,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setInt(1, c.getId_user());
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                VoyagePersonalise voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                VoyagePersonalise voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)));
 
                 voyages.add(voyagePersonalise);
             }
@@ -237,7 +237,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
 
-                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)), new EvenementService().findById(resultSet.getInt(11)), new EvenementService().findById(resultSet.getInt(12)));
+                voyagePersonalise = new VoyagePersonalise(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getDate(5), resultSet.getDate(6), resultSet.getInt(7), new HotelService().findById(resultSet.getInt(8)), new ClientService().findById(resultSet.getInt(9)), new EvenementService().findById(resultSet.getInt(10)));
 
             }
         } catch (SQLException ex) {
