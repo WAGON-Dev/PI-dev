@@ -7,12 +7,10 @@ and open the template in the editor.
     Created on : 28 oct. 2017, 22:57:19
     Author     : Ahmed
 */
-.root {
-   
-}
-.email {
+
+/*.emailaa {
 	-fx-background-color: #C673B3;
-	&:hover {
+        	&:hover {
 		-fx-background-color:  darken(#C673B3, 10%);
 	}
 	&:active,
@@ -29,4 +27,88 @@ and open the template in the editor.
 		transform: skew(-20deg);
 		text-indent: .1em;
 	}
+
+}*/
+
+.buttonmodifier {
+    -fx-background-color: #3b5998;
+    -fx-border-color: rgba(0,0,0,0);
 }
+
+.buttonmodifier:hover {
+    -fx-background-color: rgb(34,50,95);
+}
+.buttonsupprimer {
+    -fx-background-color: #c10001;
+    -fx-border-color: rgba(0,0,0,0);
+}
+
+.buttonsupprimer:hover {
+    -fx-background-color: rgb(121,0,3);
+}
+.combobox .list-cell 
+{
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em; 
+}
+
+.combobox-popup .list-view 
+{
+    -fx-background-color: white, white;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}    
+
+.combobox-popup .list-view .list-cell 
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+.combobox-popup .list-view .list-cell:filled:selected, .combo-box-popup .list-view .list-cell:filled:selected:hover 
+{
+    -fx-background: -fx-accent;
+    -fx-background-color: -fx-selection-bar;
+    -fx-text-fill: -fx-selection-bar-text;
+}
+
+.combobox-popup .list-view .list-cell:filled:hover 
+{
+    -fx-background-color: white;
+    -fx-text-fill: -fx-text-inner-color;
+}
+
+.combobox  
+{
+    -fx-skin: "com.sun.javafx.scene.control.skin.ComboBoxBaseSkin";
+    -fx-background-color: white, white, white, white;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 0;
+}
+
+.combobox:hover
+{
+    -fx-color: -fx-hover-base;
+}
+
+.combobox:showing 
+{
+    -fx-color: -fx-pressed-base;
+}
+
+.combobox:focused {
+    -fx-background-color: -fx-focus-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-radius: 6.4, 4, 5, 3;
+    -fx-background-insets: -1.4, 0, 1, 2;
+}
+
+.combobox:disabled {
+    -fx-opacity: .4;
+}
+
