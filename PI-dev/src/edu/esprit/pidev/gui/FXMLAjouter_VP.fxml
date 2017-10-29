@@ -32,14 +32,6 @@
                </image>
             </ImageView>
          </graphic></JFXButton>
-      <JFXButton layoutX="553.0" layoutY="339.0" onAction="#mail" prefHeight="30.0" prefWidth="146.0" styleClass="buttonsupprimer" stylesheets="@../css/css_email.css" text="search for guide">
-         <graphic>
-            <ImageView fitHeight="21.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../utils/gmail.png" />
-               </image>
-            </ImageView>
-         </graphic></JFXButton>
       <GridPane layoutX="6.0" layoutY="61.0" prefHeight="264.0" prefWidth="708.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
