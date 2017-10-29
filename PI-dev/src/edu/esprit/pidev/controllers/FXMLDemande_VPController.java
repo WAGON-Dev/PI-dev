@@ -72,7 +72,9 @@ public class FXMLDemande_VPController implements Initializable {
     private ObservableList<Demande> Liste_VP = FXCollections.observableArrayList();
     @FXML
     private JFXButton afficher;
-
+    @FXML
+    private JFXButton email;
+     
     /**
      * Initializes the controller class.
      */
@@ -81,10 +83,6 @@ public class FXMLDemande_VPController implements Initializable {
         // TODO
     }
 
-    @FXML
-    private void go(MouseEvent event) {
-
-    }
 
     @FXML
     private void afficher(ActionEvent event) {
@@ -142,7 +140,7 @@ public class FXMLDemande_VPController implements Initializable {
                     + "votre demande de travail a ete confirme vu vos competences "
                     + "la date du depart :" + vp.getDate_depart() + " " + " \n"
                     + "la date retour :" + " " + vp.getDate_arrive() + " " + " \n "
-                    + "l'evenement que vous aller nous guider :" + " " + vp.getEvent1() + " \n "
+                    + "l'evenement que vous aller nous guider :" + " " +"" + " \n "
                     + "PRIX : " + "200DT" + " \n\n\n"
                     + " a bientôt "
             ));

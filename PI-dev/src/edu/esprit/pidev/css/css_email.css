@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 28 oct. 2017, 22:57:19
+    Author     : Ahmed
+*/
+.root {
+   
+}
+.email {
+	-fx-background-color: #C673B3;
+	&:hover {
+		-fx-background-color:  darken(#C673B3, 10%);
+	}
+	&:active,
+	&:focus {
+		-fx-background-color: darken(#C673B3, 20%);
+	}
+	&:after {
+		content: "\F0E0";
+	}
+	&:hover:after {
+		-webkit-animation: none;
+		-webkit-transform: skew(-20deg);
+		animation: none;
+		transform: skew(-20deg);
+		text-indent: .1em;
+	}
+}

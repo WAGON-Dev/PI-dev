@@ -8,7 +8,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLReserverHotelController">
    <children>
       <Label layoutX="142.0" layoutY="24.0" text="Reserver votre Hôtel" textFill="#1500ff">
@@ -20,11 +19,9 @@
       <DatePicker fx:id="date_hotel_fin" layoutX="279.0" layoutY="105.0" />
       <Label layoutX="210.0" layoutY="68.0" text="Date de reservation" />
       <Label layoutX="238.0" layoutY="146.0" text="Ville" />
-      <Label layoutX="120.0" layoutY="214.0" text="Prix Min" />
-      <Label layoutX="335.0" layoutY="214.0" text="Prix Max" />
+      <Label layoutX="227.0" layoutY="214.0" text="Prix Max" />
       <JFXTextField fx:id="ville_hotel" layoutX="183.0" layoutY="163.0" />
-      <JFXTextField fx:id="prix_min_hotel" layoutX="75.0" layoutY="227.0" />
-      <JFXTextField fx:id="prix_max_hotel" layoutX="290.0" layoutY="227.0" />
+      <JFXTextField fx:id="prix_max_hotel" layoutX="182.0" layoutY="231.0" />
       <JFXButton fx:id="bt_chercher_hotel" layoutX="190.0" layoutY="277.0" onAction="#OnChercherHotel" prefHeight="47.0" prefWidth="118.0" text="Rechercher" />
    </children>
 </Pane>

@@ -6,6 +6,7 @@
 package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.VoyageOrganise;
+import edu.esprit.pidev.utils.MoviePlayer;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -76,7 +78,8 @@ public class FXMLRowListeVOController extends ListCell<VoyageOrganise>{
     }    
 
     @FXML
-    private void OnReserverVO(MouseEvent event) {
+    private void OnDescription(MouseEvent event)throws Exception {
+        
     }
     
 }

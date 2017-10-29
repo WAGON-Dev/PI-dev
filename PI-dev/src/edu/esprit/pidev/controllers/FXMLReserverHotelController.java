@@ -26,14 +26,21 @@ public class FXMLReserverHotelController implements Initializable {
 
     @FXML
     private DatePicker date_hotel_debut;
+    public static DatePicker date_hotel_debut2;
+
     @FXML
     private DatePicker date_hotel_fin;
+    public static DatePicker date_hotel_fin2;
+
     @FXML
     private JFXTextField ville_hotel;
-    @FXML
-    private JFXTextField prix_min_hotel;
+    public static JFXTextField ville_hotel2;
+
     @FXML
     private JFXTextField prix_max_hotel;
+    public static JFXTextField prix_max_hotel2;
+    
+
     @FXML
     private JFXButton bt_chercher_hotel;
 
@@ -43,13 +50,17 @@ public class FXMLReserverHotelController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+        date_hotel_debut2=date_hotel_debut;
+        date_hotel_fin2=date_hotel_fin;
+        ville_hotel2=ville_hotel;
+        prix_max_hotel2=prix_max_hotel;
+    }
 
     @FXML
-    private void OnChercherHotel(ActionEvent event)throws IOException{
+    private void OnChercherHotel(ActionEvent event) throws IOException {
         Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLResultatRechercheHotel.fxml"));
         FXMLInterfaceClientController.RootS.getChildren().clear();
         FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
-    
+
 }

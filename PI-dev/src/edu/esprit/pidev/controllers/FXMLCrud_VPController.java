@@ -45,8 +45,10 @@ public class FXMLCrud_VPController implements Initializable {
     private void modifier_vp(ActionEvent event) throws IOException {
          Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLModifier_VP.fxml"));
+        
         Parent root = loader.load();
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("css_email.css");
         stage.setScene(scene);
         stage.show();
     }
