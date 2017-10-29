@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="root" stylesheets="@../css/css_email.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLDemande_VPController">
    
     <children>
       <TableView fx:id="table_demande" layoutX="79.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
@@ -18,6 +18,6 @@
       <JFXButton fx:id="afficher" layoutX="300.0" layoutY="14.0" onAction="#afficher" text="Afficher" />
       <JFXButton layoutX="153.0" layoutY="226.0" onAction="#pdf" text="Imprimer" />
       <JFXTextField fx:id="passw" layoutX="376.0" layoutY="89.0" />
-      <JFXButton fx:id="email" layoutX="386.0" layoutY="226.0" onAction="#envoyer" styleClass=".email" text="Envoyer Facture via Mail" />
+      <JFXButton fx:id="email" layoutX="386.0" layoutY="226.0" onAction="#envoyer" styleClass="email" stylesheets="@../css/css_email.css" text="Envoyer Facture via Mail" />
    </children>
 </AnchorPane>
