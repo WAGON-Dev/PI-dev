@@ -70,11 +70,6 @@ public class Car {
     public String toString() {
         return "Car{" + "model=" + model + ", regNo=" + regNo + ", duration=" + duration + ", rate=" + rate + ", type=" + type + ", status=" + status + ", CarRentalID=" + CarRentalID + ", UserId=" + UserId + '}';
     }
-
-    
-
-    
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -86,15 +81,9 @@ public class Car {
         hash = 43 * hash + (this.status ? 1 : 0);
         return hash;
     }
-    
-        
-   
-
-    
     public String getModel() {
         return model;
     }
-
     public void setModel(String model) {
         this.model = model;
     }
