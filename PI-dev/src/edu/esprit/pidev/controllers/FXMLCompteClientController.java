@@ -22,6 +22,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.util.Duration;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -109,6 +111,9 @@ public class FXMLCompteClientController implements Initializable {
             return;
         }
         cs.update(c);
+         TrayNotification tray = new TrayNotification();
+        tray.setTitle("Modification effectué");
+        tray.showAndDismiss(Duration.seconds(2));
 
     }
 

@@ -101,7 +101,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
 
     @Override
     public void update(VoyagePersonalise vp) {
-        String req = "update voyagepersonalise set nom=?,ville_depart=?,ville_arrive=?,date_depart=?,date_arrive=?,nbr_participant=?,hotel_fk=? where id_vp = ?";
+        String req = "update voyagepersonalise set nom=?,ville_depart=?,ville_arrive=?,date_depart=?,date_arrive=?,nbr_participant=?,hotel_fk=?,id_guide_fk=? where id_vp = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -114,10 +114,8 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
             preparedStatement.setInt(6, vp.getNbr_participant());
             // preparedStatement.setInt(7, vp.getClient().getId_user());
             preparedStatement.setInt(7, vp.getHotel().getId_user());
-            //preparedStatement.setInt(9, vp.getEvent1().getId_evenement());
-            //preparedStatement.setInt(10, vp.getEvent2().getId_evenement());
-            //preparedStatement.setInt(11, vp.getEvent3().getId_evenement());
-            preparedStatement.setInt(8, vp.getId_vp());
+            preparedStatement.setInt(8, vp.getGuide().getId_user());
+            preparedStatement.setInt(9, vp.getId_vp());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

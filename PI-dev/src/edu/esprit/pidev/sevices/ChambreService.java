@@ -158,7 +158,7 @@ String req = "delete from chambre where id_chambre =?";
             preparedStatement.setInt(1, prix);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Chambre ch = new Chambre(resultSet.getInt("id_chambre"),resultSet.getString("type"), resultSet.getDouble("prix"), new ClientService().findById(resultSet.getInt("hotel_ch_fk")), new HotelService().findById(resultSet.getInt("client_ch_fk")));
+                Chambre ch = new Chambre(resultSet.getString("type"), resultSet.getDouble("prix"), new ClientService().findById(resultSet.getInt("hotel_ch_fk")), new HotelService().findById(resultSet.getInt("client_ch_fk")));
                 chambres.add(ch);
             }
         } catch (SQLException ex) {

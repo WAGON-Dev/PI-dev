@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="edu.esprit.pidev.controllers.FXMLReservationClientController">
+   <children>
+      <TableView fx:id="table_reservation" layoutX="62.0" layoutY="25.0" prefHeight="440.0" prefWidth="432.0">
+        <columns>
+          <TableColumn fx:id="column_id_reservation" prefWidth="210.0" text="Type Reservation" />
+            <TableColumn fx:id="column_prix_reservation" minWidth="0.0" prefWidth="221.0" text="Prix Reservation" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="bt_annuler_reservation" layoutX="527.0" layoutY="202.0" onAction="#OnAnnulerReservation" prefHeight="97.0" prefWidth="139.0" text="Annuler Reservation" />
+   </children>
+</AnchorPane>

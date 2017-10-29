@@ -49,6 +49,8 @@ public class FXMLMenuBarController implements Initializable {
     private JFXButton exit_menu_bar;
     @FXML
     private VBox Vbox;
+    @FXML
+    private JFXButton bt_reservation;
 
     /**
      * Initializes the controller class.
@@ -96,6 +98,13 @@ public class FXMLMenuBarController implements Initializable {
 
     @FXML
     private void OnExitMenuBar(ActionEvent event) {
+    }
+
+    @FXML
+    private void OnMesReservation(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLReservationClient.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
 }

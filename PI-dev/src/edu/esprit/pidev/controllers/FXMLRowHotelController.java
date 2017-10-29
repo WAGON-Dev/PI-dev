@@ -7,8 +7,12 @@ package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.Chambre;
 import edu.esprit.pidev.models.Hotel;
+import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.sevices.ChambreService;
+import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.HotelService;
+import edu.esprit.pidev.sevices.ReservationService;
+import edu.esprit.pidev.sevices.SendMail;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -20,7 +24,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.controlsfx.control.Rating;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -51,6 +57,8 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     private Button bt_contacter_mail_hotel;
     
     private FXMLLoader mLLoader;
+    
+    public static Chambre ch_res;
 
     /**
      * Initializes the controller class.
@@ -76,6 +84,7 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
                 }
             }
            // System.out.println(student.getHotel_fk().getNom());
+           ch_res=student;
             nom_hotel.setText(String.valueOf(student.getClient_fk().getNom()));
             adresse_hotel.setText(student.getClient_fk().getAdresse());
             File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
@@ -96,11 +105,24 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     }
 
     @FXML
-    private void OnReserverHotel(MouseEvent event) {
+    private void OnReserverHotel(MouseEvent event) throws Exception{
+        ReservationService ress = new ReservationService();
+        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId(), ch_res.getPrix());
+            ress.addChambre(r);
+        
     }
 
     @FXML
     private void OnContacterHotelMail(MouseEvent event) {
+        ChambreService cs = new ChambreService();
+        Hotel hotel = new Hotel();
+        HotelService hs = new HotelService();
+        hotel = hs.findById(ch_res.getHotel_fk().getId_user());
+        SendMail.send(hotel.getEmail(), "Reservation", "Bonjour; \nJe voudrais avoir plus d'informations sur vos offres. \n\n Cordialement.\n", "wajdy.bouslama@esprit.tn", "sergeras95");
+         TrayNotification tray = new TrayNotification();
+        tray.setTitle("Email envoyé");
+        tray.showAndDismiss(Duration.seconds(2));
+    
     }
 
 }
