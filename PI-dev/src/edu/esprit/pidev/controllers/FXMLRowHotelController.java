@@ -55,7 +55,7 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     
     private FXMLLoader mLLoader;
     
-    public Chambre ch_res;
+    public static Chambre ch_res;
 
     /**
      * Initializes the controller class.
@@ -102,14 +102,11 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
     }
 
     @FXML
-    private void OnReserverHotel(MouseEvent event) {
+    private void OnReserverHotel(MouseEvent event) throws Exception{
         ReservationService ress = new ReservationService();
         Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId(), ch_res.getPrix());
-        Reservation r1 = ress.findByIdCond(r.getId_reservation(),"wajdy.bouslama@esprit.tn");
-        if(r1.equals(r)){
-            
-        }else
             ress.addChambre(r);
+        
     }
 
     @FXML

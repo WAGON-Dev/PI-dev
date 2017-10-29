@@ -100,10 +100,6 @@ public class FXMLRowVolController extends ListCell<Vol> {
     private void OnReserverVol(MouseEvent event) {
             ReservationService ress = new ReservationService();
         Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", vv.getNumTicket(), vv.getPrix_vol());
-        Reservation r1 = ress.findByIdCond(r.getId_reservation(), "wajdy.bouslama@esprit.tn");
-        if(r1.equals(r)){
-            
-        }else
         ress.addVol(r);
     }
 

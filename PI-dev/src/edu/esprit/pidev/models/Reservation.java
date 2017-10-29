@@ -79,11 +79,22 @@ public class Reservation {
             return false;
         }
         final Reservation other = (Reservation) obj;
+        if (this.id_reservation != other.id_reservation) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.prix) != Double.doubleToLongBits(other.prix)) {
+            return false;
+        }
+        if (!Objects.equals(this.type_reservation, other.type_reservation)) {
+            return false;
+        }
         if (!Objects.equals(this.id_client, other.id_client)) {
             return false;
         }
         return true;
     }
+
+    
 
     
 
