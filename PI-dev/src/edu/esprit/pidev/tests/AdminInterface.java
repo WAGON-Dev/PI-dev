@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.esprit.pidev.gui;
+package edu.esprit.pidev.tests;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
@@ -14,15 +14,16 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Ahmed
+ * @author nouha
  */
-public class ahmedtest extends Application{
-
+public class AdminInterface extends Application{
     
-    @Override
+     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLAdmin.fxml"));
+        
         Scene scene = new Scene(root);
+        
         stage.setScene(scene);
         stage.show();
     }
@@ -30,8 +31,9 @@ public class ahmedtest extends Application{
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         launch(args);
     }
+    
     
 }

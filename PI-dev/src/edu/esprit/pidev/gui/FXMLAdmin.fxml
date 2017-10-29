@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="690.0" prefWidth="1276.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLAdminController">
+   <children>
+      <VBox prefHeight="697.0" prefWidth="243.0" style="-fx-background-color: lightgrey;">
+         <children>
+            <ImageView fx:id="AdminImg" fitHeight="261.0" fitWidth="242.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../utils/unnamed.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="usersBtn" onAction="#loadUsersScene" prefHeight="54.0" prefWidth="243.0" ripplerFill="#005253" styleClass="drawer-buttons1" stylesheets="@../view/css/fxmllogin.css" text="Button" textFill="#000000bc">
+               <font>
+                  <Font size="24.0" />
+               </font></JFXButton>
+            <JFXButton fx:id="forumBtn" onAction="#loadSecondScreen" prefHeight="70.0" prefWidth="243.0" styleClass="drawer-buttons2" stylesheets="@../view/css/fxmllogin.css" text="charts" textFill="#000000bc">
+               <font>
+                  <Font size="24.0" />
+               </font></JFXButton>
+            <JFXButton prefHeight="71.0" prefWidth="243.0" styleClass="drawer-buttons3" stylesheets="@../view/css/fxmllogin.css" text="Users" textFill="#000000bc">
+               <font>
+                  <Font size="24.0" />
+               </font></JFXButton>
+         </children>
+      </VBox>
+      <Pane fx:id="UsersPane" layoutX="243.0" layoutY="95.0" prefHeight="606.0" prefWidth="1033.0">
+         <children>
+            <JFXTabPane layoutX="340.0" layoutY="21.0" prefHeight="417.0" prefWidth="679.0">
+               <tabs>
+                  <Tab text="AV">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableViewAV" prefHeight="382.0" prefWidth="679.0">
+                                 <columns>
+                                    <TableColumn fx:id="roleAVColumn" prefWidth="75.0" text="role" />
+                                    <TableColumn fx:id="nomAVColumn" prefWidth="110.0" text="nom" />
+                                    <TableColumn fx:id="emailAVColumn" prefWidth="133.0" text="email" />
+                                    <TableColumn fx:id="numTelAVColumn" prefWidth="120.0" text="numTel" />
+                                    <TableColumn fx:id="adresseAVColumn" prefWidth="113.0" text="adresse" />
+                                    <TableColumn fx:id="nbrVoyageOrgAVColumn" prefWidth="129.0" text="nbrVoyageOrganise" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="ALV">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableViewAVL" prefHeight="380.0" prefWidth="679.0">
+                                 <columns>
+                                    <TableColumn fx:id="roleAVLColumn" prefWidth="75.0" text="role" />
+                                    <TableColumn fx:id="nomAVLColumn" prefWidth="111.0" text="nom" />
+                                    <TableColumn fx:id="emailAVLColumn" prefWidth="162.0" text="email" />
+                                    <TableColumn fx:id="numTelAVLColumn" prefWidth="150.0" text="numTel" />
+                                    <TableColumn fx:id="adresseAVLColumn" prefWidth="100.0" text="adresse" />
+                                    <TableColumn fx:id="nbrVoitureAVLColumn" text="nbr_voiture" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Hotel">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="738.0">
+                           <children>
+                              <TableView fx:id="tableViewHotel" prefHeight="381.0" prefWidth="679.0">
+                                 <columns>
+                                    <TableColumn fx:id="roleHotelColumn" prefWidth="60.0" text="role" />
+                                    <TableColumn fx:id="nomHotelColumn" prefWidth="51.0" text="nom" />
+                                    <TableColumn fx:id="emailHotelColumn" prefWidth="77.0" text="email" />
+                                    <TableColumn fx:id="numTelHotelColumn" minWidth="0.0" prefWidth="95.0" text="numTel" />
+                                    <TableColumn fx:id="adresseHotelColumn" prefWidth="91.0" text="adresse" />
+                                    <TableColumn fx:id="etoileHotelColumn" prefWidth="94.0" text="etoile" />
+                                    <TableColumn fx:id="nbChambHotelColumn" prefWidth="108.0" text="nb_chambre" />
+                                    <TableColumn fx:id="nbChReserHotelColumn" prefWidth="102.0" text="nbChambreReserve" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Client">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableViewUser" prefHeight="381.0" prefWidth="679.0">
+                                <columns>
+                                  <TableColumn fx:id="roleColumn" prefWidth="75.0" text="role" />
+                                  <TableColumn fx:id="prenomColumn" prefWidth="75.0" text="prenom" />
+                                    <TableColumn fx:id="nomColumn" prefWidth="75.0" text="nom" />
+                                    <TableColumn fx:id="emailColumn" prefWidth="75.0" text="email" />
+                                    <TableColumn fx:id="numTelColumn" prefWidth="112.0" text="numTel" />
+                                    <TableColumn fx:id="adresseColumn" prefWidth="74.0" text="adresse" />
+                                    <TableColumn fx:id="numCinColumn" prefWidth="81.0" text="N°Cin" />
+                                    <TableColumn fx:id="dateNaissColumn" prefWidth="111.0" text="dateNaissance" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Guide">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableViewGuide" prefHeight="381.0" prefWidth="679.0">
+                                 <columns>
+                                    <TableColumn fx:id="roleGuideColumn" prefWidth="64.0" text="role" />
+                                    <TableColumn fx:id="prenomGuideColumn" prefWidth="67.0" text="prenom" />
+                                    <TableColumn fx:id="nomGuideColumn" prefWidth="69.0" text="nom" />
+                                    <TableColumn fx:id="emailGuideColumn" prefWidth="54.0" text="email" />
+                                    <TableColumn fx:id="numTelGuideColumn" prefWidth="75.0" text="numTel" />
+                                    <TableColumn fx:id="adresseGuideColumn" prefWidth="71.0" text="adresse" />
+                                    <TableColumn fx:id="numCinGuideColumn" prefWidth="48.0" text="N°Cin" />
+                                    <TableColumn fx:id="dateNaissGuideColumn" prefWidth="87.0" text="dateNaissance" />
+                                    <TableColumn fx:id="noteGuideColumn" prefWidth="75.0" text="note" />
+                                    <TableColumn fx:id="nbrNoteGuideColumn" prefWidth="75.0" text="nbr_note" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="Admin">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="tableViewAdmin" prefHeight="381.0" prefWidth="679.0">
+                                 <columns>
+                                    <TableColumn fx:id="roleAdminColumn" prefWidth="75.0" text="role" />
+                                    <TableColumn fx:id="prenomAdminColumn" prefWidth="75.0" text="prenom" />
+                                    <TableColumn fx:id="nomAdminColumn" prefWidth="75.0" text="nom" />
+                                    <TableColumn fx:id="emailAdminColumn" prefWidth="75.0" text="email" />
+                                    <TableColumn fx:id="numTelAdminColumn" prefWidth="75.0" text="numTel" />
+                                    <TableColumn fx:id="adresseAdminColumn" prefWidth="75.0" text="adresse" />
+                                    <TableColumn fx:id="numCinAdminColumn" prefWidth="118.0" text="N°Cin" />
+                                    <TableColumn fx:id="dateNaissAdminColumn" prefWidth="110.0" text="dateNaissance" />
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+               </tabs>
+            </JFXTabPane>
+            <HBox layoutX="339.0" layoutY="438.0" prefHeight="100.0" prefWidth="679.0">
+               <children>
+                  <JFXButton fx:id="sendEmailBtn" buttonType="RAISED" onAction="#sendEmailAction" prefHeight="100.0" prefWidth="174.0" style="-fx-background-color: #5fe7cc;" styleClass="drawer-buttons3" stylesheets="@../view/css/fxmllogin.css" text="sendEmailTo" textFill="WHITE" />
+                  <Pane prefHeight="100.0" prefWidth="112.0" />
+                  <JFXButton fx:id="addUserBtn" buttonType="RAISED" onAction="#addUserAction" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #428F89;" styleClass="drawer-buttons2" stylesheets="@../view/css/fxmllogin.css" text="ajouter" textFill="WHITE" />
+                  <Pane prefHeight="100.0" prefWidth="101.0" />
+                  <JFXButton fx:id="deleteUserBtn" buttonType="RAISED" onAction="#deleteUserAction" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #005253;" styleClass="drawer-buttons1" stylesheets="@../view/css/fxmllogin.css" text="Supprimer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></JFXButton>
+               </children>
+            </HBox>
+            <VBox layoutX="56.0" layoutY="81.0" prefHeight="459.0" prefWidth="242.0" style="-fx-border-color: lightgrey;">
+               <children>
+                  <Pane prefHeight="140.0" prefWidth="242.0" style="-fx-background-color: #00a4a7;">
+                     <children>
+                        <Label fx:id="nameUser" layoutX="136.0" layoutY="37.0" prefHeight="26.0" prefWidth="73.0" text="username" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <ImageView fx:id="imageUser" fitHeight="97.0" fitWidth="101.0" layoutX="1.0" layoutY="1.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../utils/male-shadow-circle-512.png" />
+                           </image></ImageView>
+                        <Label fx:id="emailUser" layoutY="98.0" prefHeight="42.0" prefWidth="242.0" style="-fx-background-color: #007b7d;" text="                     @email.com" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <JFXSpinner layoutX="104.0" layoutY="84.0" />
+                     </children></Pane>
+               </children>
+            </VBox>
+            <Label layoutX="58.0" layoutY="21.0" prefHeight="54.0" prefWidth="240.0" style="-fx-background-color: #5fe7cc;" text="                      Connected Users" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="243.0" layoutY="-5.0" prefHeight="97.0" prefWidth="1033.0" style="-fx-background-color: #005253;" />
+   </children>
+</AnchorPane>
