@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,8 +47,8 @@ public class AdminService implements IAdminService{
             preparedStatement.setString(7, t.getCin());
             java.sql.Date sqlDate = new java.sql.Date(t.getDateNaissence().getTime());
             preparedStatement.setDate(8, sqlDate);
-            preparedStatement.setString(8, t.getRole());
-            preparedStatement.setString(9, t.getImage());
+            preparedStatement.setString(9, t.getRole());
+            preparedStatement.setString(10, t.getImage());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -120,7 +122,61 @@ public class AdminService implements IAdminService{
     public List<Admin> getAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
+    
+     public List<Admin> getByAdmin() {
+        List<Admin> admins = new ArrayList<>();
+        String req = "select * from users where role = 'admin'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                //                                  String prenom,               String CIN,                 Date dateDeNaissance,               int nbrNote,                  int Note,                    int id_user,                 String nom,                  String email,            String mdp,                int numtel,                  String adresse,                  String role,                 String image
+Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));                
+             admins.add(admin);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return admins; 
+    }
+    
+     
+      public Admin findByNomPwd(String nom,String pwd) {
+        Admin  admin = null;
+        String req = "select * from users where nom=? and mdp=? and role='admin'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, pwd);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return admin;   
+    }
+      
+      
+      
+       public int nbrAdmin() {
+             int i=0;
+            String req = "SELECT COUNT(*) AS total FROM users where role='admin'";
+            PreparedStatement preparedStatement;
+          try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            i=resultSet.getInt("total");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+  return i;
+  }
 }
     
 

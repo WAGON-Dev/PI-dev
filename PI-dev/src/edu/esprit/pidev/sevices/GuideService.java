@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -227,4 +229,55 @@ public class GuideService implements Iguide {
             ex.printStackTrace();
         }
     }
+      
+       public List<Guide> getByRole() {
+ List<Guide> guides = new ArrayList<>();
+        String req = "select * from users where role = 'Guide'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                //                                  String prenom,               String CIN,                 Date dateDeNaissance,               int nbrNote,                  int Note,                    int id_user,                 String nom,                  String email,            String mdp,                int numtel,                  String adresse,                  String role,                 String image
+                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                guides.add(g);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return guides;    }
+
+        public Guide findByNomPwd(String nom,String pwd) {
+        Guide g = null;
+        String req = "select * from users where nom=? and mdp=? and role='guide'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, nom);
+            preparedStatement.setString(2, pwd);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
+        
+         public int nbrGuide() {
+             int i=0;
+            String req = "SELECT COUNT(*) AS total FROM users where role='guide'";
+            PreparedStatement preparedStatement;
+          try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            i=resultSet.getInt("total");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+return i;
+}
 }

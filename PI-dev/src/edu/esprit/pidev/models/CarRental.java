@@ -21,7 +21,17 @@ public class CarRental extends Users  {
         this.stars = stars;
         this.carNbre = carNbre;
     }
+//firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, 0, num
+    public CarRental( String nom, String email, String mdp, int numtel, String adresse, String role,int carNbre) {
+        super(nom, email, mdp, numtel, adresse, role);
+        this.carNbre = carNbre;
+    }
 
+    public CarRental( String nom, String email, String mdp, int numtel, String adresse, String role,int stars, int carNbre) {
+        super(nom, email, mdp, numtel, adresse, role);
+        this.stars = stars;
+        this.carNbre = carNbre;
+    }
     public int getStars() {
         return stars;
     }
