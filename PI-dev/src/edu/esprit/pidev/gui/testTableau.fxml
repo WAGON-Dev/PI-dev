@@ -91,12 +91,12 @@
       </JFXButton>
       <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="25.0" layoutY="11.0" onMouseClicked="#retourAccueil" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@back.png" />
+            <Image url="@../utils/back.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="67.0" fitWidth="288.0" layoutX="955.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@taha.png" />
+            <Image url="@../utils/taha.png" />
          </image>
       </ImageView>
       <Label layoutX="423.0" layoutY="33.0" prefHeight="82.0" prefWidth="343.0" text="Gestion Des Voyages" textAlignment="CENTER" textFill="#080a6b">
