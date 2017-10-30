@@ -79,12 +79,12 @@ public class tests {
 
         /////////////////////////////////////////////////Vol/////////////////////////////////////////
         VolService volservise = new VolService();
-        Vol v4 = new Vol( d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
-        Vol v5 = new Vol( d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
-        Vol v6 = new Vol( d1, d1, 9600d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
-        //volservise.add(v4);
-        //volservise.add(v5);
-        //volservise.add(v6);
+        Vol v4 = new Vol( d1, d1, 1900d, "paris_tunis", 3, "Paris", "Tunis", "lufthansa");
+        Vol v5 = new Vol( d1, d1, 1000d, "tunis_paris", 3, "Tunis", "Paris", "emirates");
+        Vol v6 = new Vol( d1, d1, 7300d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
+        volservise.add(v4);
+        volservise.add(v5);
+        volservise.add(v6);
 
 //        Vol v4 = new Vol(d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
 //        Vol v5 = new Vol(d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
