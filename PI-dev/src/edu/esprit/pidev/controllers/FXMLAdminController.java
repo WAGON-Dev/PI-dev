@@ -7,39 +7,26 @@ package edu.esprit.pidev.controllers;
 
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPopup;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import edu.esprit.pidev.models.Admin;
 import edu.esprit.pidev.models.Agence;
 import edu.esprit.pidev.models.CarRental;
 import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.models.Hotel;
-import edu.esprit.pidev.models.Users;
 import edu.esprit.pidev.sevices.AdminService;
 import edu.esprit.pidev.sevices.AgenceService;
 import edu.esprit.pidev.sevices.CarRentalService;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.GuideService;
 import edu.esprit.pidev.sevices.HotelService;
-import edu.esprit.pidev.tests.AdminInterface;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.Map;
-import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -59,13 +46,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javax.mail.Message;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class

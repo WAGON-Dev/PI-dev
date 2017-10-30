@@ -207,7 +207,7 @@ public static String role;
                    message.setSubject("you're currently registraing in our application");
                    message.setText("merci pour votre inscription");
                    Transport.send(message);
-                 //  JOptionPane.showConfirmDialog(null, "message sent");
+                  JOptionPane.showConfirmDialog(null, "message sent");
                  }
                catch(Exception e){
                    JOptionPane.showConfirmDialog(null, e);
@@ -232,6 +232,8 @@ public static String role;
             Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
             cs.add(t);
             /******ajout de linterface client ???*******/
+              ClientService cs1=new ClientService();
+            cs1.existeUtilisateur(firstName.getText());
             FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLInterfaceClient.fxml"));
               Parent root=loader.load();
               signUpUserBtn.getScene().setRoot(root);
@@ -294,7 +296,7 @@ public static String role;
                    message.setSubject("you're currently registraing in our application");
                    message.setText("merci pour votre inscription");
                    Transport.send(message);
-                 //  JOptionPane.showConfirmDialog(null, "message sent");
+                   JOptionPane.showConfirmDialog(null, "message sent");
                  }
                catch(Exception e){
                    JOptionPane.showConfirmDialog(null, e);
@@ -312,10 +314,11 @@ public static String role;
                 int etoile=Integer.parseInt(etoileHotel.getText());
                Hotel h=new Hotel(firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "", etoile, 0, 0);
                        hotelService.add(h);
-                       
+                    
                          /******ajout de linterface  hotel???*******/
                    System.out.println("done !!");
-                   
+                   SMS sms=new SMS();
+             // sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                          Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");
                props.put("mail.smtp.socketFactory.port", "465");
@@ -340,7 +343,7 @@ public static String role;
                    message.setSubject("you're currently registraing in our application");
                    message.setText("merci pour votre inscription");
                    Transport.send(message);
-                 //  JOptionPane.showConfirmDialog(null, "message sent");
+                   JOptionPane.showConfirmDialog(null, "message sent");
                  }
                catch(Exception e){
                    JOptionPane.showConfirmDialog(null, e);
@@ -361,6 +364,8 @@ public static String role;
          CarRental c=new CarRental(firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, 0, num);
          carRental.add(c);
          /******ajout de linterface  carRental???*******/
+         SMS sms=new SMS();
+             // sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                    System.out.println("done !!");
                          Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");
