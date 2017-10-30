@@ -77,7 +77,7 @@ public class FXMLLoginUsersController implements Initializable {
             stage.close();
 
             System.out.println("done1 !!");
-        } else if (ag.findByEmail(userName.getText()) != null) {
+        } else if ((ag.findByEmail(userName.getText()) != null)&&(ag.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
@@ -87,22 +87,22 @@ public class FXMLLoginUsersController implements Initializable {
              * ***LOading the interface***
              */
 
-        } else if (car.findByEmail(userName.getText()) != null) {
-            
+        } else if ((car.findByEmail(userName.getText()) != null)&&(car.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
+
             System.out.print("done3!!");
             /**
              * ***LOading the interface***
              */
 
-        } else if (cs.findByemail(userName.getText()) != null) {
-             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
+        } else if ((cs.findByemail(userName.getText()) != null)&&(cs.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
             System.out.print("done4!!");
             /**
              * ***LOading the interface***
              */
-        } else if (g.findByEmail(userName.getText()) != null) {
+        } else if ((g.findByEmail(userName.getText()) != null)&&(g.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
             System.out.print("done5!!");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
             Parent root = loader.load();
@@ -110,7 +110,7 @@ public class FXMLLoginUsersController implements Initializable {
             /**
              * ***LOading the interface***
              */
-        } else if (h.findByemail(userName.getText()) != null) {
+        } else if ((h.findByemail(userName.getText()) != null)&&(h.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
             System.out.print("done6!!");
 
             /**
