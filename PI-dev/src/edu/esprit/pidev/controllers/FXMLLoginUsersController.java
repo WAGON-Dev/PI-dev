@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+//import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import edu.esprit.pidev.sevices.AdminService;
 import edu.esprit.pidev.sevices.AgenceService;
 import edu.esprit.pidev.sevices.CarRentalService;
@@ -60,6 +61,8 @@ public class FXMLLoginUsersController implements Initializable {
     @FXML
     void loginAction(ActionEvent event) throws IOException, Exception {
 
+    
+    
         AdminService a = new AdminService();
         AgenceService ag = new AgenceService();
         CarRentalService car = new CarRentalService();
@@ -95,6 +98,8 @@ public class FXMLLoginUsersController implements Initializable {
              */
 
         } else if ((cs.findByemail(userName.getText()) != null)&&(cs.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
+            ClientService cs1 = new ClientService();
+            cs1.existeUtilisateur(userName.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
@@ -104,7 +109,7 @@ public class FXMLLoginUsersController implements Initializable {
              */
         } else if ((g.findByEmail(userName.getText()) != null)&&(g.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
             System.out.print("done5!!");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
             /**

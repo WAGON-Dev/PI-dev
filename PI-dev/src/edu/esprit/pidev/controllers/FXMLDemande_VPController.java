@@ -41,6 +41,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import javax.activation.DataHandler;
@@ -117,13 +118,8 @@ public class FXMLDemande_VPController implements Initializable {
             }
 
         });
-        id_guide.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Demande, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(TableColumn.CellDataFeatures<Demande, String> param) {
-                return new SimpleStringProperty(param.getValue().getId_guide().getNom());
-            }
-
-        });
+        id_guide.setCellValueFactory(new PropertyValueFactory<>("id_guide_fk"));
+        // System.out.println("");
 
         table_demande.setItems(Liste_VP);
     }
@@ -252,7 +248,7 @@ public class FXMLDemande_VPController implements Initializable {
         vp =vps.findById(d.getId_vp().getId_vp());
         //System.out.println(d.getId_vp().getId_vp());
         vp.setGuide(d.getId_guide());
-        vps.update(vp);
+        vps.update_demande(vp);
         
         
         //ds.remove(d.getId_vp().getId_vp());
