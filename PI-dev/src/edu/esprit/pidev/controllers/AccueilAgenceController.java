@@ -43,7 +43,7 @@ public class AccueilAgenceController implements Initializable {
     @FXML
     private void GestVoyBut(ActionEvent event) {
         try{
-          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("testTableau.fxml"));
+          FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/testTableau.fxml"));
             System.out.println("pathgood");
           
           Parent root = fxmlLoader.load();

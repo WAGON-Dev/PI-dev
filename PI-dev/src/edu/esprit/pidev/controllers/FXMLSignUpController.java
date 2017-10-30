@@ -168,7 +168,7 @@ public static String role;
         
     }
     @FXML
-    void SignUp(ActionEvent event) {
+    void SignUp(ActionEvent event) throws IOException {
 
      if(role.equals("agence de voyage")){
          if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
@@ -177,6 +177,9 @@ public static String role;
          Agence a=new Agence(role,firstName.getText() , email.getText(), passwordSignUp.getText(), numTel, address.getText(), 0);
         agence.add(a);
          /******ajout de linterface agence de voyage ???*******/
+         FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
+              Parent root=loader.load();
+              SignUpGeneral.getScene().setRoot(root);
                    System.out.println("done !!");
                    
                    
@@ -229,6 +232,9 @@ public static String role;
             Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
             cs.add(t);
             /******ajout de linterface client ???*******/
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLInterfaceClient.fxml"));
+              Parent root=loader.load();
+              signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
         }
    if(role.equals("admin")){
@@ -256,11 +262,9 @@ public static String role;
                int numTel=Integer.parseInt(phoneNum.getText());
                Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, " ");
                guide.add(g);
-               Stage stage=new Stage();
-                 Parent root = FXMLLoader.load(getClass().getResource("../gui/Guidegui.fxml"));
-        Scene scene = new Scene(root);        
-        stage.setScene(scene);
-        stage.show(); 
+               FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+              Parent root=loader.load();
+              signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
     }
                ///***** send automatically an email to the user who signed up

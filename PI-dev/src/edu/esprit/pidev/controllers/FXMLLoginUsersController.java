@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+//import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import edu.esprit.pidev.sevices.AdminService;
 import edu.esprit.pidev.sevices.AgenceService;
 import edu.esprit.pidev.sevices.CarRentalService;
@@ -60,6 +61,8 @@ public class FXMLLoginUsersController implements Initializable {
     @FXML
     void loginAction(ActionEvent event) throws IOException, Exception {
 
+    
+    
         AdminService a = new AdminService();
         AgenceService ag = new AgenceService();
         CarRentalService car = new CarRentalService();
@@ -87,16 +90,16 @@ public class FXMLLoginUsersController implements Initializable {
              * ***LOading the interface***
              */
 
-        } else if (car.findByEmail(userName.getText()) != null) {
-            
-            System.out.print("done3!!");
-            /**
-             * ***LOading the interface***
-             */
+        }
 
-        } else if (cs.findByemail(userName.getText()) != null) {
-             ClientService cs1 = new ClientService();
-                cs1.existeUtilisateur(userName.getText());
+     else  if(car.findByEmail(userName.getText())!=null){
+             System.out.print("done3!!");
+            /*****LOading the interface****/
+            
+      }
+     
+         else if (cs.findByemail(userName.getText()) != null) {
+            
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
@@ -104,15 +107,15 @@ public class FXMLLoginUsersController implements Initializable {
             /**
              * ***LOading the interface***
              */
-        } else if (g.findByEmail(userName.getText()) != null) {
+        } 
+         else if (g.findByEmail(userName.getText()) != null) {
             System.out.print("done5!!");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
-            /**
-             * ***LOading the interface***
-             */
-        } else if (h.findByemail(userName.getText()) != null) {
+            /*****LOading the interface****/
+        }
+      else if (h.findByemail(userName.getText()) != null) {
             System.out.print("done6!!");
 
             /**
