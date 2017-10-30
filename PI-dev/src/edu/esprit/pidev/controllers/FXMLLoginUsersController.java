@@ -99,7 +99,8 @@ public class FXMLLoginUsersController implements Initializable {
       }
      
          else if (cs.findByemail(userName.getText()) != null) {
-            
+            ClientService cs1=new ClientService();
+            cs1.existeUtilisateur(userName.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
