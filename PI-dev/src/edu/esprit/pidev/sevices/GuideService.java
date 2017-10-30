@@ -46,7 +46,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9, "Guide");
+            preparedStatement.setString(9, "guide");
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -68,7 +68,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9, "Guide");
+            preparedStatement.setString(9, "guide");
             preparedStatement.setInt(10, t.getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
