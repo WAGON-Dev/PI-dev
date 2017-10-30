@@ -104,6 +104,7 @@ public class FXMLMenuBarController implements Initializable {
 
     @FXML
     private void OnExitMenuBar(ActionEvent event) {
+        System.exit(0);
     }
 
     @FXML

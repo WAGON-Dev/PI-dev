@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRechercheClientController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #cceeff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRechercheClientController">
    <children>
       <JFXButton fx:id="bt_reserver_vol" onAction="#OnReserverVol" prefHeight="175.0" prefWidth="250.0" text="Reserver un Vol" />
       <JFXButton fx:id="bt_reserver_hotel" layoutX="250.0" onAction="#OnReserverHotel" prefHeight="175.0" prefWidth="250.0" text="Reserver un Hôtel" />

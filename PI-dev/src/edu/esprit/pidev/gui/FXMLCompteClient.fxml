@@ -9,9 +9,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLCompteClientController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #cceeff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLCompteClientController">
    <children>
-      <Label layoutX="182.0" layoutY="27.0" text="Mon compte" textFill="#3c00ff">
+      <Label layoutX="182.0" layoutY="27.0" text="Mon compte" textFill="#4a3e72a6">
          <font>
             <Font size="24.0" />
          </font>
@@ -28,8 +28,8 @@
       <JFXTextField fx:id="adresse_conecter" layoutX="335.0" layoutY="189.0" />
       <Label layoutX="46.0" layoutY="193.0" text="Num Tel" />
       <Label layoutX="272.0" layoutY="193.0" text="Adresse" />
-      <JFXButton fx:id="bt_modifier_conecter" layoutX="346.0" layoutY="252.0" onAction="#OnModifierConecter" prefHeight="63.0" prefWidth="113.0" text="Modifier" />
+      <JFXButton fx:id="bt_modifier_conecter" layoutX="346.0" layoutY="252.0" onAction="#OnModifierConecter" prefHeight="63.0" prefWidth="113.0" style="-fx-background-color: #99ddff;" text="Modifier" textFill="WHITE" />
       <ImageView fx:id="image_comte_client_modif" fitHeight="83.0" fitWidth="127.0" layoutX="101.0" layoutY="242.0" onMouseClicked="#OnModifImageClient" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="ereur" layoutX="389.0" layoutY="307.0" text="Label" />
+      <Label fx:id="ereur" layoutX="389.0" layoutY="307.0" />
    </children>
 </Pane>

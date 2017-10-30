@@ -8,9 +8,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRecherchVoyageOrganiseController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #cceeff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.FXMLRecherchVoyageOrganiseController">
    <children>
-      <Label layoutX="79.0" layoutY="28.0" text="Reserver Votre Voyage Organisé" textFill="#4800ff">
+      <Label layoutX="79.0" layoutY="28.0" text="Reserver Votre Voyage Organisé" textFill="#866dc9a3">
          <font>
             <Font size="24.0" />
          </font>
@@ -19,7 +19,7 @@
       <DatePicker fx:id="date_fin_vo" layoutX="264.0" layoutY="122.0" />
       <Label layoutX="202.0" layoutY="93.0" text="Date de reservation" />
       <JFXTextField fx:id="prix_max_vo" layoutX="182.0" layoutY="193.0" />
-      <JFXButton fx:id="bt_chercher_vo" layoutX="190.0" layoutY="268.0" onAction="#OnChercherVO" prefHeight="44.0" prefWidth="128.0" text="Chercher" />
+      <JFXButton fx:id="bt_chercher_vo" layoutX="190.0" layoutY="268.0" onAction="#OnChercherVO" prefHeight="44.0" prefWidth="128.0" style="-fx-background-color: #99ddff;" text="Chercher" textFill="WHITE" />
       <Label layoutX="232.0" layoutY="175.0" text="Prix Max" />
    </children>
 </Pane>
