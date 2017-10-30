@@ -12,6 +12,7 @@ import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+//import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import edu.esprit.pidev.sevices.AdminService;
 import edu.esprit.pidev.sevices.AgenceService;
 import edu.esprit.pidev.sevices.CarRentalService;
@@ -85,9 +86,9 @@ public class FXMLLoginUsersController implements Initializable {
        else if(ag.findByEmail(userName.getText())!=null){
                          System.out.print("done2!!");
       
-               ClientService cs1 = new ClientService();
-               cs1.existeUtilisateur(userName.getText());
-              
+              /*FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
+              Parent root=loader.load();
+              login.getScene().setRoot(root);*/
            System.out.print("done2!!");
             /*****LOading the interface****/
             
@@ -102,15 +103,18 @@ public class FXMLLoginUsersController implements Initializable {
             
       }
       else if(cs.findByemail(userName.getText())!=null){
+         /* FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLInterfaceClient.fxml"));
+              Parent root=loader.load();
+              login.getScene().setRoot(root);*/
             System.out.print("done4!!");
            /*****LOading the interface****/}
       else if(g.findByEmail(userName.getText())!=null){
             System.out.print("done5!!");
-             Stage stage=new Stage();
+         /*    Stage stage=new Stage();
                  Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
         Scene scene = new Scene(root);        
         stage.setScene(scene);
-        stage.show(); 
+        stage.show();*/ 
             /*****LOading the interface****/}
        else if(h.findByemail(userName.getText())!=null){
             System.out.print("done6!!");
