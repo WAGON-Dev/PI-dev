@@ -232,7 +232,7 @@ public class GuideService implements Iguide {
       
        public List<Guide> getByRole() {
  List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role = 'Guide'";
+        String req = "select * from users where role = 'guide'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
