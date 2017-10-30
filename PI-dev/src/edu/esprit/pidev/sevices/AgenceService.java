@@ -225,5 +225,26 @@ public class AgenceService implements IAgenceService {
         }
 return i;
 }
+          
+          
+           public Agence findByEmail(String e) {
+               Agence g = null;
+        String req = "select * from users where email=? and role='agence de voyage'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, e);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                //String role, String nom,                                         String email, String mdp, int numtel,                           String adresse,int nbr_voyage_organise
+                   g=new Agence(resultSet.getString("role"), resultSet.getString("nom"),resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+          
+        }
+        System.out.println("agence:"+g);
+        return g;
+    }
       
 }

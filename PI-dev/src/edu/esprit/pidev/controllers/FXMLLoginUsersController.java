@@ -67,7 +67,7 @@ public class FXMLLoginUsersController implements Initializable {
         ClientService cs=new ClientService();
         GuideService g=new GuideService();
         HotelService h=new HotelService();
-        if(a.findByNomPwd(userName.getText(), password.getText())!=null){
+        if(a.findByEmail(userName.getText())!=null){
            
                    Stage primaryStage=new Stage();
 		   AdminInterface adminInterface=new AdminInterface();
@@ -80,25 +80,31 @@ public class FXMLLoginUsersController implements Initializable {
 	 System.out.println("done1 !!");
         }
     
-       else if(ag.findByNomPwd(userName.getText(), password.getText())!=null){
+       else if(ag.findByEmail(userName.getText())!=null){
                          System.out.print("done2!!");
 
             /*****LOading the interface****/
             
         }
-     else  if(car.findByNomPwd(userName.getText(), password.getText())!=null){
+     else  if(car.findByEmail(userName.getText())!=null){
              System.out.print("done3!!");
             /*****LOading the interface****/
             
       }
-      else if(cs.findByNomPwd(userName.getText(), password.getText())!=null){
+      else if(cs.findByemail(userName.getText())!=null){
             System.out.print("done4!!");
            /*****LOading the interface****/}
-      else if(g.findByNomPwd(userName.getText(), password.getText())!=null){
+      else if(g.findByEmail(userName.getText())!=null){
             System.out.print("done5!!");
+             Stage stage=new Stage();
+                 Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+        Scene scene = new Scene(root);        
+        stage.setScene(scene);
+        stage.show(); 
             /*****LOading the interface****/}
-       else if(h.findByNomPwd(userName.getText(), password.getText())!=null){
+       else if(h.findByemail(userName.getText())!=null){
             System.out.print("done6!!");
+              
             /*****LOading the interface****/}
        
     }

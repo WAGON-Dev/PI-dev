@@ -165,7 +165,7 @@ public class GuideService implements Iguide {
 
     public Guide findByEmail(String e) {
         Guide g = null;
-        String req = "select * from users where email=?";
+        String req = "select * from users where email=? and role='guide'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -263,6 +263,7 @@ public class GuideService implements Iguide {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        System.out.println("guide");
         return g;
     }
         
