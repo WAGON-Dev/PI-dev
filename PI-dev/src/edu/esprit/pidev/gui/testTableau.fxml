@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="Fond1" prefHeight="804.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.TestTableauController">
+   <children>
+      <TableView fx:id="tabletest" layoutX="571.0" layoutY="212.0" onMouseClicked="#modifier" prefHeight="428.0" prefWidth="743.0" style="-fx-background-color: #a8d3d3;">
+        <columns>
+            <TableColumn fx:id="destin" prefWidth="75.0" style="-fx-background-color: #a8d3d3;" text="destination" />
+          <TableColumn fx:id="prix" prefWidth="75.0" style="-fx-background-color: #a8d3d3;" text="prix (DT)" />
+            <TableColumn fx:id="datedep" prefWidth="75.0" style="-fx-background-color: #a8d3d3;" text="datedep" />
+            <TableColumn fx:id="datearrivee" prefWidth="75.0" style="-fx-background-color: #a8d3d3;" text="datearrivee" />
+            <TableColumn fx:id="dateLimiteReservation12" prefWidth="75.0" style="-fx-background-color: #a8d3d3;" text="DateLimite " />
+          <TableColumn fx:id="nbre_dispo" prefWidth="102.0" style="-fx-background-color: #a8d3d3;" text="nbre disponible" />
+            <TableColumn fx:id="nombre_Reservations9" prefWidth="133.0" style="-fx-background-color: #a8d3d3;" text="nombre reservations" />
+            <TableColumn fx:id="Descriptionnns" prefWidth="132.0" style="-fx-background-color: #a8d3d3;" text="Description" />
+        </columns>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </TableView>
+      <JFXTextField fx:id="destinatText" layoutX="230.0" layoutY="171.0" prefHeight="25.0" prefWidth="180.0" promptText="Destination" />
+      <JFXTextField fx:id="PrixTexts" layoutX="230.0" layoutY="390.0" prefHeight="25.0" prefWidth="180.0" promptText="Prix" />
+      <JFXTextField fx:id="nbrPlacesDisposText" layoutX="230.0" layoutY="436.0" prefHeight="25.0" prefWidth="180.0" promptText="Nombre de places Disponibles" />
+      <JFXTextField fx:id="nbrePlacesReservesText" layoutX="230.0" layoutY="506.0" prefHeight="25.0" prefWidth="180.0" promptText="Nombre de places Reservées" />
+      <JFXTextArea fx:id="DescriptionTexttt" layoutX="112.0" layoutY="575.0" prefHeight="110.0" prefWidth="311.0" promptText="Description du voyage" />
+      <JFXDatePicker fx:id="DateDepartText" layoutX="230.0" layoutY="220.0" prefHeight="28.0" prefWidth="180.0" promptText="Date Départ" />
+      <JFXDatePicker fx:id="DateArriveeText" layoutX="230.0" layoutY="287.0" prefHeight="25.0" prefWidth="180.0" promptText="DateArrivée" />
+      <JFXDatePicker fx:id="DateLimiteReservationText" layoutX="230.0" layoutY="342.0" prefHeight="25.0" prefWidth="180.0" promptText="Date Limite de reservation" />
+      <JFXButton fx:id="AjouterFields" buttonType="RAISED" layoutX="585.0" layoutY="656.0" onAction="#AjouterVoyageOrg" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Ajouter" textFill="#a8d3d3">
+         <font>
+            <Font size="18.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="RechercheDestText" labelFloat="true" layoutX="571.0" layoutY="170.0" onMouseEntered="#recherchemouse" prefHeight="25.0" prefWidth="190.0" promptText="Chercher par  Destination..." />
+      <JFXButton fx:id="modifierbu" buttonType="RAISED" layoutX="771.0" layoutY="655.0" onAction="#Valider_Modifict" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Modifier" textFill="#a8d3d3">
+         <font>
+            <Font size="18.0" />
+         </font></JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="954.0" layoutY="656.0" onAction="#Supprimerclick" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Supprimer " textFill="#a8d3d3">
+         <font>
+            <Font size="18.0" />
+         </font></JFXButton>
+      <Label layoutX="26.0" layoutY="179.0" prefHeight="22.0" prefWidth="99.0" text="Destination">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="240.0" text="Date Départ ">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="301.0" text="Date d'Arrivée">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="348.0" text="Date Limite de reservation">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="402.0" prefHeight="16.0" prefWidth="80.0" text="Prix (DT)">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="448.0" text="Nombre de places Disponibles">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="510.0" text="Nombre de places Réservées">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="26.0" layoutY="575.0" text="Description">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <JFXButton layoutX="785.0" layoutY="171.0" onAction="#RechercheParDate" prefHeight="25.0" prefWidth="25.0" style="-fx-background-color: #a8d3d3;" text="..." />
+      <JFXButton buttonType="RAISED" layoutX="1150.0" layoutY="656.0" onAction="#Cancel" prefHeight="36.0" prefWidth="135.0" style="-fx-background-color: #000000;" text="Cancel" textFill="#a8d3d3">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="52.0" fitWidth="59.0" layoutX="25.0" layoutY="11.0" onMouseClicked="#retourAccueil" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="67.0" fitWidth="288.0" layoutX="955.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/taha.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="423.0" layoutY="33.0" prefHeight="82.0" prefWidth="343.0" text="Gestion Des Voyages" textAlignment="CENTER" textFill="#080a6b">
+         <font>
+            <Font name="Arial Bold" size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

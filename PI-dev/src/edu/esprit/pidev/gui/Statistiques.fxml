@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="FondS" prefHeight="855.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.esprit.pidev.controllers.StatistiquesController">
+   <children>
+      <ImageView fitHeight="937.0" fitWidth="1507.0" layoutX="-4.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/passport.jpg" />
+         </image></ImageView>
+      <ImageView fitHeight="53.0" fitWidth="58.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#retouraccueilStat" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../utils/back.png" />
+         </image>
+      </ImageView>
+      <LineChart fx:id="linechar" layoutX="281.0" layoutY="93.0" prefHeight="479.0" prefWidth="669.0" title="Nombre de voyages organisés par mois ">
+        <xAxis>
+          <CategoryAxis label="Mois" side="BOTTOM" fx:id="x" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis fx:id="y" side="LEFT" />
+        </yAxis>
+      </LineChart>
+   </children>
+</AnchorPane>

@@ -49,6 +49,8 @@ public class FXMLMenuBarController implements Initializable {
     private JFXButton exit_menu_bar;
     @FXML
     private VBox Vbox;
+    @FXML
+    private JFXButton bt_reservation;
 
     /**
      * Initializes the controller class.
@@ -60,7 +62,7 @@ public class FXMLMenuBarController implements Initializable {
         Client cl = new Client();
         ClientService cs = new ClientService();
 
-        cl = cs.findByemail("wajdy.bouslama@esprit.tn");
+        cl = cs.findByemail("hamdouch.a@gmail.com");
         nom_p_menu_bar.setText(cl.getNom() + " " + cl.getPrenom());
         mail_menu_bar.setText(cl.getEmail());
         File file = new File(cl.getImage());
@@ -83,7 +85,10 @@ public class FXMLMenuBarController implements Initializable {
     }
 
     @FXML
-    private void OnVPMenuBar(ActionEvent event) {
+    private void OnVPMenuBar(ActionEvent event) throws IOException {
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLCrud_VP.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
@@ -91,11 +96,21 @@ public class FXMLMenuBarController implements Initializable {
     }
 
     @FXML
-    private void OnRateMenuBar(ActionEvent event) {
+    private void OnRateMenuBar(ActionEvent event) throws IOException {
+         Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLRate.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
     private void OnExitMenuBar(ActionEvent event) {
+    }
+
+    @FXML
+    private void OnMesReservation(ActionEvent event) throws IOException{
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLReservationClient.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
 }

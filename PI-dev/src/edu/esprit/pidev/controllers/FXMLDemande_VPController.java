@@ -169,7 +169,9 @@ public class FXMLDemande_VPController implements Initializable {
         } catch (DocumentException ex) {
             Logger.getLogger(FXMLDemande_VPController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
+        
+        
         System.out.println("pdf avec success");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("information");
@@ -234,13 +236,26 @@ public class FXMLDemande_VPController implements Initializable {
             Transport.send(message);
             System.out.println("Done");
 
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
+       
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         //alert.initOwner(adresse.getScene().getWindow());
-
+        DemandeService ds = new DemandeService();
+        Demande d =table_demande.getSelectionModel().getSelectedItem();
+        
+        
+        
+        
+        //d.getId_guide().getId_user();
+        VoyagePersonalise vp = new VoyagePersonalise() ;
+        VoyagePersonaliseService vps = new VoyagePersonaliseService();
+        vp =vps.findById(d.getId_vp().getId_vp());
+        //System.out.println(d.getId_vp().getId_vp());
+        vp.setGuide(d.getId_guide());
+        vps.update(vp);
+        
+        
+        //ds.remove(d.getId_vp().getId_vp());
         alert.setTitle("Confirmation");
         alert.setHeaderText(null);
         alert.setContentText("Email Envoyer Avec Succées ");
@@ -249,6 +264,9 @@ public class FXMLDemande_VPController implements Initializable {
             }
         }
         );
+         } catch (MessagingException e) {
+            e.printStackTrace();
+        }
     }
  
     public static  String convert (java.util.Date d){
@@ -263,7 +281,6 @@ public class FXMLDemande_VPController implements Initializable {
         Guide g = new Guide();
         String nom = table_demande.getSelectionModel().getSelectedItem().getId_guide().getNom();
         g = gs.findByName(nom);
-        
         this.nom.setText(g.getNom());
         this.prenom.setText(g.getPrenom());
         this.cin.setText(g.getCIN());

@@ -5,6 +5,7 @@
  */
 package edu.esprit.pidev.controllers;
 
+import static com.itextpdf.text.pdf.PdfName.rb;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -79,14 +80,23 @@ public class FXMLLoginUsersController implements Initializable {
                      
 	 System.out.println("done1 !!");
         }
+
     
        else if(ag.findByEmail(userName.getText())!=null){
                          System.out.print("done2!!");
-
+      
+               ClientService cs1 = new ClientService();
+               cs1.existeUtilisateur(userName.getText());
+              
+           System.out.print("done2!!");
             /*****LOading the interface****/
             
         }
+
      else  if(car.findByEmail(userName.getText())!=null){
+
+    
+
              System.out.print("done3!!");
             /*****LOading the interface****/
             
@@ -141,4 +151,5 @@ public class FXMLLoginUsersController implements Initializable {
               Logger.getLogger(FXMLLoginUsersController.class.getName()).log(Level.SEVERE, null, ex);
           }
     }    
-}
+
+    }

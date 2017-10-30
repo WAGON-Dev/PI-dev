@@ -247,4 +247,39 @@ return i;
         return g;
     }
       
+
+         
+      /*   public List<Agence> getByRole() {
+         List<Agence> agences = new ArrayList<>();
+        String req = "select * from users where role='agence de voyage'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+               //                                        String role,               String nom,                   String email,                 String mdp,               int numtel,              String adresse,             int nbr_voyage_organise
+                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
+                agences.add(agence);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return agences;
+    }*/
+          
+       /*   public int nbrAV() {
+             int i=0;
+            String req = "SELECT COUNT(*) AS total FROM users where role='agence de voyage'";
+            PreparedStatement preparedStatement;
+          try {
+            preparedStatement = connection.prepareStatement(req);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            i=resultSet.getInt("total");
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+return i;
+}*/
+      
 }

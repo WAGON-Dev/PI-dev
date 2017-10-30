@@ -21,7 +21,7 @@ public class ahmedtest extends Application{
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLlogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLLogin.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

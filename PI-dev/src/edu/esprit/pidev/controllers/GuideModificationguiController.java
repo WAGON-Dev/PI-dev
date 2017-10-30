@@ -11,6 +11,9 @@ import edu.esprit.pidev.sevices.GuideService;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -153,7 +156,11 @@ public class GuideModificationguiController implements Initializable {
                     guiController.guidelog.setNom(nom_modif.getText());
                     guiController.guidelog.setPrenom(prenom_modif.getText());
                     guiController.guidelog.setAdresse(adresse_modif.getText());
-
+                    guiController.guidelog.setCIN(cin_modif.getText());
+                    guiController.guidelog.setNumtel(Integer.parseInt(numtel_modif.getText()));
+                    LocalDate localDate2 = date_modif.getValue();
+                    Date date2 = Date.from(localDate2.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    guiController.guidelog.setDateDeNaissance(date2);
                     GuideService gs = new GuideService();
                     gs.update2(guiController.guidelog);
                     TrayNotification tray = new TrayNotification();

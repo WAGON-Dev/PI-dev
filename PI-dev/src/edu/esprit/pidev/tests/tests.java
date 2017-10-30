@@ -45,7 +45,7 @@ public class tests {
         c = new Client("wajdy", "12807857", d1, "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/person.png");
         c2 = new Client("ghassen", "12807857", d1, "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
         //c2.setId_user(3);
-       cs.add(c);
+//       cs.add(c);
 //        cs.add(c2);
 //        cs.update(c);
         //cs.remove(12);
@@ -94,7 +94,13 @@ public class tests {
         //volservise.add(v6);
         //////////////////////////////////////////////VoyageOrganisé/////////////////////////
         VoyageOrganiseService vo = new VoyageOrganiseService();
-        
+        CarRentalService crr = new CarRentalService();
+//        CarRental carl = new CarRental(0, 14, 117, "Agence Locator_Sousse", "Google@gmail.com", "hiyohi", 12549365, "Sousse", "Agence de Location", "C:/");
+//        CarService cser = new CarService();
+//        System.out.println(cser.FindByRate(50, 40));
+//            CarService crs = new CarService();
+//            Car car = new Car("Golf","1548299",0,30,"2", true , crr.findById(130) , cs.findById(91));
+//            crs.update(car);
     }
 
 }

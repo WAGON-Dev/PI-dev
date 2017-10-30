@@ -32,24 +32,32 @@ public class FXMLLouerVoitureController implements Initializable {
     private JFXButton bt_chercher_voiture;
     @FXML
     private JFXTextField ville_voiture;
+
     @FXML
     private JFXTextField prix_min_voiture;
     @FXML
     private JFXTextField prix_max_voiture;
+
+    public static JFXTextField prix_max;
+    public static JFXTextField prix_min;
+    public static JFXTextField ville;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+        ville = ville_voiture;
+        prix_max = prix_max_voiture;
+        prix_min = prix_min_voiture;
+    }
 
     @FXML
-    private void OnChercherVoiture(ActionEvent event) throws IOException{
+    private void OnChercherVoiture(ActionEvent event) throws IOException {
         Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLResultatRechercheVoiture.fxml"));
         FXMLInterfaceClientController.RootS.getChildren().clear();
         FXMLInterfaceClientController.RootS.getChildren().add(pane);
+
     }
-    
+
 }

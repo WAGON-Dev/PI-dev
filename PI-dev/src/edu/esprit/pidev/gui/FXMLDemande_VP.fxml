@@ -26,9 +26,7 @@
          <effect>
             <Bloom />
          </effect>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
+        
       </TableView>
       <JFXButton fx:id="afficher" layoutX="318.0" layoutY="31.0" onAction="#afficher" prefHeight="50.0" prefWidth="216.0" text="Afficher liste demande">
          <graphic>
@@ -41,9 +39,7 @@
          <font>
             <Font size="14.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor></JFXButton>
+         </JFXButton>
       <JFXButton layoutX="33.0" layoutY="238.0" onAction="#pdf" styleClass="buttonLoginGoogle" stylesheets="@../css/css_email.css" text="Confirmer et Imprimer le contrat">
          <graphic>
             <ImageView fitHeight="41.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">

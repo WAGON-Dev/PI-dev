@@ -6,13 +6,17 @@
 package edu.esprit.pidev.interfaces;
 
 import edu.esprit.pidev.models.VoyageOrganise;
+import java.util.List;
 
 /**
  *
  * @author zakiya
  */
 public interface IVOService extends Iservice<VoyageOrganise,Integer,String>{
-    
+     int nouveauVoyageId() ;
+   public List<VoyageOrganise> getAllByIdAgence(int id );
+
+ 
     
     
 }

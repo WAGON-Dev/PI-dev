@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -33,34 +34,23 @@ public class FXMLCrud_VPController implements Initializable {
 
     @FXML
     private void ajouter_vp(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLAjouter_VP.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLAjouter_VP.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
     private void modifier_vp(ActionEvent event) throws IOException {
-         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLModifier_VP.fxml"));
-        
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("css_email.css");
-        stage.setScene(scene);
-        stage.show();
+       Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLModifier_VP.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
 
     @FXML
     private void demande(ActionEvent event) throws IOException {
-         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLDemande_VP.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLDemande_VP.fxml"));
+        FXMLInterfaceClientController.RootS.getChildren().clear();
+        FXMLInterfaceClientController.RootS.getChildren().add(pane);
     }
     
 }
