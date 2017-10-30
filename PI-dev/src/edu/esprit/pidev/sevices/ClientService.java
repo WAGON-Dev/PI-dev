@@ -129,7 +129,7 @@ public class ClientService implements IserviceClient {
     }
     public Client findByemail(String  r) {
         Client client = null;
-        String req = "select * from users where email=?";
+        String req = "select * from users where email=? and role='client'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
