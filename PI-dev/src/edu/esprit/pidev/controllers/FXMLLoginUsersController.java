@@ -43,7 +43,7 @@ import javafx.stage.Stage;
  */
 public class FXMLLoginUsersController implements Initializable {
 
-      @FXML
+    @FXML
     private JFXTextField userName;
 
     @FXML
@@ -57,103 +57,104 @@ public class FXMLLoginUsersController implements Initializable {
 
     @FXML
     private JFXDrawer drawer;
-    
-    
 
     @FXML
     void loginAction(ActionEvent event) throws IOException, Exception {
- 
-        AdminService a=new AdminService();
-        AgenceService ag=new AgenceService();
-        CarRentalService car=new CarRentalService();
-        ClientService cs=new ClientService();
-        GuideService g=new GuideService();
-        HotelService h=new HotelService();
-        if(a.findByEmail(userName.getText())!=null){
-           
-                   Stage primaryStage=new Stage();
-		   AdminInterface adminInterface=new AdminInterface();
-		  Stage stage = (Stage) login.getScene().getWindow();
-		 
-		    adminInterface.start(primaryStage);
-                    
-                          stage.close();
-                     
-	 System.out.println("done1 !!");
-        }
 
     
-       else if(ag.findByEmail(userName.getText())!=null){
-                         System.out.print("done2!!");
-      
-              /*FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
-              Parent root=loader.load();
-              login.getScene().setRoot(root);*/
-           System.out.print("done2!!");
-            /*****LOading the interface****/
-            
+    
+        AdminService a = new AdminService();
+        AgenceService ag = new AgenceService();
+        CarRentalService car = new CarRentalService();
+        ClientService cs = new ClientService();
+        GuideService g = new GuideService();
+        HotelService h = new HotelService();
+        if (a.findByEmail(userName.getText()) != null) {
+
+            Stage primaryStage = new Stage();
+            AdminInterface adminInterface = new AdminInterface();
+            Stage stage = (Stage) login.getScene().getWindow();
+
+            adminInterface.start(primaryStage);
+
+            stage.close();
+
+            System.out.println("done1 !!");
+        } else if (ag.findByEmail(userName.getText()) != null) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
+            Parent root = loader.load();
+            login.getScene().setRoot(root);
+
+            System.out.print("done2!!");
+            /**
+             * ***LOading the interface***
+             */
+
         }
 
      else  if(car.findByEmail(userName.getText())!=null){
-
-    
-
              System.out.print("done3!!");
             /*****LOading the interface****/
             
       }
-      else if(cs.findByemail(userName.getText())!=null){
-         /* FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLInterfaceClient.fxml"));
-              Parent root=loader.load();
-              login.getScene().setRoot(root);*/
+     
+         else if (cs.findByemail(userName.getText()) != null) {
+            
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
+            Parent root = loader.load();
+            login.getScene().setRoot(root);
             System.out.print("done4!!");
-           /*****LOading the interface****/}
-      else if(g.findByEmail(userName.getText())!=null){
+            /**
+             * ***LOading the interface***
+             */
+        } 
+         else if (g.findByEmail(userName.getText()) != null) {
             System.out.print("done5!!");
-         /*    Stage stage=new Stage();
-                 Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
-        Scene scene = new Scene(root);        
-        stage.setScene(scene);
-        stage.show();*/ 
-            /*****LOading the interface****/}
-       else if(h.findByemail(userName.getText())!=null){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+            Parent root = loader.load();
+            login.getScene().setRoot(root);
+            /*****LOading the interface****/
+        }
+      else if (h.findByemail(userName.getText()) != null) {
             System.out.print("done6!!");
-              
-            /*****LOading the interface****/}
-       
+
+            /**
+             * ***LOading the interface***
+             */
+        }
+
     }
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        
-          try {
-              Pane pane=FXMLLoader.load(getClass().getResource( "/edu/esprit/pidev/gui/FXMLSignUp.fxml"));
-              
-              drawer.setSidePane(pane);
-              drawer.setDefaultDrawerSize(500);
-              
-              HamburgerBackArrowBasicTransition burger=new HamburgerBackArrowBasicTransition(humber);
-              
-              burger.setRate(-1);
-              humber.addEventHandler(MouseEvent.MOUSE_PRESSED, (e)->{
-                  burger.setRate(burger.getRate() * -1);
-                  burger.play();
-                  if(drawer.isShown()){
-                      drawer.close();
-                  }
-                  else{
-                      drawer.open();}
-                  
-              });
-              
-              
-              System.out.println("OK");
-          } catch (IOException ex) {
-              Logger.getLogger(FXMLLoginUsersController.class.getName()).log(Level.SEVERE, null, ex);
-          }
-    }    
+        try {
+            Pane pane = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/FXMLSignUp.fxml"));
 
+            drawer.setSidePane(pane);
+            drawer.setDefaultDrawerSize(500);
+
+            HamburgerBackArrowBasicTransition burger = new HamburgerBackArrowBasicTransition(humber);
+
+            burger.setRate(-1);
+            humber.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
+                burger.setRate(burger.getRate() * -1);
+                burger.play();
+                if (drawer.isShown()) {
+                    drawer.close();
+                } else {
+                    drawer.open();
+                }
+
+            });
+
+            System.out.println("OK");
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLLoginUsersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
+
+}

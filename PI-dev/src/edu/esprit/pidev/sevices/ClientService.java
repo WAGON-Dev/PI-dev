@@ -31,7 +31,7 @@ public class ClientService implements IserviceClient {
      public boolean existeUtilisateur(String username) {
 
         PreparedStatement preparedStatement;
-        String req = "select * from users WHERE nom=?";
+        String req = "select * from users WHERE email=?";
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, username);

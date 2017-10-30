@@ -101,7 +101,29 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
 
     @Override
     public void update(VoyagePersonalise vp) {
-        String req = "update voyagepersonalise set nom=?,ville_depart=?,ville_arrive=?,date_depart=?,date_arrive=?,nbr_participant=?,hotel_fk=?,id_guide_fk=? where id_vp = ?";
+        String req = "update voyagepersonalise set nom=?,ville_depart=?,ville_arrive=?,date_depart=?,date_arrive=?,nbr_participant=?,hotel_fk=? where id_vp = ?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+
+            preparedStatement.setString(1, vp.getNom());
+            preparedStatement.setString(2, vp.getVille_depart());
+            preparedStatement.setString(3, vp.getVille_arrive());
+            preparedStatement.setDate(4, vp.getDate_depart());
+            preparedStatement.setDate(5, vp.getDate_arrive());
+            preparedStatement.setInt(6, vp.getNbr_participant());
+            // preparedStatement.setInt(7, vp.getClient().getId_user());
+            preparedStatement.setInt(7, vp.getHotel().getId_user());
+            //preparedStatement.setInt(8, vp.getGuide().getId_user());
+            preparedStatement.setInt(8, vp.getId_vp());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public void update_demande(VoyagePersonalise vp) {
+        String req = "update voyagepersonalise set nom=?,ville_depart=?,ville_arrive=?,date_depart=?,date_arrive=?,nbr_participant=?,hotel_fk=? ,id_guide_fk=? where id_vp = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
