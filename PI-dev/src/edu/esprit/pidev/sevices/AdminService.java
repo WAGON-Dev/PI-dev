@@ -8,6 +8,7 @@ package edu.esprit.pidev.sevices;
 import edu.esprit.pidev.interfaces.IAdminService;
 import edu.esprit.pidev.models.Admin;
 import edu.esprit.pidev.models.Client;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -177,6 +178,25 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
         }
   return i;
   }
+       
+       
+        public Admin findByEmail(String e) {
+        Admin g = null;
+        String req = "select * from users where email=? and role='admin'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, e);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                g = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+            
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }
 }
     
 

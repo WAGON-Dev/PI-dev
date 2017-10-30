@@ -6,6 +6,7 @@
 package edu.esprit.pidev.sevices;
 import edu.esprit.pidev.interfaces.ICarRentalService;
 import edu.esprit.pidev.models.CarRental;
+import edu.esprit.pidev.models.Guide;
 import edu.esprit.pidev.techniques.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -114,7 +115,7 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public CarRental findById(Integer r) {
-        String query= "Select * from users where id=?";
+        String query= "Select * from users where id_user="+r+"";
         CarRental cr= new CarRental();
         
         try{
@@ -129,7 +130,7 @@ public class CarRentalService implements ICarRentalService{
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
-        cr.setStars(res.getInt(9));
+        cr.setStars(res.getInt("note"));
         cr.setCarNbre(res.getInt(17));
         
         
@@ -139,6 +140,28 @@ public class CarRentalService implements ICarRentalService{
         return cr;
     }
 
+    public CarRental findByAdresse(String add) {
+        String query= "Select * from users where adresse='"+add+"'";
+        CarRental cr= new CarRental();
+        try{
+        PreparedStatement statement= connection.prepareStatement(query);
+        ResultSet res= statement.executeQuery(query);
+        while(res.next()){
+        cr.setRole(res.getString(1));
+        cr.setId_user(res.getInt(2));
+        cr.setNom(res.getString(3));
+        cr.setEmail(res.getString(4));
+        cr.setMdp(res.getString(5));
+        cr.setNumtel(res.getInt(6));
+        cr.setAdresse(res.getString(7));
+        cr.setImage(res.getString(8));
+        cr.setStars(res.getInt(9));
+        cr.setCarNbre(res.getInt(17));
+        }
+        }catch(SQLException ex)
+        {   ex.printStackTrace();}
+        return cr;
+    }
     
     public CarRental FindByReg(String z) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -235,4 +258,21 @@ List<CarRental> list = new ArrayList<>();
 return i;
 }
         
+    
+      public CarRental findByEmail(String e) {
+        CarRental g = null;
+        String req = "select * from users where email=? and role='agence de location de voiture'";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, e);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+              g=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));               
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return g;
+    }  
     }

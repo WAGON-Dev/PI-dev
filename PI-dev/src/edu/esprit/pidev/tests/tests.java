@@ -45,7 +45,7 @@ public class tests {
         c = new Client("wajdy", "12807857", d1, "bouslama", "wajdy.bouslama@esprit.tn", "123456", 55054543, "sousse", "client", "C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/person.png");
         c2 = new Client("ghassen", "12807857", d1, "jemai", "ghassen.jemai@esprit.tn", "123456", 55054543, "australia", "client", "");
         //c2.setId_user(3);
-       cs.add(c);
+//       cs.add(c);
 //        cs.add(c2);
 //        cs.update(c);
         //cs.remove(12);
@@ -79,12 +79,12 @@ public class tests {
 
         /////////////////////////////////////////////////Vol/////////////////////////////////////////
         VolService volservise = new VolService();
-        Vol v4 = new Vol( d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
-        Vol v5 = new Vol( d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
-        Vol v6 = new Vol( d1, d1, 9600d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
-        //volservise.add(v4);
-        //volservise.add(v5);
-        //volservise.add(v6);
+        Vol v4 = new Vol( d1, d1, 1900d, "paris_tunis", 3, "Paris", "Tunis", "lufthansa");
+        Vol v5 = new Vol( d1, d1, 1000d, "tunis_paris", 3, "Tunis", "Paris", "emirates");
+        Vol v6 = new Vol( d1, d1, 7300d, "nfidha_barcelone", 3, "nfidha", "barcelone", "NouvelAir");
+        volservise.add(v4);
+        volservise.add(v5);
+        volservise.add(v6);
 
 //        Vol v4 = new Vol(d1, d1, 900d, "paris_tunis", 3, "Paris", "Tunis", "TunisAir");
 //        Vol v5 = new Vol(d1, d1, 1900d, "tunis_paris", 3, "Tunis", "Paris", "AirFrance");
@@ -94,7 +94,13 @@ public class tests {
         //volservise.add(v6);
         //////////////////////////////////////////////VoyageOrganisé/////////////////////////
         VoyageOrganiseService vo = new VoyageOrganiseService();
-        
+        CarRentalService crr = new CarRentalService();
+//        CarRental carl = new CarRental(0, 14, 117, "Agence Locator_Sousse", "Google@gmail.com", "hiyohi", 12549365, "Sousse", "Agence de Location", "C:/");
+//        CarService cser = new CarService();
+//        System.out.println(cser.FindByRate(50, 40));
+//            CarService crs = new CarService();
+//            Car car = new Car("Golf","1548299",0,30,"2", true , crr.findById(130) , cs.findById(91));
+//            crs.update(car);
     }
 
 }

@@ -252,7 +252,7 @@ public class FXMLDemande_VPController implements Initializable {
         vp =vps.findById(d.getId_vp().getId_vp());
         //System.out.println(d.getId_vp().getId_vp());
         vp.setGuide(d.getId_guide());
-        vps.update(vp);
+        vps.update_demande(vp);
         
         
         //ds.remove(d.getId_vp().getId_vp());

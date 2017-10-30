@@ -31,7 +31,7 @@ public class ClientService implements IserviceClient {
      public boolean existeUtilisateur(String username) {
 
         PreparedStatement preparedStatement;
-        String req = "select * from users WHERE nom=?";
+        String req = "select * from users WHERE email=?";
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, username);
@@ -96,7 +96,27 @@ public class ClientService implements IserviceClient {
             ex.printStackTrace();
         }
     }
-
+     public void updatecompte(Client t) {
+        String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,role=?,image=? where nom = ? and prenom = ? ";
+        PreparedStatement preparedStatement = null;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, t.getNom());
+            preparedStatement.setString(2, t.getPrenom());
+            preparedStatement.setString(3, t.getEmail());
+            preparedStatement.setString(4, t.getMdp());
+            preparedStatement.setInt(5, t.getNumtel());
+            preparedStatement.setString(6, t.getAdresse());
+            preparedStatement.setString(7, t.getCin());
+            preparedStatement.setString(8, t.getRole());
+            preparedStatement.setString(9, t.getImage());
+            preparedStatement.setString(10, t.getNom());
+            preparedStatement.setString(11, t.getPrenom());
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     @Override
     public void remove(Integer r) {
         String req = "delete from users where id_user =?";
@@ -129,7 +149,7 @@ public class ClientService implements IserviceClient {
     }
     public Client findByemail(String  r) {
         Client client = null;
-        String req = "select * from users where email=?";
+        String req = "select * from users where email=? and role='client'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

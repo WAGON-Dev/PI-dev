@@ -62,7 +62,7 @@ public class FXMLMenuBarController implements Initializable {
         Client cl = new Client();
         ClientService cs = new ClientService();
 
-        cl = cs.findByemail("hamdouch.a@gmail.com");
+        cl = cs.findByemail(ClientService.loggedUser.getEmail());
         nom_p_menu_bar.setText(cl.getNom() + " " + cl.getPrenom());
         mail_menu_bar.setText(cl.getEmail());
         File file = new File(cl.getImage());

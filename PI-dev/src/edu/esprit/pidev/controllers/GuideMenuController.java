@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -39,6 +40,10 @@ public class GuideMenuController implements Initializable {
     private Button modifier_menu_btn;
     @FXML
     private Button vp_menu_button;
+    @FXML
+    private Label nom_guide_menu;
+    @FXML
+    private Label guide_menu_prenom;
 
     /**
      * Initializes the controller class.
@@ -50,6 +55,8 @@ public class GuideMenuController implements Initializable {
         File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imgv_menu.setImage(img);
+        nom_guide_menu.setText(g.getNom());
+        guide_menu_prenom.setText(g.getPrenom());
     }
 
     @FXML

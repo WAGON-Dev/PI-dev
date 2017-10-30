@@ -29,6 +29,7 @@ import edu.esprit.pidev.sevices.GuideService;
 import edu.esprit.pidev.sevices.HotelService;
 import edu.esprit.pidev.tests.AdminInterface;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.time.ZoneId;
 import java.util.Date;
@@ -40,7 +41,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -164,7 +168,7 @@ public static String role;
         
     }
     @FXML
-    void SignUp(ActionEvent event) {
+    void SignUp(ActionEvent event) throws IOException {
 
      if(role.equals("agence de voyage")){
          if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
@@ -173,6 +177,9 @@ public static String role;
          Agence a=new Agence(role,firstName.getText() , email.getText(), passwordSignUp.getText(), numTel, address.getText(), 0);
         agence.add(a);
          /******ajout de linterface agence de voyage ???*******/
+         FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
+              Parent root=loader.load();
+              SignUpGeneral.getScene().setRoot(root);
                    System.out.println("done !!");
                    
                    
@@ -214,7 +221,7 @@ public static String role;
             
     }
 @FXML
-     void SignUpUser(ActionEvent event) {
+     void SignUpUser(ActionEvent event) throws IOException {
          if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
         SignUpGeneral.setDisable(true);
    if(role.equals("client")){
@@ -225,6 +232,9 @@ public static String role;
             Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
             cs.add(t);
             /******ajout de linterface client ???*******/
+            FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLInterfaceClient.fxml"));
+              Parent root=loader.load();
+              signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
         }
    if(role.equals("admin")){
@@ -252,7 +262,9 @@ public static String role;
                int numTel=Integer.parseInt(phoneNum.getText());
                Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, " ");
                guide.add(g);
-                 /******ajout de linterface  guide???*******/
+               FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
+              Parent root=loader.load();
+              signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
     }
                ///***** send automatically an email to the user who signed up

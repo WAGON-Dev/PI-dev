@@ -46,7 +46,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9, "Guide");
+            preparedStatement.setString(9, "guide");
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -68,7 +68,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9, "Guide");
+            preparedStatement.setString(9, "guide");
             preparedStatement.setInt(10, t.getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -165,7 +165,7 @@ public class GuideService implements Iguide {
 
     public Guide findByEmail(String e) {
         Guide g = null;
-        String req = "select * from users where email=?";
+        String req = "select * from users where email=? and role='guide'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -232,7 +232,7 @@ public class GuideService implements Iguide {
       
        public List<Guide> getByRole() {
  List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role = 'Guide'";
+        String req = "select * from users where role = 'guide'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -263,6 +263,7 @@ public class GuideService implements Iguide {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        System.out.println("guide");
         return g;
     }
         

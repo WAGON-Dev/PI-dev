@@ -12,6 +12,7 @@ import edu.esprit.pidev.sevices.ChambreService;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.HotelService;
 import edu.esprit.pidev.sevices.ReservationService;
+import edu.esprit.pidev.sevices.SendMail;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -23,7 +24,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.controlsfx.control.Rating;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -111,6 +114,15 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
 
     @FXML
     private void OnContacterHotelMail(MouseEvent event) {
+        ChambreService cs = new ChambreService();
+        Hotel hotel = new Hotel();
+        HotelService hs = new HotelService();
+        hotel = hs.findById(ch_res.getHotel_fk().getId_user());
+        SendMail.send(hotel.getEmail(), "Reservation", "Bonjour; \nJe voudrais avoir plus d'informations sur vos offres. \n\n Cordialement.\n", "wajdy.bouslama@esprit.tn", "sergeras95");
+         TrayNotification tray = new TrayNotification();
+        tray.setTitle("Email envoyé");
+        tray.showAndDismiss(Duration.seconds(2));
+    
     }
 
 }

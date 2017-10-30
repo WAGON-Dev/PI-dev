@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
@@ -26,13 +27,15 @@
       <Pane prefHeight="200.0" prefWidth="4.0" BorderPane.alignment="CENTER" />
    </left>
    <top>
-      <Pane BorderPane.alignment="CENTER">
+      <Pane prefHeight="150.0" prefWidth="220.0" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="nom_guide_menu" layoutX="53.0" layoutY="108.0" text="Label" />
             <Pane layoutX="37.0" layoutY="-74.0">
                <children>
                   <ImageView fx:id="imgv_menu" fitHeight="148.0" fitWidth="146.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
+            <Label fx:id="guide_menu_prenom" layoutX="130.0" layoutY="109.0" text="Label" />
          </children>
       </Pane>
    </top>
