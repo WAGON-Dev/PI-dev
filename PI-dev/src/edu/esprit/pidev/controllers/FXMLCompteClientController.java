@@ -110,7 +110,7 @@ public class FXMLCompteClientController implements Initializable {
             ereur.setText("Veuiller remplir le numero de telephone ");
             return;
         }
-        cs.update(c);
+        cs.updatecompte(c);
          TrayNotification tray = new TrayNotification();
         tray.setTitle("Modification effectué");
         tray.showAndDismiss(Duration.seconds(2));
@@ -131,7 +131,8 @@ public class FXMLCompteClientController implements Initializable {
             Image image = new Image(selectedFile.toURI().toString());
             image_comte_client_modif.setImage(image);
             c.setImage(selectedFile.toURI().toString().substring(6));
-            cs.update(c);
+          //  c.setDateNaissence("1995/08/29");
+            cs.updatecompte(c);
 
         } else {
             System.out.println("file invalid ");
