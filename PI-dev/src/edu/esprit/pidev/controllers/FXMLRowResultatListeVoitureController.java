@@ -6,13 +6,22 @@
 package edu.esprit.pidev.controllers;
 
 import com.itextpdf.text.Anchor;
+import static edu.esprit.pidev.controllers.FXMLRowHotelController.ch_res;
 import edu.esprit.pidev.models.Car;
+import edu.esprit.pidev.models.CarRental;
 import edu.esprit.pidev.models.Client;
 import edu.esprit.pidev.models.Demande;
+import edu.esprit.pidev.models.Hotel;
+import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.models.VoyagePersonalise;
+import edu.esprit.pidev.sevices.CarRentalService;
 import edu.esprit.pidev.sevices.CarService;
+import edu.esprit.pidev.sevices.ChambreService;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.DemandeService;
+import edu.esprit.pidev.sevices.HotelService;
+import edu.esprit.pidev.sevices.ReservationService;
+import edu.esprit.pidev.sevices.SendMail;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +46,7 @@ import org.controlsfx.control.Rating;
  *
  * @author Ghassen
  */
-public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
+public class FXMLRowResultatListeVoitureController extends ListCell<Car> {
 
     @FXML
     private Label reg_num_label;
@@ -59,17 +68,17 @@ public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
     private Button reserver_btn;
     @FXML
     private Button annuler_btn;
-    @FXML
-    private Label state;
+    
     @FXML
     private AnchorPane cell;
-    
+
     private FXMLLoader mLLoader;
     public static Car voiture;
+
     /**
      * Initializes the controller class.
      */
-      protected void updateItem(Car student, boolean empty) {
+    protected void updateItem(Car student, boolean empty) {
         super.updateItem(student, empty);
 
         if (empty || student == null) {
@@ -99,31 +108,31 @@ public class FXMLRowResultatListeVoitureController extends ListCell<Car>{
             File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + student.getCarRentalID().getImage());
             Image img = new Image(file.toURI().toString());
             agl_photo.setImage(img);
-                state.setText("");
             setText(null);
             setGraphic(cell);
         }
     }
+
     @FXML
     private void mail_sending_label_clicked(MouseEvent event) {
-    
+        CarRental hotel = new CarRental();
+        CarRentalService hs = new CarRentalService();
+        hotel = hs.findById(voiture.getCarRentalID().getId_user());
+        SendMail.send(hotel.getEmail(), "Reservation", "Bonjour; \nJe voudrais avoir plus d'informations sur vos offres. \n\n Cordialement. \n", "wajdy.bouslama@esprit.tn", "sergeras95");
+
     }
 
     @FXML
     private void reserver_btn_clicked(MouseEvent event) {
-        ClientService cser = new ClientService();
-        voiture.setUserId(cser.findById(91));
-        CarService cs = new CarService();
-        cs.update(voiture);
-        state.setText("Vous avez resrvé cette voiture");
+        ReservationService ress = new ReservationService();
+        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", Integer.parseInt(voiture.getModel()), voiture.getRate());
+        
+        ress.addCar(r);
     }
 
     @FXML
     private void annuler_btn_clicked(MouseEvent event) {
-        voiture.setUserId(null);
-        CarService cs = new CarService();
-        cs.update(voiture);
-        state.setText("reservation annulée");
+
     }
-    
+
 }

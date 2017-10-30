@@ -16,6 +16,8 @@ import java.util.List;
 import edu.esprit.pidev.interfaces.IVOService;
 import edu.esprit.pidev.models.VoyageOrganise;
 import edu.esprit.pidev.techniques.DataSource; 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author zakiya
@@ -143,5 +145,88 @@ public class VoyageOrganiseService implements IVOService{
         }
         return voyages;
     }
-    
+
+      @Override
+    public int nouveauVoyageId() {
+        int id = 0;
+        try {
+            String req = "SELECT max(id_voyage) as id FROM evenements ";
+            PreparedStatement ps = connection.prepareStatement(req);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                id = rs.getInt("id");
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VoyageOrganiseService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return (id + 1);
+    }
+    // getall by idagence 
+
+    @Override
+
+    public List<VoyageOrganise> getAllByIdAgence(int id) {
+        List<VoyageOrganise> voyages = new ArrayList<>();
+        String req = "select * from voyageorganise where id_agence= ? ";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                VoyageOrganise voyage = new VoyageOrganise(resultSet.getInt("id_voyage"), resultSet.getString("titreVoyage"), resultSet.getDate("dateDebutVoy"), resultSet.getDate("dateFinVoy"), resultSet.getString("description"), resultSet.getFloat("prix"), resultSet.getDate("dateLimiteRes"), resultSet.getInt("nbrePlacesDisp"), resultSet.getInt("nbrePlacesRes"), new AgenceService().findById(resultSet.getInt("id_agence")));
+                voyages.add(voyage);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voyages;
+    }
+
+    public List<VoyageOrganise> getTableByIdAgence(int id) {
+        List<VoyageOrganise> voyages = new ArrayList<>();
+        String req = "select *  from voyageorganise where id_agence= ? ";
+        //AND dateDebutVoy > DATE(NOW()
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                VoyageOrganise voyage = new VoyageOrganise(resultSet.getInt("id_voyage"), resultSet.getString("titreVoyage"), resultSet.getDate("dateDebutVoy"), resultSet.getDate("dateFinVoy"), resultSet.getString("description"), resultSet.getFloat("prix"), resultSet.getDate("dateLimiteRes"), resultSet.getInt("nbrePlacesDisp"), resultSet.getInt("nbrePlacesRes"), new AgenceService().findById(resultSet.getInt("id_agence")));
+                voyages.add(voyage);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voyages;
+    }
+
+    public VoyageOrganise AjoutCond(VoyageOrganise v ) {
+        VoyageOrganise voyage = null ; 
+        String req = "select *  from voyageorganise where titreVoyage = ? AND dateDebutVoy = ? AND dateFinVoy=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+             preparedStatement.setString(1, v.getTitreVoyage());
+            preparedStatement.setDate(2, v.getDateDebutVoy());
+            preparedStatement.setDate(3, v.getDateFinVoy());
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                voyage = new VoyageOrganise(resultSet.getInt("id_voyage"), resultSet.getString("titreVoyage"), resultSet.getDate("dateDebutVoy"), (Date) resultSet.getDate("dateFinVoy"), resultSet.getString("description"), resultSet.getFloat("prix"), resultSet.getDate("dateLimiteRes"), resultSet.getInt("nbrePlacesDisp"), resultSet.getInt("nbrePlacesRes"), new AgenceService().findById(resultSet.getInt("id_agence")));
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return voyage;
+
+    }
 }
