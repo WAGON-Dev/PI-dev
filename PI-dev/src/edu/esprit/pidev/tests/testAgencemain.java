@@ -24,7 +24,7 @@ public class testAgencemain extends Application {
      
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("AccueilAgence.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/edu/esprit/pidev/gui/Hotel.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
