@@ -54,12 +54,14 @@ public class FXMLLoginUsersController implements Initializable {
 
     @FXML
     private JFXDrawer drawer;
-
+    
+    public static String mail_login;
+    
     @FXML
     void loginAction(ActionEvent event) throws IOException, Exception {
 
     
-    
+        
         AdminService a = new AdminService();
         AgenceService ag = new AgenceService();
         CarRentalService car = new CarRentalService();
@@ -106,6 +108,7 @@ public class FXMLLoginUsersController implements Initializable {
              */
         } else if ((g.findByEmail(userName.getText()) != null)&&(g.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
             System.out.print("done5!!");
+            mail_login=userName.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);

@@ -55,7 +55,7 @@ public class GuideguiController implements Initializable {
     @FXML
     private ImageView imagev;
 
-    public Guide guidelog;
+    public static Guide guidelog;
 
     /**
      * Initializes the controller class.
@@ -63,7 +63,7 @@ public class GuideguiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         GuideService gs = new GuideService();
-        Guide g = gs.findByEmail("jemaighass@gmail.com");
+        Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
         guidelog = g;
         File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
