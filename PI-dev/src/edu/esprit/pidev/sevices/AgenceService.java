@@ -229,7 +229,7 @@ return i;
           
            public Agence findByEmail(String e) {
                Agence g = null;
-        String req = "select * from users where email=? and role='agence de voyage'";
+        String req = "select * from users where email=? and roles='agence de voyage'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

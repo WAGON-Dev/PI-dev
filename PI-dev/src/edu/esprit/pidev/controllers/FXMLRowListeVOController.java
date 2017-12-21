@@ -9,7 +9,7 @@ import edu.esprit.pidev.models.Reservation;
 import edu.esprit.pidev.models.VoyageOrganise;
 import edu.esprit.pidev.sevices.ClientService;
 import edu.esprit.pidev.sevices.ReservationService;
-import edu.esprit.pidev.utils.MoviePlayer;
+//import edu.esprit.pidev.utils.MoviePlayer;
 import java.io.File;
 import java.io.IOException;
 import javafx.fxml.FXML;

@@ -34,14 +34,14 @@ public class HotelService  implements IHotel  {
     }
      public Hotel findByName(String Name) {
               Hotel  hotel = null;
-        String req = "select * from users where nom=?";
+        String req = "select * from users where username=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, Name);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-              hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
+              hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -118,7 +118,7 @@ public class HotelService  implements IHotel  {
             preparedStatement.setInt(1, id_user);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
+                hotel= new Hotel(resultSet.getInt("id_user"), resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("image"),resultSet.getString("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"),resultSet.getInt("note"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -245,14 +245,14 @@ return i;
       
       public Hotel findByemail(String  r) {
         Hotel client = null;
-        String req = "select * from users where email=? and role='hotel'";
+        String req = "select * from users where email=? and roles='a:1:{i:0;s:10:\"ROLE_HOTEL\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                client = new Hotel(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("role"),resultSet.getString("image"),resultSet.getInt("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"));
+                client = new Hotel(resultSet.getInt("id_user"), resultSet.getString("username"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getString("roles"),resultSet.getString("image"),resultSet.getInt("etoile"),resultSet.getInt("nb_chambre"),resultSet.getInt("nb_chambre_reserve"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

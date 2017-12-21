@@ -118,7 +118,14 @@ public class FXMLDemande_VPController implements Initializable {
             }
 
         });
-        id_guide.setCellValueFactory(new PropertyValueFactory<>("id_guide_fk"));
+        id_guide.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Demande, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<Demande, String> param) {
+                return new SimpleStringProperty(param.getValue().getId_guide().getNom());
+            }
+
+        });
+       // id_guide.setCellValueFactory(new PropertyValueFactory<>("id_guide_fk"));
         // System.out.println("");
 
         table_demande.setItems(Liste_VP);
@@ -228,6 +235,9 @@ public class FXMLDemande_VPController implements Initializable {
 
             message.setContent(multipart);
 
+            ////////////////////////////////////
+            
+            
             System.out.println("sending");
             Transport.send(message);
             System.out.println("Done");
@@ -275,8 +285,9 @@ public class FXMLDemande_VPController implements Initializable {
     private void label_table(MouseEvent event) {
         GuideService gs = new GuideService();
         Guide g = new Guide();
-        String nom = table_demande.getSelectionModel().getSelectedItem().getId_guide().getNom();
-        g = gs.findByName(nom);
+        int nom = table_demande.getSelectionModel().getSelectedItem().getId_guide().getId_user();
+        g = gs.findById(nom);
+        
         this.nom.setText(g.getNom());
         this.prenom.setText(g.getPrenom());
         this.cin.setText(g.getCIN());
@@ -285,7 +296,6 @@ public class FXMLDemande_VPController implements Initializable {
         this.numtel.setText(Integer.toString(g.getNumtel()));
         this.note.setText(Integer.toString(g.getNote()));
         
-        
-        
+      
     }
 }

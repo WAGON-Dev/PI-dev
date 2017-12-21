@@ -23,19 +23,24 @@ import javafx.stage.Stage;
 public class TestInterfaceCLient2 extends Application {
 
     @Override
+    public void start(Stage primaryStage) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+/*
+    @Override
     public void start(Stage stage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("FXMLInterfaceClient.fxml"));
 //    Parent root = FXMLLoader.load(getClass().getResource("Guidegui.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.show();
+        stage.show();*/
     }
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         launch(args);
-    }
+    }*/
 
-}
+

@@ -78,7 +78,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement.setString(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")),new ClientService().findById(resultSet.getInt("id_client_fk")));
+                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")),new ClientService().findById(resultSet.getInt("id_client_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -95,7 +95,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Demande demande = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt(1)), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt(2)));
+                Demande demande = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt(1)), new ClientService().findById(resultSet.getInt(2)), new GuideService().findById(resultSet.getInt("id_guide_fk")));
                 demandes.add(demande);
             }
         } catch (SQLException ex) {

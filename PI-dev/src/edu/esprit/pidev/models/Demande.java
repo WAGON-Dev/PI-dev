@@ -23,7 +23,7 @@ public class Demande {
 
  
     
-    public Demande(VoyagePersonalise id_vp, Guide id_guide, Client id_client) {
+    public Demande(VoyagePersonalise id_vp, Client id_client,Guide id_guide) {
         this.id_vp = id_vp;
         this.id_guide = id_guide;
         this.id_client = id_client;

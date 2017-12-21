@@ -545,7 +545,7 @@ public class TestTableauController implements Initializable {
 
     public void recherche() {
 
-        RechercheDestText.textProperty().addListener(new ChangeListener<String>() {
+       /* RechercheDestText.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(final ObservableValue<? extends String> observable, final String oldValue, final String newValue) {
                 voyageData.clear();
@@ -558,7 +558,7 @@ public class TestTableauController implements Initializable {
                 tabletest.setItems(voyageData);
 
             }
-        });
+        });*/
 
     }
 

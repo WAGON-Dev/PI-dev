@@ -261,7 +261,7 @@ return i;
     
       public CarRental findByEmail(String e) {
         CarRental g = null;
-        String req = "select * from users where email=? and role='agence de location de voiture'";
+        String req = "select * from users where email=? and roles='agence de location de voiture'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

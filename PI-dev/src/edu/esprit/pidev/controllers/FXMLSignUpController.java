@@ -151,7 +151,7 @@ public static String role;
     void getRole(ActionEvent event) {
          
        role= roleComboBox.getSelectionModel().getSelectedItem();
-       if(role.equals("hotel")){
+       if(role.equals("ROLE_HOTEL")){
            
            hotelPopUp.setVisible(true);
            
