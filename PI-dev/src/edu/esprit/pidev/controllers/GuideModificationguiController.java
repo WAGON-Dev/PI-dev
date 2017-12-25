@@ -123,8 +123,9 @@ public class GuideModificationguiController implements Initializable {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
         File selectedFile = fc.showOpenDialog(null);
+        String f = selectedFile.toURI().toString();
         if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
+            Image image = new Image(f);
             imagev_modif.setImage(image);
 
         } else {
@@ -190,7 +191,7 @@ public class GuideModificationguiController implements Initializable {
         prenom_modif.setText(guiController.guidelog.getPrenom());
         adresse_modif.setText(guiController.guidelog.getAdresse());
         email_modif.setText(guiController.guidelog.getEmail());
-        pwd_modif.setText(guiController.guidelog.getMdp());
+        pwd_modif.setText(guiController.guidelog.getPassword());
         cin_modif.setText(String.valueOf(guiController.guidelog.getCIN()));
         numtel_modif.setText(String.valueOf(guiController.guidelog.getNumtel()));
     }

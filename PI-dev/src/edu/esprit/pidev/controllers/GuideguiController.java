@@ -65,9 +65,9 @@ public class GuideguiController implements Initializable {
         GuideService gs = new GuideService();
         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
         guidelog = g;
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
-        Image img = new Image(file.toURI().toString());
-        imagev.setImage(img);
+//        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+//        Image img = new Image(file.toURI().toString());
+//        imagev.setImage(img);
         first_adresse_label.setText(g.getAdresse());
         first_cin_label.setText(String.valueOf(g.getCIN()));
         first_email_label.setText(g.getEmail());

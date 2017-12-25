@@ -88,7 +88,7 @@ public class GuideMenuController implements Initializable {
         modifController.setPrenom_modif(guiController.guidelog.getPrenom());
         modifController.setAdresse_modif(guiController.guidelog.getAdresse());
         modifController.setEmail_modif(guiController.guidelog.getEmail());
-        modifController.setPwd_modif(guiController.guidelog.getMdp());
+        modifController.setPwd_modif(guiController.guidelog.getPassword());
         modifController.setCin_modif(String.valueOf(guiController.guidelog.getCIN()));
         modifController.setNumtel_modif(String.valueOf(guiController.guidelog.getNumtel()));
 

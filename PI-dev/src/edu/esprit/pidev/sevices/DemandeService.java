@@ -29,11 +29,11 @@ public class DemandeService implements IDemandeService {
     public DemandeService() {
         connection = DataSource.getInsatance().getConnection();
     }
-     
+
     @Override
-    
+
     public void add(Demande t) {
- String req = "insert into demande (id_vp_fk,id_client_fk,id_guide_fk) values (?,?,?)";
+        String req = "insert into demande (id_vp_fk,id_client_fk,id_guide_fk) values (?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -43,7 +43,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }    
+        }
     }
 
     @Override
@@ -68,8 +68,26 @@ public class DemandeService implements IDemandeService {
     public Demande findById(Integer r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-     public Demande findGuideEmail(String r) {
+
+    public Demande findGuideEmail2(String r, Integer x) {
+        Demande d = null;
+        String req = "select * from demande where id_guide_fk=? and id_vp_fk=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, r);
+            preparedStatement.setInt(2, x);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt("id_client_fk")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return d;
+    }
+
+    public Demande findGuideEmail(String r) {
         Demande d = null;
         String req = "select * from demande where id_guide_fk=?";
         PreparedStatement preparedStatement;
@@ -78,7 +96,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement.setString(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")),new ClientService().findById(resultSet.getInt("id_client_fk")));
+                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt("id_client_fk")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -99,7 +99,7 @@ public class FXMLRowVolController extends ListCell<Vol> {
     @FXML
     private void OnReserverVol(MouseEvent event) {
             ReservationService ress = new ReservationService();
-        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", vv.getNumTicket(), vv.getPrix_vol());
+        Reservation r = new Reservation(ClientService.loggedUser, "", vv.getNumTicket(), vv.getPrix_vol());
         ress.addVol(r);
     }
 

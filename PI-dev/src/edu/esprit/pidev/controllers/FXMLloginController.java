@@ -48,7 +48,7 @@ public class FXMLloginController implements Initializable {
         List<Client> list = cs.getAll();
         Map<String, String> map = new HashMap<>();
         for (Client a : list) {
-            map.put(a.getNom(), a.getMdp());
+            map.put(a.getNom(), a.getPassword());
         }
         if (map.containsKey(name.getText())) {
 
