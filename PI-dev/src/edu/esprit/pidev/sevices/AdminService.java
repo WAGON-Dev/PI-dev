@@ -127,7 +127,7 @@ public class AdminService implements IAdminService{
     
      public List<Admin> getByAdmin() {
         List<Admin> admins = new ArrayList<>();
-        String req = "select * from users where role = 'admin'";
+        String req = "select * from users where roles = 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -146,7 +146,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
      
       public Admin findByNomPwd(String nom,String pwd) {
         Admin  admin = null;
-        String req = "select * from users where nom=? and password=? and role='admin'";
+        String req = "select * from users where nom=? and mdp=? and roles='a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -166,7 +166,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
       
        public int nbrAdmin() {
              int i=0;
-            String req = "SELECT COUNT(*) AS total FROM users where role='admin'";
+            String req = "SELECT COUNT(*) AS total FROM users where roles='a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
             PreparedStatement preparedStatement;
           try {
             preparedStatement = connection.prepareStatement(req);
@@ -182,7 +182,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
        
         public Admin findByEmail(String e) {
         Admin g = null;
-        String req = "select * from users where email=? and roles='admin'";
+        String req = "select * from users where email=? and roles='a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

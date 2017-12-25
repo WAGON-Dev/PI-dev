@@ -68,7 +68,7 @@ public class FXMLLoginUsersController implements Initializable {
         ClientService cs = new ClientService();
         GuideService g = new GuideService();
         HotelService h = new HotelService();
-        if (a.findByEmail(userName.getText()) != null) {
+        if (a.findByEmail(userName.getText()) != null&&(a.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
 
             Stage primaryStage = new Stage();
             AdminInterface adminInterface = new AdminInterface();
@@ -96,8 +96,15 @@ public class FXMLLoginUsersController implements Initializable {
              * ***LOading the interface***
              */
 
+<<<<<<< HEAD
         } else if ((cs.findByemail(userName.getText()) != null)&&(cs.findByemail(userName.getText()).getPassword().equals(password.getText()))) {
             ClientService cs1 = new ClientService();
+=======
+        } 
+     
+         else if (cs.findByemail(userName.getText()) != null&&(cs.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
+            ClientService cs1=new ClientService();
+>>>>>>> origin/master
             cs1.existeUtilisateur(userName.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
