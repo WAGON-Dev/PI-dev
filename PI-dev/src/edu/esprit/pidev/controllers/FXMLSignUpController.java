@@ -16,6 +16,7 @@ import com.jfoenix.validation.RequiredFieldValidator;
 import com.teknikindustries.bulksms.SMS;
 import edu.esprit.pidev.models.Admin;
 import edu.esprit.pidev.models.Agence;
+import edu.esprit.pidev.models.BCrypt;
 import edu.esprit.pidev.models.CarRental;
 //import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
 import edu.esprit.pidev.models.Client;
@@ -122,7 +123,9 @@ public class FXMLSignUpController  implements Initializable{
 
     @FXML
     private JFXDatePicker dateNaissance;
-public static String role;
+    
+    
+    public static String role;
 
     ObservableList<String> listRole=FXCollections.observableArrayList("admin","client","hotel","agence de location de voiture","guide","agence de voyage");
     
@@ -151,7 +154,7 @@ public static String role;
     void getRole(ActionEvent event) {
          
        role= roleComboBox.getSelectionModel().getSelectedItem();
-       if(role.equals("ROLE_HOTEL")){
+       if(role.equals("hotel")){
            
            hotelPopUp.setVisible(true);
            
@@ -229,7 +232,7 @@ public static String role;
             Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
            int numTel=Integer.parseInt(phoneNum.getText());
            //String prenom, String cin, Date dateNaissence, String nom, String email, String mdp, int numtel, String adresse, String role, String image
-            Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
+            Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), "a:1:{i:0;s:11:\"ROLE_CLIENT\";}", "");
             cs.add(t);
             /******ajout de linterface client ???*******/
               ClientService cs1=new ClientService();
@@ -262,7 +265,7 @@ public static String role;
                    GuideService guide=new GuideService();
                 Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                int numTel=Integer.parseInt(phoneNum.getText());
-               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, " ");
+               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), role, " ");
                guide.add(g);
                FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
               Parent root=loader.load();

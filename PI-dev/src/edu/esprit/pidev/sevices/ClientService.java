@@ -51,24 +51,27 @@ public class ClientService implements IserviceClient {
         }
         return false;
     }
-
+/////////////////////////////////////////////////////////////j'ai modifier pour le sign up /////////////////////////////////////////////////
     @Override
     public void add(Client t) {
-        String req = "insert into users (nom,prenom,email,password,numTel,adresse,cin,dateNaissence,roles,image) values (?,?,?,?,?,?,?,?,?,?)";
+        String req = "insert into users (username,username_canonical,prenom,email,email_canonical,enabled,password,numTel,adresse,cin,dateNaissence,roles,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, t.getNom());
-            preparedStatement.setString(2, t.getPrenom());
-            preparedStatement.setString(3, t.getEmail());
-            preparedStatement.setString(4, t.getPassword());
-            preparedStatement.setInt(5, t.getNumtel());
-            preparedStatement.setString(6, t.getAdresse());
-            preparedStatement.setString(7, t.getCin());
+            preparedStatement.setString(2, t.getNom());
+            preparedStatement.setString(3, t.getPrenom());
+            preparedStatement.setString(4, t.getEmail());
+            preparedStatement.setString(5, t.getEmail());
+            preparedStatement.setInt(6, 1);
+            preparedStatement.setString(7, t.getPassword());
+            preparedStatement.setInt(8, t.getNumtel());
+            preparedStatement.setString(9, t.getAdresse());
+            preparedStatement.setString(10, t.getCin());
             java.sql.Date sqlDate = new java.sql.Date(t.getDateNaissence().getTime());
-            preparedStatement.setDate(8, sqlDate);
-            preparedStatement.setString(9, t.getRole());
-            preparedStatement.setString(10, t.getImage());
+            preparedStatement.setDate(11, sqlDate);
+            preparedStatement.setString(12, t.getRole());
+            preparedStatement.setString(13, t.getImage());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

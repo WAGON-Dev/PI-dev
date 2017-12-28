@@ -34,7 +34,7 @@ public class GuideService implements Iguide {
 
     @Override
     public void add(Guide t) {
-        String req = "insert into users (nom,prenom,password,email,adresse,numtel,dateNaissence,roles) values (?,?,?,?,?,?,?,?)";
+        /*String req = "insert into users (nom,prenom,password,email,adresse,numtel,dateNaissence,roles) values (?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -50,7 +50,29 @@ public class GuideService implements Iguide {
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
+        }*/
+        String req = "insert into users (username,username_canonical,prenom,email,email_canonical,enabled,password,numTel,adresse,cin,dateNaissence,roles,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setString(1, t.getNom());
+            preparedStatement.setString(2, t.getNom());
+            preparedStatement.setString(3, t.getPrenom());
+            preparedStatement.setString(4, t.getEmail());
+            preparedStatement.setString(5, t.getEmail());
+            preparedStatement.setInt(6, 1);
+            preparedStatement.setString(7, t.getPassword());
+            preparedStatement.setInt(8, t.getNumtel());
+            preparedStatement.setString(9, t.getAdresse());
+            preparedStatement.setString(10, t.getCIN());
+            java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
+            preparedStatement.setDate(11, sqlDate);
+            preparedStatement.setString(12, "a:1:{i:0;s:11:\"ROLE_GUIDE\";}");
+            preparedStatement.setString(13, "Standard.png");
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }    
     }
 
     @Override

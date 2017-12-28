@@ -125,9 +125,13 @@ public class GuideModificationguiController implements Initializable {
         File selectedFile = fc.showOpenDialog(null);
         String f = selectedFile.toURI().toString();
         if (selectedFile != null) {
-            Image image = new Image(f);
-            imagev_modif.setImage(image);
-
+            GuideService gs = new GuideService();
+            Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
+            f=f.substring(f.lastIndexOf("/")+1);
+            g.setImage(f);
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+            Image img = new Image(file.toURI().toString());
+            imagev_modif.setImage(img);
         } else {
             System.out.println("file invalid ");
         }
