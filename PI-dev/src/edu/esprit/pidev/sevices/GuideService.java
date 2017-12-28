@@ -46,7 +46,7 @@ public class GuideService implements Iguide {
             preparedStatement.setInt(6, t.getNumtel());
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
-            preparedStatement.setString(8,"ROLE_GUIDE");
+            preparedStatement.setString(8,"a:1:{i:0;s:11:\"ROLE_GUIDE\";}");
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -68,7 +68,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(7, sqlDate);
             preparedStatement.setInt(8, t.getNote());
-            preparedStatement.setString(9, "ROLE_GUIDE");
+            preparedStatement.setString(9, "a:1:{i:0;s:11:\"ROLE_GUIDE\";}");
             preparedStatement.setInt(10, t.getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -89,7 +89,7 @@ public class GuideService implements Iguide {
             java.sql.Date sqlDate = new java.sql.Date(t.getDateDeNaissance().getTime());
             preparedStatement.setDate(6, sqlDate);
             preparedStatement.setInt(7, t.getNote());
-            preparedStatement.setString(8, "ROLE_GUIDE");
+            preparedStatement.setString(8, "a:1:{i:0;s:11:\"ROLE_GUIDE\";}");
             preparedStatement.setString(9, t.getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -120,11 +120,7 @@ public class GuideService implements Iguide {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-<<<<<<< HEAD
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
-=======
                 g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
->>>>>>> origin/master
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -142,11 +138,7 @@ public class GuideService implements Iguide {
             preparedStatement.setString(2, p);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-<<<<<<< HEAD
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
-=======
                 g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
->>>>>>> origin/master
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -156,7 +148,7 @@ public class GuideService implements Iguide {
 
     public Guide findByName(String n) {
         Guide g = null;
-        String req = "select * from users where nom=? and roles='a:1:{i:0;s:10:\"ROLE_GUIDE\";}'";
+        String req = "select * from users where nom=? and roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -164,11 +156,7 @@ public class GuideService implements Iguide {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-<<<<<<< HEAD
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
-=======
                 g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
->>>>>>> origin/master
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -178,18 +166,14 @@ public class GuideService implements Iguide {
 
     public Guide findByEmail(String e) {
         Guide g = null;
-<<<<<<< HEAD
-        String req = "select * from users where email=? and roles='ROLE_GUIDE'";
-=======
-        String req = "select * from users where email=? and roles='a:1:{i:0;s:10:\"ROLE_GUIDE\";}'";
->>>>>>> origin/master
+        String req = "select * from users where email=? and roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, e);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt(2), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt(1), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -200,7 +184,7 @@ public class GuideService implements Iguide {
     @Override
     public List<Guide> getAll() {
         List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role = 'Guide'";
+        String req = "select * from users where role like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -217,7 +201,7 @@ public class GuideService implements Iguide {
 
     public List<String> getAllname(String role) {
         List<String> guides = new ArrayList<>();
-        String req = "select * from users where role = ? ";
+        String req = "select * from users where role like %?% ";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -250,7 +234,7 @@ public class GuideService implements Iguide {
 
     public List<Guide> getByRole() {
         List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role = 'guide'";
+        String req = "select * from users where role like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -268,7 +252,7 @@ public class GuideService implements Iguide {
 
     public Guide findByNomPwd(String nom, String pwd) {
         Guide g = null;
-        String req = "select * from users where nom=? and password=? and role='guide'";
+        String req = "select * from users where nom=? and password=? and role like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -282,13 +266,13 @@ public class GuideService implements Iguide {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        System.out.println("guide");
+        System.out.println("ROLE_GUIDE");
         return g;
     }
 
     public int nbrGuide() {
         int i = 0;
-        String req = "SELECT COUNT(*) AS total FROM users where role='guide'";
+        String req = "SELECT COUNT(*) AS total FROM users where role like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

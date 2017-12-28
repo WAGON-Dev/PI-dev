@@ -64,13 +64,8 @@ public class FXMLMenuBarController implements Initializable {
 
         cl = cs.findByemail(ClientService.loggedUser.getEmail());
         nom_p_menu_bar.setText(cl.getNom() + " " + cl.getPrenom());
-<<<<<<< HEAD
         mail_menu_bar.setText(cl.getEmail());
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/"+cl.getImage());
-=======
-        mail_menu_bar.setText("afqfqffq");
-        File file = new File("qffq");
->>>>>>> origin/master
+        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/"+cl.getImage());
         Image img = new Image(file.toURI().toString());
         image_menu_bar.setImage(img);
     }

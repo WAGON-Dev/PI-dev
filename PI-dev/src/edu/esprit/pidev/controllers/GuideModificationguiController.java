@@ -81,7 +81,7 @@ public class GuideModificationguiController implements Initializable {
 
         GuideService gs = new GuideService();
         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imagev_modif.setImage(img);
         try {

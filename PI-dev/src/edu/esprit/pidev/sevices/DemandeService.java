@@ -39,7 +39,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, t.getId_vp().getId_vp());
             preparedStatement.setInt(2, t.getId_client().getId_user());
-            preparedStatement.setString(3, t.getId_guide().getEmail());
+            preparedStatement.setInt(3, t.getId_guide().getId_user());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -69,17 +69,17 @@ public class DemandeService implements IDemandeService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Demande findGuideEmail2(String r, Integer x) {
+    public Demande findGuideEmail2(Integer r, Integer x) {
         Demande d = null;
         String req = "select * from demande where id_guide_fk=? and id_vp_fk=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-            preparedStatement.setString(1, r);
+            preparedStatement.setInt(1, r);
             preparedStatement.setInt(2, x);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt("id_client_fk")));
+                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new ClientService().findById(resultSet.getInt("id_client_fk")), new GuideService().findById(resultSet.getInt("id_guide_fk")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -96,11 +96,7 @@ public class DemandeService implements IDemandeService {
             preparedStatement.setString(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-<<<<<<< HEAD
-                d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")), new ClientService().findById(resultSet.getInt("id_client_fk")));
-=======
                 d = new Demande(new VoyagePersonaliseService().findById(resultSet.getInt("id_vp_fk")),new ClientService().findById(resultSet.getInt("id_client_fk")), new GuideService().findByEmail(resultSet.getString("id_guide_fk")));
->>>>>>> origin/master
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

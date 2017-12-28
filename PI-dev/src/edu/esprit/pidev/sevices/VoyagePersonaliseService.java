@@ -199,7 +199,7 @@ public class VoyagePersonaliseService implements IVoyagePersonalise {
     
     public List<VoyagePersonalise> getAllbyAdresse(String add) {
         List<VoyagePersonalise> voyages = new ArrayList<>();
-        String req = "select * from voyagepersonalise where ville_depart = ?";
+        String req = "select * from voyagepersonalise where ville_depart = ? and id_guide_fk IS NULL ";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

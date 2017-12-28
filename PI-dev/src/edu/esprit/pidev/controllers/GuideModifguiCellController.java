@@ -129,14 +129,14 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             dem.setId_client(student.getClient());
             dem.setId_guide(guiController.guidelog);
             DemandeService ds = new DemandeService();
-            Demande dem2 =ds.findGuideEmail2(guiController.guidelog.getEmail(),dem.getId_vp().getId_vp());
+            Demande dem2 =ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp());
             if (dem.equals(dem2)) {
                 state.setText("Demande déjà envoyé");
             } else {
                 state.setText("");
             }
 
-            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
             Image img = new Image(file.toURI().toString());
             image_row_client.setImage(img);
             setText(null);
@@ -187,7 +187,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_client(vp.getClient());
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
-        Demande dem2 = ds.findGuideEmail2(guiController.guidelog.getEmail(),dem.getId_vp().getId_vp());
+        Demande dem2 = ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp());
         if ((!dem.equals(dem2)))
         {
             ds.add(dem);
@@ -214,7 +214,7 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
 
-        if (dem.equals(ds.findGuideEmail2(guiController.guidelog.getEmail(),dem.getId_vp().getId_vp()))) {
+        if (dem.equals(ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp()))) {
 //            ds.add(dem);
             ds.remove(dem.getId_vp().getId_vp());
             state.setText("Demande Annulé");
