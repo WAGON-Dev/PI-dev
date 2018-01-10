@@ -102,12 +102,13 @@ public class FXMLLoginUsersController implements Initializable {
             System.out.print("done3!!");
            
 
-        }*/System.out.println(password.getText());
+        }*///System.out.println(password.getText());
      
           if (cs.findByemail(userName.getText()) != null && BCrypt.checkpw(password.getText(),cs.findByemail(userName.getText()).getMdp())) {
               
             ClientService cs1=new ClientService();
             cs1.existeUtilisateur(userName.getText());
+            System.out.println("aaaa");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
@@ -115,7 +116,7 @@ public class FXMLLoginUsersController implements Initializable {
             /**
              * ***LOading the interface***
              */
-        /*} else if ((g.findByEmail(userName.getText()) != null)&&BCrypt.checkpw(g.findByEmail(userName.getText()).getMdp(),password.getText())) {
+          } else if ((g.findByEmail(userName.getText()) != null)&&BCrypt.checkpw(g.findByEmail(userName.getText()).getMdp(),password.getText())) {
             System.out.print("done5!!");
             mail_login=userName.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
@@ -125,7 +126,7 @@ public class FXMLLoginUsersController implements Initializable {
         } else if ((h.findByemail(userName.getText()) != null)&&BCrypt.checkpw(h.findByemail(userName.getText()).getMdp(),password.getText())) {
             System.out.print("done6!!");
 
-          */  
+          
         }
 
     }
