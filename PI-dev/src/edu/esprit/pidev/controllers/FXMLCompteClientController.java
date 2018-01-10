@@ -67,7 +67,7 @@ public class FXMLCompteClientController implements Initializable {
         nom_conecter.setText(c.getNom());
         prenom_conecter.setText(c.getPrenom());
         mail_conecter.setText(c.getEmail());
-        mdp_conecter.setText(c.getMdp());
+        mdp_conecter.setText(c.getPassword());
         adresse_conecter.setText(c.getAdresse());
         num_tel_conecter.setText(c.getRole());
         File file = new File(c.getImage());
@@ -96,7 +96,7 @@ public class FXMLCompteClientController implements Initializable {
             return;
         }
         if (mdp_conecter.getText() == null) {
-            c.setMdp(mdp_conecter.getText());
+            c.setPassword(mdp_conecter.getText());
             ereur.setText("Veuiller remplir le mot de passe ");
             return;
         }

@@ -15,7 +15,7 @@ public class Users {
     int id_user ;
     String nom ; 
     String email ;
-    String mdp ;// Mot de passe
+    String password ;// Mot de passe
     int numtel ;
     String adresse ;
     String role ;
@@ -33,55 +33,55 @@ public class Users {
         this.nom = nom;
     }
 
-    public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse) {
+    public Users(int id_user, String nom, String email, String password, int numtel, String adresse) {
         this.id_user = id_user;
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
     }
     
           
-    public Users(String nom, String email, String mdp, int numtel, String adresse) {
+    public Users(String nom, String email, String password, int numtel, String adresse) {
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
     }
-public Users( String role,int id_user, String nom, String email, String mdp, int numtel, String adresse) {
+public Users( String role,int id_user, String nom, String email, String password, int numtel, String adresse) {
         this.id_user = id_user;
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
         this.role = role;
     }
-public Users(String nom, String email, String mdp, int numtel, String adresse, String role) {
+public Users(String nom, String email, String password, int numtel, String adresse, String role) {
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
         this.role = role;
     }
-public Users(int id_user, String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+public Users(int id_user, String nom, String email, String password, int numtel, String adresse, String role, String image) {
         this.id_user = id_user;
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
         this.role = role;
         this.image = image;
     }
 
-    public Users(String nom, String email, String mdp, int numtel, String adresse, String role, String image) {
+    public Users(String nom, String email, String password, int numtel, String adresse, String role, String image) {
         this.nom = nom;
         this.email = email;
-        this.mdp = mdp;
+        this.password = password;
         this.numtel = numtel;
         this.adresse = adresse;
         this.role = role;
@@ -110,14 +110,6 @@ public Users(int id_user, String nom, String email, String mdp, int numtel, Stri
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getMdp() {
-        return mdp;
-    }
-
-    public void setMdp(String mdp) {
-        this.mdp = mdp;
     }
 
     public int getNumtel() {
@@ -154,7 +146,7 @@ public Users(int id_user, String nom, String email, String mdp, int numtel, Stri
 
     @Override
     public String toString() {
-        return "Users{" + "id_user=" + id_user + ", nom=" + nom + ", email=" + email + ", mdp=" + mdp + ", numtel=" + numtel + ", adresse=" + adresse + ", role=" + role + ", image=" + image + '}';
+        return "Users{" + "id_user=" + id_user + ", nom=" + nom + ", email=" + email + ", password=" + password + ", numtel=" + numtel + ", adresse=" + adresse + ", role=" + role + ", image=" + image + '}';
     }
 
     @Override
@@ -178,6 +170,15 @@ public Users(int id_user, String nom, String email, String mdp, int numtel, Stri
         }
         return true;
     }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     
     

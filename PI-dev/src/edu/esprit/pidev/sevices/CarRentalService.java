@@ -30,13 +30,13 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public void add(CarRental cr) {
-        String query="insert into users (id_user,nom,email,mdp,numtel,adresse,role,image,etoile,nbr_voiture) values (?,?,?,?,?,?,?,?,?,?)";
+        String query="insert into users (id_user,nom,email,password,numtel,adresse,role,image,etoile,nbr_voiture) values (?,?,?,?,?,?,?,?,?,?)";
         try{
         PreparedStatement statement = connection.prepareStatement(query);
         statement.setInt(1, cr.getId_user());
         statement.setString(2, cr.getNom());
         statement.setString(3, cr.getEmail());
-        statement.setString(4, cr.getMdp());
+        statement.setString(4, cr.getPassword());
         statement.setInt(5, cr.getNumtel());
         statement.setString(6, cr.getAdresse());
         statement.setString(7, cr.getRole());
@@ -57,12 +57,12 @@ public class CarRentalService implements ICarRentalService{
 
     @Override
     public void update(CarRental t) {
-          String query = "UPDATE users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where id_user = ?";
+          String query = "UPDATE users set nom=?,email=?,password=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where id_user = ?";
        try{
        PreparedStatement statement= connection.prepareStatement(query);
        statement.setString(1, t.getNom());
        statement.setString(2, t.getEmail());
-       statement.setString(3, t.getMdp());
+       statement.setString(3, t.getPassword());
        statement.setInt(4,t.getNumtel());
        statement.setString(5, t.getAdresse());
        statement.setString(6, t.getRole());
@@ -78,12 +78,12 @@ public class CarRentalService implements ICarRentalService{
 
 
     public void update(CarRental t, String z) {
-        String query = "UPDATE users set nom=?,email=?,mdp=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where nom = ?";
+        String query = "UPDATE users set nom=?,email=?,password=?,numtel=?,adresse=?,role=?,image=?,etoile=?,nbr_voiture=? where nom = ?";
        try{
        PreparedStatement statement= connection.prepareStatement(query);
        statement.setString(1, t.getNom());
        statement.setString(2, t.getEmail());
-       statement.setString(3, t.getMdp());
+       statement.setString(3, t.getPassword());
        statement.setInt(4,t.getNumtel());
        statement.setString(5, t.getAdresse());
        statement.setString(6, t.getRole());
@@ -126,7 +126,7 @@ public class CarRentalService implements ICarRentalService{
         cr.setId_user(res.getInt(2));
         cr.setNom(res.getString(3));
         cr.setEmail(res.getString(4));
-        cr.setMdp(res.getString(5));
+        cr.setPassword(res.getString(5));
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
@@ -151,7 +151,7 @@ public class CarRentalService implements ICarRentalService{
         cr.setId_user(res.getInt(2));
         cr.setNom(res.getString(3));
         cr.setEmail(res.getString(4));
-        cr.setMdp(res.getString(5));
+        cr.setPassword(res.getString(5));
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
@@ -180,7 +180,7 @@ public class CarRentalService implements ICarRentalService{
         cr.setId_user(res.getInt(2));
         cr.setNom(res.getString(3));
         cr.setEmail(res.getString(4));
-        cr.setMdp(res.getString(5));
+        cr.setPassword(res.getString(5));
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
@@ -199,7 +199,7 @@ public class CarRentalService implements ICarRentalService{
     
      public CarRental findByNomPwd(String nom,String pwd) {
         CarRental car = null;
-        String req = "select * from users where nom=? and mdp=? and role='agence de location de voiture'";
+        String req = "select * from users where nom=? and password=? and role='agence de location de voiture'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -208,8 +208,8 @@ public class CarRentalService implements ICarRentalService{
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                //              int stars,                           int carNbre,                      int id_user,               String nom,                 String email, String mdp, int numtel, String adresse, String role, String image
-      car=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));            }
+                //              int stars,                           int carNbre,                      int id_user,               String nom,                 String email, String password, int numtel, String adresse, String role, String image
+      car=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -228,7 +228,7 @@ List<CarRental> list = new ArrayList<>();
         cr.setId_user(res.getInt(2));
         cr.setNom(res.getString(3));
         cr.setEmail(res.getString(4));
-        cr.setMdp(res.getString(5));
+        cr.setPassword(res.getString(5));
         cr.setNumtel(res.getInt(6));
         cr.setAdresse(res.getString(7));
         cr.setImage(res.getString(8));
@@ -268,7 +268,7 @@ return i;
             preparedStatement.setString(1, e);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-              g=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));               
+              g=new CarRental(resultSet.getInt("etoile"),resultSet.getInt("nbr_voiture"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));               
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

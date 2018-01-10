@@ -129,13 +129,14 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
             dem.setId_client(student.getClient());
             dem.setId_guide(guiController.guidelog);
             DemandeService ds = new DemandeService();
-            if (dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
+            Demande dem2 =ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp());
+            if (dem.equals(dem2)) {
                 state.setText("Demande déjà envoyé");
             } else {
                 state.setText("");
             }
 
-            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + c.getImage());
             Image img = new Image(file.toURI().toString());
             image_row_client.setImage(img);
             setText(null);
@@ -186,10 +187,12 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_client(vp.getClient());
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
-        if (!dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
+        Demande dem2 = ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp());
+        if ((!dem.equals(dem2)))
+        {
             ds.add(dem);
             state.setText("Demande reçu");
-        } else {
+        }else {
             state.setText("Demande déjà envoyé");
         }
     }
@@ -210,21 +213,21 @@ public class GuideModifguiCellController extends ListCell<VoyagePersonalise> {
         dem.setId_client(vp.getClient());
         dem.setId_guide(guiController.guidelog);
         DemandeService ds = new DemandeService();
-        
-        if (dem.equals(ds.findGuideEmail(guiController.guidelog.getEmail()))) {
-            ds.add(dem);
+
+        if (dem.equals(ds.findGuideEmail2(guiController.guidelog.getId_user(),dem.getId_vp().getId_vp()))) {
+//            ds.add(dem);
             ds.remove(dem.getId_vp().getId_vp());
-        state.setText("Demande Annulé");
-        Timeline t = new Timeline(new KeyFrame(
-                Duration.millis(1200),
-                ae -> state.setText("")));
-        t.play();
-        }else{
+            state.setText("Demande Annulé");
+            Timeline t = new Timeline(new KeyFrame(
+                    Duration.millis(1200),
+                    ae -> state.setText("")));
+            t.play();
+        } else {
             state.setText("Vous n'avez pas postulé dans cette offre !!");
             Timeline t1 = new Timeline(new KeyFrame(
-                Duration.millis(3000),
-                ae -> state.setText("")));
-        t1.play();
+                    Duration.millis(3000),
+                    ae -> state.setText("")));
+            t1.play();
         }
     }
 

@@ -36,7 +36,7 @@ public class AgenceService implements IAgenceService {
 
     @Override
     public void add(Agence a) {
-        String req = "insert into users (role,nom,email,mdp,numTel,adresse,nbr_voyage_organise) values (?,?,?,?,?,?,?)";
+        String req = "insert into users (role,nom,email,password,numTel,adresse,nbr_voyage_organise) values (?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -44,7 +44,7 @@ public class AgenceService implements IAgenceService {
             //  preparedStatement.setInt(2, a.getId_user());
             preparedStatement.setString(2, a.getNom());
             preparedStatement.setString(3, a.getEmail());
-            preparedStatement.setString(4, a.getMdp());
+            preparedStatement.setString(4, a.getPassword());
             preparedStatement.setInt(5, a.getNumtel());
             preparedStatement.setString(6, a.getAdresse());
             preparedStatement.setInt(7, a.getNbr_voyage_organise());
@@ -70,13 +70,13 @@ public class AgenceService implements IAgenceService {
 
     @Override
     public void update(Agence a) {
-        String req = "update users set nom=? , email=? , mdp=? ,numTel=?,adresse=?  where id_user = ?";
+        String req = "update users set nom=? , email=? , password=? ,numTel=?,adresse=?  where id_user = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, a.getNom());
             preparedStatement.setString(2, a.getEmail());
-            preparedStatement.setString(3, a.getMdp());
+            preparedStatement.setString(3, a.getPassword());
             preparedStatement.setInt(4, a.getNumtel());
             preparedStatement.setString(5, a.getAdresse());
             preparedStatement.setInt(6, a.getId_user());
@@ -97,7 +97,7 @@ public class AgenceService implements IAgenceService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Agence agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
+                Agence agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
                 agences.add(agence);
             }
         } catch (SQLException ex) {
@@ -116,7 +116,7 @@ public class AgenceService implements IAgenceService {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
+                agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -151,7 +151,7 @@ public class AgenceService implements IAgenceService {
            
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Agence( resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"),resultSet.getString("mdp"),  resultSet.getInt("numTel"), resultSet.getString("adresse"));
+                g = new Agence( resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"),resultSet.getString("password"),  resultSet.getInt("numTel"), resultSet.getString("adresse"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -175,7 +175,7 @@ public class AgenceService implements IAgenceService {
         
          public Agence findByNomPwd(String nom,String pwd) {
         Agence agence = null;
-        String req = "select * from users where nom=? and mdp=? and role='agence de voyage'";
+        String req = "select * from users where nom=? and password=? and role='agence de voyage'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -184,7 +184,7 @@ public class AgenceService implements IAgenceService {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
+                agence = new Agence(resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -201,8 +201,8 @@ public class AgenceService implements IAgenceService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               //                                        String role,               String nom,                   String email,                 String mdp,               int numtel,              String adresse,             int nbr_voyage_organise
-                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
+               //                                        String role,               String nom,                   String email,                 String password,               int numtel,              String adresse,             int nbr_voyage_organise
+                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
                 agences.add(agence);
             }
         } catch (SQLException ex) {
@@ -236,8 +236,8 @@ return i;
             preparedStatement.setString(1, e);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                //String role, String nom,                                         String email, String mdp, int numtel,                           String adresse,int nbr_voyage_organise
-                   g=new Agence(resultSet.getString("role"), resultSet.getString("nom"),resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
+                //String role, String nom,                                         String email, String password, int numtel,                           String adresse,int nbr_voyage_organise
+                   g=new Agence(resultSet.getString("roles"), resultSet.getString("nom"),resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getInt("nbr_voyage_organise"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -257,8 +257,8 @@ return i;
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-               //                                        String role,               String nom,                   String email,                 String mdp,               int numtel,              String adresse,             int nbr_voyage_organise
-                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("mdp"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
+               //                                        String role,               String nom,                   String email,                 String password,               int numtel,              String adresse,             int nbr_voyage_organise
+                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
                 agences.add(agence);
             }
         } catch (SQLException ex) {

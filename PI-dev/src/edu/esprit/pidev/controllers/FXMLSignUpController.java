@@ -265,7 +265,7 @@ public class FXMLSignUpController  implements Initializable{
                    GuideService guide=new GuideService();
                 Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                int numTel=Integer.parseInt(phoneNum.getText());
-               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, " ");
+               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), role, " ");
                guide.add(g);
                FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
               Parent root=loader.load();
