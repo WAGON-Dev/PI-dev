@@ -278,7 +278,7 @@ public class FXMLSignUpController  implements Initializable{
     }
                ///***** send automatically an email to the user who signed up
              SMS sms=new SMS();
-            sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
+            //sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");
                props.put("mail.smtp.socketFactory.port", "465");
@@ -327,7 +327,7 @@ public class FXMLSignUpController  implements Initializable{
               signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
                    SMS sms=new SMS();
-              sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
+              //sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                          Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");
                props.put("mail.smtp.socketFactory.port", "465");
@@ -378,7 +378,7 @@ public class FXMLSignUpController  implements Initializable{
               signUpALVBtn1.getScene().setRoot(root);
                    System.out.println("done !!");
          SMS sms=new SMS();
-              sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
+             // sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                    System.out.println("done !!");
                          Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");

@@ -63,8 +63,7 @@ public class GuideguiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         GuideService gs = new GuideService();
-         //Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
-         Guide g = gs.findByEmail("guide@gmail.com");
+         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
         guidelog = g;
         File file = new File("E:/esprit/java/NetBeansProjects/PI-dev/PI-dev/src/edu/esprit/pidev/utils/guide.jpg");
 
