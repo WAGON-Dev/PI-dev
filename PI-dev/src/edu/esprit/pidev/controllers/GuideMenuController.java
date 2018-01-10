@@ -52,7 +52,7 @@ public class GuideMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         GuideService gs = new GuideService();
         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imgv_menu.setImage(img);
         nom_guide_menu.setText(g.getNom());
@@ -88,7 +88,7 @@ public class GuideMenuController implements Initializable {
         modifController.setPrenom_modif(guiController.guidelog.getPrenom());
         modifController.setAdresse_modif(guiController.guidelog.getAdresse());
         modifController.setEmail_modif(guiController.guidelog.getEmail());
-        modifController.setPwd_modif(guiController.guidelog.getMdp());
+        modifController.setPwd_modif(guiController.guidelog.getPassword());
         modifController.setCin_modif(String.valueOf(guiController.guidelog.getCIN()));
         modifController.setNumtel_modif(String.valueOf(guiController.guidelog.getNumtel()));
 

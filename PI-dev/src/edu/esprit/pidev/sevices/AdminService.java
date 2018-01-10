@@ -35,21 +35,24 @@ public class AdminService implements IAdminService{
     
   @Override
     public void add(Admin t) {
-        String req = "insert into users (nom,prenom,email,mdp,numTel,adresse,cin,dateNaissence,role,image) values (?,?,?,?,?,?,?,?,?,?)";
+        String req = "insert into users (username,username_canonical,prenom,email,email_canonical,enabled,password,numTel,adresse,cin,dateNaissence,roles,image) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, t.getNom());
-            preparedStatement.setString(2, t.getPrenom());
-            preparedStatement.setString(3, t.getEmail());
-            preparedStatement.setString(4, t.getMdp());
-            preparedStatement.setInt(5, t.getNumtel());
-            preparedStatement.setString(6, t.getAdresse());
-            preparedStatement.setString(7, t.getCin());
+            preparedStatement.setString(2, t.getNom());
+            preparedStatement.setString(3, t.getPrenom());
+            preparedStatement.setString(4, t.getEmail());
+            preparedStatement.setString(5, t.getEmail());
+            preparedStatement.setInt(6, 1);
+            preparedStatement.setString(7, t.getPassword());
+            preparedStatement.setInt(8, t.getNumtel());
+            preparedStatement.setString(9, t.getAdresse());
+            preparedStatement.setString(10, t.getCin());
             java.sql.Date sqlDate = new java.sql.Date(t.getDateNaissence().getTime());
-            preparedStatement.setDate(8, sqlDate);
-            preparedStatement.setString(9, t.getRole());
-            preparedStatement.setString(10, t.getImage());
+            preparedStatement.setDate(11, sqlDate);
+            preparedStatement.setString(12, t.getRole());
+            preparedStatement.setString(13, t.getImage());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -58,14 +61,14 @@ public class AdminService implements IAdminService{
 
     @Override
     public void update(Admin t) {
-        String req = "update users set nom=?,prenom=?,email=?,mdp=?,numtel=?,adresse=?,cin=?,dateNaissence=?,role=?,image=? where nom = ? and prenom = ? ";
+        String req = "update users set nom=?,prenom=?,email=?,password=?,numtel=?,adresse=?,cin=?,dateNaissence=?,role=?,image=? where nom = ? and prenom = ? ";
         PreparedStatement preparedStatement = null ;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, t.getNom());
             preparedStatement.setString(2, t.getPrenom());
             preparedStatement.setString(3, t.getEmail());
-            preparedStatement.setString(4, t.getMdp());
+            preparedStatement.setString(4, t.getPassword());
             preparedStatement.setInt(5, t.getNumtel());
             preparedStatement.setString(6, t.getAdresse());
             preparedStatement.setString(7, t.getCin());
@@ -103,7 +106,7 @@ public class AdminService implements IAdminService{
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -127,14 +130,14 @@ public class AdminService implements IAdminService{
     
      public List<Admin> getByAdmin() {
         List<Admin> admins = new ArrayList<>();
-        String req = "select * from users where role = 'admin'";
+        String req = "select * from users where roles = 'a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                //                                  String prenom,               String CIN,                 Date dateDeNaissance,               int nbrNote,                  int Note,                    int id_user,                 String nom,                  String email,            String mdp,                int numtel,                  String adresse,                  String role,                 String image
-Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));                
+                //                                  String prenom,               String CIN,                 Date dateDeNaissance,               int nbrNote,                  int Note,                    int id_user,                 String nom,                  String email,            String password,                int numtel,                  String adresse,                  String role,                 String image
+Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));                
              admins.add(admin);
             }
         } catch (SQLException ex) {
@@ -146,7 +149,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
      
       public Admin findByNomPwd(String nom,String pwd) {
         Admin  admin = null;
-        String req = "select * from users where nom=? and mdp=? and role='admin'";
+        String req = "select * from users where nom=? and mdp=? and roles='a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -154,7 +157,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
             preparedStatement.setString(2, pwd);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+                admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -166,7 +169,7 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
       
        public int nbrAdmin() {
              int i=0;
-            String req = "SELECT COUNT(*) AS total FROM users where role='admin'";
+            String req = "SELECT COUNT(*) AS total FROM users where roles='a:1:{i:0;s:10:\"ROLE_ADMIN\";}'";
             PreparedStatement preparedStatement;
           try {
             preparedStatement = connection.prepareStatement(req);
@@ -182,14 +185,14 @@ Admin admin = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"),
        
         public Admin findByEmail(String e) {
         Admin g = null;
-        String req = "select * from users where email=? and role='admin'";
+        String req = "select * from users where email=? and roles like '%ROLE_ADMIN%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1, e);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Admin(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("mdp"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
+                g = new Admin(resultSet.getInt("id_user"), resultSet.getString("username"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"),resultSet.getString("prenom"),resultSet.getString("cin"),resultSet.getDate("dateNaissence"));
             
             }
         } catch (SQLException ex) {

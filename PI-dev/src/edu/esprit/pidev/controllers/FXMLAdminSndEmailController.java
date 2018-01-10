@@ -66,7 +66,7 @@ public class FXMLAdminSndEmailController implements Initializable {
                        new javax.mail.Authenticator() {
                              @Override
                              protected PasswordAuthentication getPasswordAuthentication(){
-                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nanou");
+                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nouhaasfour");
                              }
                        
                        }

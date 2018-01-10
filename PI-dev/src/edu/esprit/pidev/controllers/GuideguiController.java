@@ -63,12 +63,12 @@ public class GuideguiController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         GuideService gs = new GuideService();
-         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
+         //Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
+         Guide g = gs.findByEmail("guide@gmail.com");
         guidelog = g;
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
-       /* Guide g = gs.findByEmail("jemaighass@gmail.com");
-        guidelog = g;
-        File file = new File("E:/esprit/java/NetBeansProjects/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());*/
+        File file = new File("E:/esprit/java/NetBeansProjects/PI-dev/PI-dev/src/edu/esprit/pidev/utils/guide.jpg");
+
+        //File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imagev.setImage(img);
         first_adresse_label.setText(g.getAdresse());

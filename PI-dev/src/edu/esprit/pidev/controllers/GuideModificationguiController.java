@@ -81,7 +81,7 @@ public class GuideModificationguiController implements Initializable {
 
         GuideService gs = new GuideService();
         Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
-        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/PI-dev/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+        File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
         Image img = new Image(file.toURI().toString());
         imagev_modif.setImage(img);
         try {
@@ -123,10 +123,15 @@ public class GuideModificationguiController implements Initializable {
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
         File selectedFile = fc.showOpenDialog(null);
+        String f = selectedFile.toURI().toString();
         if (selectedFile != null) {
-            Image image = new Image(selectedFile.toURI().toString());
-            imagev_modif.setImage(image);
-
+            GuideService gs = new GuideService();
+            Guide g = gs.findByEmail(FXMLLoginUsersController.mail_login);
+            f=f.substring(f.lastIndexOf("/")+1);
+            g.setImage(f);
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/" + g.getImage());
+            Image img = new Image(file.toURI().toString());
+            imagev_modif.setImage(img);
         } else {
             System.out.println("file invalid ");
         }
@@ -190,7 +195,7 @@ public class GuideModificationguiController implements Initializable {
         prenom_modif.setText(guiController.guidelog.getPrenom());
         adresse_modif.setText(guiController.guidelog.getAdresse());
         email_modif.setText(guiController.guidelog.getEmail());
-        pwd_modif.setText(guiController.guidelog.getMdp());
+        pwd_modif.setText(guiController.guidelog.getPassword());
         cin_modif.setText(String.valueOf(guiController.guidelog.getCIN()));
         numtel_modif.setText(String.valueOf(guiController.guidelog.getNumtel()));
     }

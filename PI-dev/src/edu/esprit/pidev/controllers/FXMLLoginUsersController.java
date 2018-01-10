@@ -5,12 +5,14 @@
  */
 package edu.esprit.pidev.controllers;
 
+import static com.itextpdf.text.pdf.PdfName.rb;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.transitions.hamburger.HamburgerBackArrowBasicTransition;
+import edu.esprit.pidev.models.BCrypt;
 //import com.sun.xml.internal.bind.v2.runtime.unmarshaller.Loader;
 import edu.esprit.pidev.sevices.AdminService;
 import edu.esprit.pidev.sevices.AgenceService;
@@ -68,7 +70,29 @@ public class FXMLLoginUsersController implements Initializable {
         ClientService cs = new ClientService();
         GuideService g = new GuideService();
         HotelService h = new HotelService();
-        if (a.findByEmail(userName.getText()) != null&&(a.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
+        //if (a.findByEmail(userName.getText()) != null&&(a.findByEmail(userName.getText()).getPassword().equals(password.getText()))) {
+         
+                 if (a.findByEmail(userName.getText()) != null && BCrypt.checkpw(password.getText(),a.findByEmail(userName.getText()).getPassword())) {
+             Stage primaryStage = new Stage();
+            AdminInterface adminInterface = new AdminInterface();
+            Stage stage = (Stage) login.getScene().getWindow();
+
+            adminInterface.start(primaryStage);
+
+            stage.close();
+
+            System.out.println("done1 !!");
+        }
+       // boolean pw = BCrypt.checkpw(a.findByEmail(userName.getText()).getPassword(),password.getText()) ;
+          /*boolean pwag = BCrypt.checkpw(a.findByEmail(userName.getText()).getMdp(),password.getText()) ;
+            boolean pw = BCrypt.checkpw(a.findByEmail(userName.getText()).getMdp(),password.getText()) ;
+              boolean pw = BCrypt.checkpw(a.findByEmail(userName.getText()).getMdp(),password.getText()) ;
+                boolean pw = BCrypt.checkpw(a.findByEmail(userName.getText()).getMdp(),password.getText()) ;
+                  boolean pw = BCrypt.checkpw(a.findByEmail(userName.getText()).getMdp(),password.getText()) ;*/
+                  
+        
+      /* if (a.findByEmail(userName.getText()) != null&& pw) {
+
 
             Stage primaryStage = new Stage();
             AdminInterface adminInterface = new AdminInterface();
@@ -79,26 +103,37 @@ public class FXMLLoginUsersController implements Initializable {
             stage.close();
 
             System.out.println("done1 !!");
-        } else if ((ag.findByEmail(userName.getText()) != null)&&(ag.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
+
+        } else if ((ag.findByEmail(userName.getText()) != null)&&(ag.findByEmail(userName.getText()).getPassword().equals(password.getText()))) {
+
+        }*/ else if ((ag.findByEmail(userName.getText()) != null)&&BCrypt.checkpw(password.getText(),ag.findByEmail(userName.getText()).getPassword())) {
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
 
             System.out.print("done2!!");
-            /**
-             * ***LOading the interface***
-             */
+           
 
-        } else if ((car.findByEmail(userName.getText()) != null)&&(car.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
 
-            System.out.print("done3!!");
-            /**
-             * ***LOading the interface***
-             */
+        } /*else if ((car.findByEmail(userName.getText()) != null)&&(car.findByEmail(userName.getText()).getPassword().equals(password.getText()))) {
 
-        } 
-     
-         else if (cs.findByemail(userName.getText()) != null&&(cs.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
+        }*/ else if ((car.findByEmail(userName.getText()) != null)&&BCrypt.checkpw(password.getText(),car.findByEmail(userName.getText()).getPassword())) {
+
+                 FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AgenceLoca.fxml"));
+              Parent root=loader.load();
+              login.getScene().setRoot(root);
+                   System.out.println("done !!");
+
+
+        }/* else if ((cs.findByemail(userName.getText()) != null)&&(cs.findByemail(userName.getText()).getPassword().equals(password.getText()))) {
+            ClientService cs1 = new ClientService();
+       
+        }*/
+      //System.out.println(password.getText());
+        
+      else if (cs.findByemail(userName.getText()) != null && BCrypt.checkpw(password.getText(),cs.findByemail(userName.getText()).getPassword())) {
+              
             ClientService cs1=new ClientService();
             cs1.existeUtilisateur(userName.getText());
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/FXMLinterfaceClient.fxml"));
@@ -108,28 +143,24 @@ public class FXMLLoginUsersController implements Initializable {
             /**
              * ***LOading the interface***
              */
-        } else if ((g.findByEmail(userName.getText()) != null)&&(g.findByEmail(userName.getText()).getMdp().equals(password.getText()))) {
+        } else if ((g.findByEmail(userName.getText()) != null)&& BCrypt.checkpw(password.getText(),g.findByEmail(userName.getText()).getPassword())) {
             System.out.print("done5!!");
             mail_login=userName.getText();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
             Parent root = loader.load();
             login.getScene().setRoot(root);
-            /**
-             * ***LOading the interface***
-             */
-        } else if ((h.findByemail(userName.getText()) != null)&&(h.findByemail(userName.getText()).getMdp().equals(password.getText()))) {
-            System.out.print("done6!!");
+        } /*else if ((h.findByemail(userName.getText()) != null)&&(h.findByemail(userName.getText()).getPassword().equals(password.getText()))) {
+           
+        }*/ else if ((h.findByemail(userName.getText()) != null)&&BCrypt.checkpw(password.getText(),h.findByemail(userName.getText()).getPassword())) {
+             FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Hotel.fxml"));
+              Parent root=loader.load();
+              login.getScene().setRoot(root);
 
-            /**
-             * ***LOading the interface***
-             */
         }
 
     }
-
-    /**
-     * Initializes the controller class.
-     */
+    
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -158,5 +189,4 @@ public class FXMLLoginUsersController implements Initializable {
             Logger.getLogger(FXMLLoginUsersController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }

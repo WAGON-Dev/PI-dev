@@ -14,8 +14,10 @@ import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.teknikindustries.bulksms.SMS;
+import edu.esprit.pidev.gui.ahmedtest;
 import edu.esprit.pidev.models.Admin;
 import edu.esprit.pidev.models.Agence;
+import edu.esprit.pidev.models.BCrypt;
 import edu.esprit.pidev.models.CarRental;
 //import com.sun.xml.internal.org.jvnet.mimepull.MIMEMessage;
 import edu.esprit.pidev.models.Client;
@@ -122,7 +124,9 @@ public class FXMLSignUpController  implements Initializable{
 
     @FXML
     private JFXDatePicker dateNaissance;
-public static String role;
+    
+    
+    public static String role;
 
     ObservableList<String> listRole=FXCollections.observableArrayList("admin","client","hotel","agence de location de voiture","guide","agence de voyage");
     
@@ -174,7 +178,7 @@ public static String role;
          if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
          AgenceService agence=new AgenceService();
          int numTel=Integer.parseInt(phoneNum.getText());
-         Agence a=new Agence(role,firstName.getText() , email.getText(), passwordSignUp.getText(), numTel, address.getText(), 0);
+         Agence a=new Agence("a:1:{i:0;s:11:\"ROLE_AGENCE\";}",firstName.getText() , email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()), numTel, address.getText(), 0);
         agence.add(a);
          /******ajout de linterface agence de voyage ???*******/
          FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AccueilAgence.fxml"));
@@ -229,7 +233,7 @@ public static String role;
             Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
            int numTel=Integer.parseInt(phoneNum.getText());
            //String prenom, String cin, Date dateNaissence, String nom, String email, String mdp, int numtel, String adresse, String role, String image
-            Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
+            Client t=new Client(lastName.getText(), numCin.getText(),date, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), "a:1:{i:0;s:11:\"ROLE_CLIENT\";}", "");
             cs.add(t);
             /******ajout de linterface client ???*******/
               ClientService cs1=new ClientService();
@@ -243,7 +247,10 @@ public static String role;
                    AdminService admin=new AdminService();
                Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                int numTel=Integer.parseInt(phoneNum.getText());
-                 Admin a=new Admin(firstName.getText(), numCin.getText(), date, lastName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
+                 //Admin a=new Admin(firstName.getText(), numCin.getText(), date, lastName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "");
+              Admin a=new Admin(firstName.getText(), numCin.getText(), date, lastName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()), numTel, address.getText(),	
+"a:1:{i:0;s:10:\"ROLE_ADMIN\";}", "");
+
                    admin.add(a);
                    Stage primaryStage=new Stage();
 		   AdminInterface adminInterface=new AdminInterface();
@@ -262,7 +269,7 @@ public static String role;
                    GuideService guide=new GuideService();
                 Date date = Date.from(dateNaissance.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
                int numTel=Integer.parseInt(phoneNum.getText());
-               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, " ");
+               Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), role, " ");
                guide.add(g);
                FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
               Parent root=loader.load();
@@ -270,7 +277,7 @@ public static String role;
                    System.out.println("done !!");
     }
                ///***** send automatically an email to the user who signed up
-              SMS sms=new SMS();
+             SMS sms=new SMS();
             sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                Properties props=new Properties();
                props.put("mail.smtp.host", "smtp.gmail.com");
@@ -283,7 +290,7 @@ public static String role;
                        new javax.mail.Authenticator() {
                              @Override
                              protected PasswordAuthentication getPasswordAuthentication(){
-                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nanou");
+                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nouhaasfour");
                              }
                        
                        }
@@ -306,16 +313,18 @@ public static String role;
         JOptionPane.showMessageDialog(null, g);}
  }
     @FXML
-    void SignUpHotel(ActionEvent event) {
+    void SignUpHotel(ActionEvent event) throws IOException {
         if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
       if(role.equals("hotel")){
                   HotelService hotelService = new HotelService();
                 int numTel=Integer.parseInt(phoneNum.getText());
                 int etoile=Integer.parseInt(etoileHotel.getText());
-               Hotel h=new Hotel(firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, "", etoile, 0, 0);
+               Hotel h=new Hotel(firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()), numTel, address.getText(), "a:1:{i:0;s:10:\"ROLE_HOTEL\";}", "", etoile, 0, 0);
                        hotelService.add(h);
                     
-                         /******ajout de linterface  hotel???*******/
+                         FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Hotel.fxml"));
+              Parent root=loader.load();
+              signUpUserBtn.getScene().setRoot(root);
                    System.out.println("done !!");
                    SMS sms=new SMS();
               sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
@@ -330,7 +339,7 @@ public static String role;
                        new javax.mail.Authenticator() {
                              @Override
                              protected PasswordAuthentication getPasswordAuthentication(){
-                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nanou");
+                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nouhaasfour");
                              }
                        
                        }
@@ -355,15 +364,19 @@ public static String role;
     }
     @FXML
     
-    private void SignUpALV(ActionEvent event) {
+    private void SignUpALV(ActionEvent event) throws IOException {
         if(passwordSignUp.getText().equals(passwordComfSignUp.getText())){
         if(role.equals("agence de location de voiture")){
         CarRentalService carRental=new CarRentalService();
          int numTel=Integer.parseInt(phoneNum.getText());
           int num=Integer.parseInt(nbrVoituresALV.getText());
-         CarRental c=new CarRental(firstName.getText(), email.getText(), passwordSignUp.getText(), numTel, address.getText(), role, 0, num);
+         CarRental c=new CarRental(firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()), numTel, address.getText(), "a:1:{i:0;s:19:\"ROLE_AGENCE_VOITURE\";}", 0, num);
          carRental.add(c);
          /******ajout de linterface  carRental???*******/
+         FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/AgenceLoca.fxml"));
+              Parent root=loader.load();
+              signUpALVBtn1.getScene().setRoot(root);
+                   System.out.println("done !!");
          SMS sms=new SMS();
               sms.SendSMS("nouha1995", "64739502", "you are currently connecting on our application", "+216"+phoneNum.getText()," https://bulksms.vsms.net/eapi/submission/send_sms/2/2.0");
                    System.out.println("done !!");
@@ -378,7 +391,7 @@ public static String role;
                        new javax.mail.Authenticator() {
                              @Override
                              protected PasswordAuthentication getPasswordAuthentication(){
-                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nanou");
+                                   return new PasswordAuthentication("nanouasfour@gmail.com","64739502nouhaasfour");
                              }
                        
                        }

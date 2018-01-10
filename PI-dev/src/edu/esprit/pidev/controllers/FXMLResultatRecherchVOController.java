@@ -7,7 +7,7 @@ package edu.esprit.pidev.controllers;
 
 import edu.esprit.pidev.models.VoyageOrganise;
 import edu.esprit.pidev.sevices.VoyageOrganiseService;
-import edu.esprit.pidev.utils.MoviePlayer;
+//import edu.esprit.pidev.utils.MoviePlayer;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -55,8 +55,8 @@ public class FXMLResultatRecherchVOController implements Initializable {
     @FXML
     private void OnVisualiserVoyageOrganiser(MouseEvent event)throws Exception {
         Stage primaryStage = new Stage();
-        MoviePlayer mp = new MoviePlayer();
-        mp.start(primaryStage);
+       // MoviePlayer mp = new MoviePlayer();
+        //mp.start(primaryStage);
     }
 
 }

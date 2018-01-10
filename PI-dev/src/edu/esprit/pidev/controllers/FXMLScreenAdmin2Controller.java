@@ -70,11 +70,11 @@ public class FXMLScreenAdmin2Controller implements Initializable {
                 
         XYChart.Series set1=new XYChart.Series<>();
         
-        set1.getData().add(new XYChart.Data("AV", agence.nbrAV()*10));
-        set1.getData().add(new XYChart.Data("ALV", carRental.nbrALV()*10));
-        set1.getData().add(new XYChart.Data("Hotel", hotel.nbrHotel()*10));
-        set1.getData().add(new XYChart.Data("Client", client.nbrClient()*10));
-        set1.getData().add(new XYChart.Data("Guide", guide.nbrGuide()*10));
+        set1.getData().add(new XYChart.Data("AV", agence.nbrAV()));
+        set1.getData().add(new XYChart.Data("ALV", carRental.nbrALV()));
+        set1.getData().add(new XYChart.Data("Hotel", hotel.nbrHotel()));
+        set1.getData().add(new XYChart.Data("Client", client.nbrClient()));
+        set1.getData().add(new XYChart.Data("Guide", guide.nbrGuide()));
         
         usersChart.getData().addAll(set1);
     }

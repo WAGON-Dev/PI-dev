@@ -18,7 +18,7 @@ public class Client extends Users {
     String prenom;
     String cin;
     Date dateNaissence;
-
+    
     public Client(String prenom, String cin, Date dateNaissence) {
         this.prenom = prenom;
         this.cin = cin;
