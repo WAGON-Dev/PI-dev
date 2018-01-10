@@ -92,10 +92,7 @@ public class FXMLLoginUsersController implements Initializable {
             login.getScene().setRoot(root);
             System.out.print("done4!!");
 
-        } else if ((g.findByEmail(userName.getText()) != null) && BCrypt.checkpw(g.findByEmail(userName.getText()).getPassword(), password.getText())) {
-
-        } else if ((g.findByEmail(userName.getText()) != null) && (password.getText().equals(g.findByEmail(userName.getText()).getPassword()))) {
-
+        } else if ((g.findByEmail(userName.getText()) != null) && (BCrypt.checkpw(password.getText(), g.findByEmail(userName.getText()).getPassword()))) {
             System.out.print("done5!!");
             mail_login = userName.getText();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
