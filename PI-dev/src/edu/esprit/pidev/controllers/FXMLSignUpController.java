@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.RequiredFieldValidator;
 import com.teknikindustries.bulksms.SMS;
+import static edu.esprit.pidev.controllers.FXMLLoginUsersController.mail_login;
 import edu.esprit.pidev.gui.ahmedtest;
 import edu.esprit.pidev.models.Admin;
 import edu.esprit.pidev.models.Agence;
@@ -271,6 +272,7 @@ public class FXMLSignUpController  implements Initializable{
                int numTel=Integer.parseInt(phoneNum.getText());
                Guide g=new Guide(lastName.getText(), numCin.getText(), date, 0, 0, firstName.getText(), email.getText(), BCrypt.hashpw(passwordSignUp.getText(), BCrypt.gensalt()) , numTel, address.getText(), role, " ");
                guide.add(g);
+               mail_login = email.getText();
                FXMLLoader loader=new FXMLLoader(getClass().getResource("/edu/esprit/pidev/gui/Guidegui.fxml"));
               Parent root=loader.load();
               signUpUserBtn.getScene().setRoot(root);
