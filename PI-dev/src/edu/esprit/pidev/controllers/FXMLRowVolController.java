@@ -87,7 +87,7 @@ public class FXMLRowVolController extends ListCell<Vol> {
             date_depart.setText(String.valueOf(student.getDate_depart()));
             date_arriver.setText(String.valueOf(student.getDate_arrivee()));
             prix_vol.setText(String.valueOf(student.getPrix_vol()));
-            File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/logo.png");
             Image img = new Image(file.toURI().toString());
             image_compagnie.setImage(img);
             setText(null);
@@ -98,9 +98,9 @@ public class FXMLRowVolController extends ListCell<Vol> {
 
     @FXML
     private void OnReserverVol(MouseEvent event) {
-            ReservationService ress = new ReservationService();
-        Reservation r = new Reservation(ClientService.loggedUser, "", vv.getNumTicket(), vv.getPrix_vol());
-        ress.addVol(r);
+        VolService vs = new VolService();
+        vs.updateres(vv,ClientService.loggedUser.getId_user());
+        
     }
 
     @FXML

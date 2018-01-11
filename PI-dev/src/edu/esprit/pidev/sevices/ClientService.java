@@ -103,7 +103,7 @@ public class ClientService implements IserviceClient {
         }
     }
      public void updatecompte(Client t) {
-        String req = "update users set nom=?,prenom=?,email=?,password=?,numtel=?,adresse=?,cin=?,roles=?,image=? where nom = ? and prenom = ? ";
+        String req = "update users set nom=?,prenom=?,email=?,password=?,numtel=?,adresse=? where email=? ";
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -113,11 +113,8 @@ public class ClientService implements IserviceClient {
             preparedStatement.setString(4, t.getPassword());
             preparedStatement.setInt(5, t.getNumtel());
             preparedStatement.setString(6, t.getAdresse());
-            preparedStatement.setString(7, t.getCin());
-            preparedStatement.setString(8, t.getRole());
-            preparedStatement.setString(9, t.getImage());
-            preparedStatement.setString(10, t.getNom());
-            preparedStatement.setString(11, t.getPrenom());
+           
+            preparedStatement.setString(7, t.getEmail());
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

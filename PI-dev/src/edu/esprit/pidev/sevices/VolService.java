@@ -72,7 +72,7 @@ public class VolService implements IVolService {
             ps.setString(5, vol.getDepart());
             ps.setString(6, vol.getArrivee());
             ps.setString(7, vol.getNom_Compagnie());
-            ps.setInt(8, vol.getClient_vol_fk());
+            ps.setInt(8, 0);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(VolService.class.getName()).log(Level.SEVERE, null, ex);
@@ -119,6 +119,19 @@ public class VolService implements IVolService {
         }
 
     }
+    public void updateres(Vol vol , Integer id) {
+        String req = "update vol set client_vol_fk=? where numTicket=" + vol.getNumTicket();
+
+        try {
+            ps = connection.prepareStatement(req);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(VolService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
 
     @Override
     public List<Vol> getAll() {
@@ -144,7 +157,7 @@ public class VolService implements IVolService {
     }
     public List<Vol> getAllcondition( double prix, String villedep, String villearr ,Date d1,Date d2) {
         List<Vol> vols = new ArrayList<>();
-        String req = "select * from vol where  prix_vol < ? and depart = ? and arrivee = ? and date_depart between ? and ? ";
+        String req = "select * from vol where  prix_vol < ? and depart = ? and arrivee = ? and date_depart between ? and ? and client_vol_fk=0 ";
         try {
             ps = connection.prepareStatement(req);
             ps.setDouble(1, prix);

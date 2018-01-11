@@ -63,7 +63,8 @@ public class FXMLCompteClientController implements Initializable {
         // TODO
         ClientService cs = new ClientService();
         Client c = new Client();
-        c = cs.findByemail("wajdy.bouslama@esprit.tn");
+        c = cs.findByemail(ClientService.loggedUser.getEmail());
+        System.out.println(c);
         nom_conecter.setText(c.getNom());
         prenom_conecter.setText(c.getPrenom());
         mail_conecter.setText(c.getEmail());
@@ -100,8 +101,8 @@ public class FXMLCompteClientController implements Initializable {
             ereur.setText("Veuiller remplir le mot de passe ");
             return;
         }
-        if (adresse_conecter.getText()==null) {
-            c.setEmail("wajdy.bouslama@esprit.tn");
+        if (mail_conecter.getText()==null) {
+            c.setEmail(ClientService.loggedUser.getEmail());
             ereur.setText("Veuiller remplir votre adresse mail ");
             return;
         }

@@ -100,10 +100,21 @@ String req = "update chambre set type = ?,prix=?,client_ch_fk=?,hotel_ch_fk=? wh
             ex.printStackTrace();
         }
     }
+    public void updateres(Chambre t, Integer id) {
+String req = "update chambre set client_ch_fk=? where id_chambre =  "+t.getId();
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();        
+            } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 
     @Override
     public void remove(Integer r) {
-String req = "delete from chambre where id_chambre =?";
+String req = "delete from chambre where id_chambre = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -151,7 +162,7 @@ String req = "delete from chambre where id_chambre =?";
     }
     public List<Chambre> getAllcondition(int prix) {
         List<Chambre> chambres = new ArrayList<>();
-        String req = "select * from chambre where prix < ?";
+        String req = "select * from chambre where prix < ? and client_ch_fk IS NULL";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

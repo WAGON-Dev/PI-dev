@@ -87,16 +87,15 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
            ch_res=student;
             nom_hotel.setText(String.valueOf(student.getClient_fk().getNom()));
             adresse_hotel.setText(student.getClient_fk().getAdresse());
-            File file = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
+            File file = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/logo.png");
             Image img = new Image(file.toURI().toString());
             hotal_image.setImage(img);
-            File file1 = new File("C:/Users/Asus/Desktop/ESPRIT/4 infoB 1/Semestre 1/PI-Dev/Projet/PI-dev/PI-dev/src/edu/esprit/pidev/utils/logo.png");
+            File file1 = new File("C:/Users/Ghassen/Desktop/Cours/4INFO/PI/JAVA/PI-dev-java/PI-dev/src/edu/esprit/pidev/utils/logo.png");
             Image img1 = new Image(file1.toURI().toString());
             chambre_image.setImage(img1);
             rater.setRating(4);
             type_chambre.setText(student.getType());
             prix_chambre.setText(String.valueOf(student.getPrix()));
-            System.out.println(student.getHotel_fk().getEtoile());
             setText(null);
             setGraphic(pane);
 
@@ -106,10 +105,8 @@ public class FXMLRowHotelController extends ListCell<Chambre>{
 
     @FXML
     private void OnReserverHotel(MouseEvent event) throws Exception{
-        ReservationService ress = new ReservationService();
-        Reservation r = new Reservation(new ClientService().findByemail("wajdy.bouslama@esprit.tn"), "", ch_res.getId(), ch_res.getPrix());
-            ress.addChambre(r);
-        
+        ChambreService chs = new ChambreService();
+        chs.updateres(ch_res,ClientService.loggedUser.getId_user());
     }
 
     @FXML
