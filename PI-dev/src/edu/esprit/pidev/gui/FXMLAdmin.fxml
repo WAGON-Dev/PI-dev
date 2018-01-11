@@ -24,7 +24,7 @@
                   <Image url="@../utils/unnamed.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="usersBtn" onAction="#loadUsersScene" prefHeight="54.0" prefWidth="243.0" ripplerFill="#005253" styleClass="drawer-buttons1" stylesheets="@../view/css/fxmllogin.css" text="Button" textFill="#000000bc">
+            <JFXButton fx:id="usersBtn" onAction="#loadUsersScene" prefHeight="54.0" prefWidth="243.0" ripplerFill="#005253" styleClass="drawer-buttons1" stylesheets="@../view/css/fxmllogin.css" text="Home" textFill="#000000bc">
                <font>
                   <Font size="24.0" />
                </font></JFXButton>
@@ -32,7 +32,7 @@
                <font>
                   <Font size="24.0" />
                </font></JFXButton>
-            <JFXButton prefHeight="71.0" prefWidth="243.0" styleClass="drawer-buttons3" stylesheets="@../view/css/fxmllogin.css" text="Users" textFill="#000000bc">
+            <JFXButton prefHeight="71.0" prefWidth="243.0" styleClass="drawer-buttons3" stylesheets="@../view/css/fxmllogin.css" text="Users" textFill="#000000bc" visible="false">
                <font>
                   <Font size="24.0" />
                </font></JFXButton>
@@ -166,7 +166,7 @@
                <children>
                   <JFXButton fx:id="sendEmailBtn" buttonType="RAISED" onAction="#sendEmailAction" prefHeight="100.0" prefWidth="174.0" style="-fx-background-color: #5fe7cc;" styleClass="drawer-buttons3" stylesheets="@../view/css/fxmllogin.css" text="sendEmailTo" textFill="WHITE" />
                   <Pane prefHeight="100.0" prefWidth="112.0" />
-                  <JFXButton fx:id="addUserBtn" buttonType="RAISED" onAction="#addUserAction" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #428F89;" styleClass="drawer-buttons2" stylesheets="@../view/css/fxmllogin.css" text="ajouter" textFill="WHITE" />
+                  <JFXButton fx:id="addUserBtn" buttonType="RAISED" onAction="#addUserAction" prefHeight="100.0" prefWidth="190.0" style="-fx-background-color: #428F89;" styleClass="drawer-buttons2" stylesheets="@../view/css/fxmllogin.css" text="ajouter" textFill="WHITE" visible="false" />
                   <Pane prefHeight="100.0" prefWidth="101.0" />
                   <JFXButton fx:id="deleteUserBtn" buttonType="RAISED" onAction="#deleteUserAction" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: #005253;" styleClass="drawer-buttons1" stylesheets="@../view/css/fxmllogin.css" text="Supprimer" textFill="WHITE">
                      <font>

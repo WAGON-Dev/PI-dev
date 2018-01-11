@@ -36,18 +36,22 @@ public class AgenceService implements IAgenceService {
 
     @Override
     public void add(Agence a) {
-        String req = "insert into users (role,nom,email,password,numTel,adresse,nbr_voyage_organise) values (?,?,?,?,?,?,?)";
+        String req = "insert into users (username,username_canonical,email,email_canonical,enabled,password,numTel,adresse,roles,image,nbr_voyage_organise) values (?,?,?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-            preparedStatement.setString(1, a.getRole());
+            preparedStatement.setString(9, a.getRole());
             //  preparedStatement.setInt(2, a.getId_user());
+             preparedStatement.setString(1, a.getNom());
             preparedStatement.setString(2, a.getNom());
             preparedStatement.setString(3, a.getEmail());
-            preparedStatement.setString(4, a.getPassword());
-            preparedStatement.setInt(5, a.getNumtel());
-            preparedStatement.setString(6, a.getAdresse());
-            preparedStatement.setInt(7, a.getNbr_voyage_organise());
+            preparedStatement.setString(4, a.getEmail());
+            preparedStatement.setInt(5, 1);
+            preparedStatement.setString(6, a.getPassword());
+            preparedStatement.setInt(7, a.getNumtel());
+            preparedStatement.setString(8, a.getAdresse());
+            preparedStatement.setString(10, "");
+            preparedStatement.setInt(11, a.getNbr_voyage_organise());
 
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
@@ -126,7 +130,7 @@ public class AgenceService implements IAgenceService {
     }
       public List<String> getAllname(String role) {
         List<String> agences = new ArrayList<>();
-        String req = "select * from users where role = ?";
+        String req = "select * from users where roles = ?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -143,7 +147,7 @@ public class AgenceService implements IAgenceService {
     }
        public Agence findByName(String n) {
         Agence g = null;
-        String req = "select * from users where nom=? and role='agence'";
+        String req = "select * from users where nom=? and roles='a:1:{i:0;s:11:\"ROLE_AGENCE\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -175,7 +179,7 @@ public class AgenceService implements IAgenceService {
         
          public Agence findByNomPwd(String nom,String pwd) {
         Agence agence = null;
-        String req = "select * from users where nom=? and password=? and role='agence de voyage'";
+        String req = "select * from users where nom=? and password=? and roles='a:1:{i:0;s:11:\"ROLE_AGENCE\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -195,14 +199,14 @@ public class AgenceService implements IAgenceService {
          
           public List<Agence> getByRole() {
          List<Agence> agences = new ArrayList<>();
-        String req = "select * from users where role='agence de voyage'";
+        String req = "select * from users where roles='a:1:{i:0;s:11:\"ROLE_AGENCE\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                //                                        String role,               String nom,                   String email,                 String password,               int numtel,              String adresse,             int nbr_voyage_organise
-                Agence agence = new Agence(resultSet.getString("role"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
+                Agence agence = new Agence(resultSet.getString("roles"),resultSet.getInt("id_user"), resultSet.getString("nom"),resultSet.getString("email"),resultSet.getString("password"),resultSet.getInt("numTel"),resultSet.getString("adresse"),resultSet.getInt("nbr_voyage_organise"));
                 agences.add(agence);
             }
         } catch (SQLException ex) {
@@ -213,7 +217,7 @@ public class AgenceService implements IAgenceService {
           
           public int nbrAV() {
              int i=0;
-            String req = "SELECT COUNT(*) AS total FROM users where role='agence de voyage'";
+            String req = "SELECT COUNT(*) AS total FROM users where roles='a:1:{i:0;s:11:\"ROLE_AGENCE\";}'";
             PreparedStatement preparedStatement;
           try {
             preparedStatement = connection.prepareStatement(req);
@@ -229,7 +233,7 @@ return i;
           
            public Agence findByEmail(String e) {
                Agence g = null;
-        String req = "select * from users where email=? and roles='agence de voyage'";
+        String req = "select * from users where email=? and roles='a:1:{i:0;s:11:\"ROLE_AGENCE\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

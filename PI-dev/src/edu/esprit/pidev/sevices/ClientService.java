@@ -189,14 +189,14 @@ public class ClientService implements IserviceClient {
     }
       public List<Client> getByClient() {
    List<Client> clients = new ArrayList<>();
-        String req = "select * from users where role='ROLE_CLIENT'";
+        String req = "select * from users where roles='a:1:{i:0;s:11:\"ROLE_CLIENT\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Client client;
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
                 clients.add(client);
             }
         } catch (SQLException ex) {
@@ -207,7 +207,7 @@ public class ClientService implements IserviceClient {
 
     public Client findByNomPwd(String nom, String pwd) {
         Client client = null;
-        String req = "select * from users where nom=? and password=? and role='a:1:{i:0;s:11:\"ROLE_CLIENT\";}'";
+        String req = "select * from users where nom=? and password=? and roles='a:1:{i:0;s:11:\"ROLE_CLIENT\";}'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -215,7 +215,7 @@ public class ClientService implements IserviceClient {
             preparedStatement.setString(2, pwd);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
+                client = new Client(resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numTel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"), resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -224,7 +224,7 @@ public class ClientService implements IserviceClient {
     }
         public int nbrClient() {
              int i=0;
-            String req = "SELECT COUNT(*) AS total FROM users where role='ROLE_CLIENT'";
+            String req = "SELECT COUNT(*) AS total FROM users where roles='a:1:{i:0;s:11:\"ROLE_CLIENT\";}'";
             PreparedStatement preparedStatement;
           try {
             preparedStatement = connection.prepareStatement(req);

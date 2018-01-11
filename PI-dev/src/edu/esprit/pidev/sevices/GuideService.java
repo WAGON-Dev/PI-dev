@@ -206,13 +206,13 @@ public class GuideService implements Iguide {
     @Override
     public List<Guide> getAll() {
         List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role like '%ROLE_GUIDE%'";
+        String req = "select * from users where roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
                 guides.add(g);
             }
         } catch (SQLException ex) {
@@ -223,7 +223,7 @@ public class GuideService implements Iguide {
 
     public List<String> getAllname(String role) {
         List<String> guides = new ArrayList<>();
-        String req = "select * from users where role like %?% ";
+        String req = "select * from users where roles like %?% ";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -256,14 +256,14 @@ public class GuideService implements Iguide {
 
     public List<Guide> getByRole() {
         List<Guide> guides = new ArrayList<>();
-        String req = "select * from users where role like '%ROLE_GUIDE%'";
+        String req = "select * from users where roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 //                                  String prenom,               String CIN,                 Date dateDeNaissance,               int nbrNote,                  int Note,                    int id_user,                 String nom,                  String email,            String password,                int numtel,                  String adresse,                  String role,                 String image
-                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                Guide g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getInt("id_user"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
                 guides.add(g);
             }
         } catch (SQLException ex) {
@@ -274,7 +274,7 @@ public class GuideService implements Iguide {
 
     public Guide findByNomPwd(String nom, String pwd) {
         Guide g = null;
-        String req = "select * from users where nom=? and password=? and role like '%ROLE_GUIDE%'";
+        String req = "select * from users where nom=? and password=? and roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -283,7 +283,7 @@ public class GuideService implements Iguide {
 
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("role"), resultSet.getString("image"));
+                g = new Guide(resultSet.getString("prenom"), resultSet.getString("cin"), resultSet.getDate("dateNaissence"), resultSet.getInt("nbr_note"), resultSet.getInt("note"), resultSet.getString("nom"), resultSet.getString("email"), resultSet.getString("password"), resultSet.getInt("numtel"), resultSet.getString("adresse"), resultSet.getString("roles"), resultSet.getString("image"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -294,7 +294,7 @@ public class GuideService implements Iguide {
 
     public int nbrGuide() {
         int i = 0;
-        String req = "SELECT COUNT(*) AS total FROM users where role like '%ROLE_GUIDE%'";
+        String req = "SELECT COUNT(*) AS total FROM users where roles like '%ROLE_GUIDE%'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
